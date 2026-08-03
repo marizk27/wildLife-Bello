@@ -1,0 +1,134 @@
+[
+    {
+        "category": "Anfíbios",
+        "especies": [
+            {
+            "id": 1,
+            "name": "Sapo común",
+            "scientificName": "Rhinella horribilis",
+            "img": "https://media.istockphoto.com/id/1720406916/photo/rhinella-horribilis-giant-toad-tortuguero-costa-rica-wildlife.jpg?s=1024x1024&w=is&k=20&c=VvuvDMgKY-aB_Ms9pKYzNBMrzGSGMuMlRVizne0V_e8="
+            },
+            {
+            "id": 2,
+            "name": "Rana comunita",
+            "scientificName": "Pristimantis achatinus",
+            "img": "https://cdn.pixabay.com/photo/2017/06/06/17/10/frog-2377825_1280.jpg"
+            },
+            {
+            "id": 3,
+            "name": "Rana arborícola",
+            "scientificName": "Dendropsophus bogerti",
+            "img": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Dendropsophus_bogerti02.jpg"
+            },
+            {
+            "id": 4,
+            "name": "Rana paisa",
+            "scientificName": "Pristimantis paisa",
+            "img": "https://inaturalist-open-data.s3.amazonaws.com/photos/57481579/large.jpg"
+            },
+            {
+            "id": 5,
+            "name": "Rana arborícola ruidosa",
+            "scientificName": "Boana pugnax",
+            "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Hypsiboas_pugnax02.jpg/250px-Hypsiboas_pugnax02.jpg"
+            }
+        ]
+    }, 
+    {
+        "category": "Aves",
+        "especies": [
+        {
+        "id": 6,
+        "name": "Azulejo",
+        "scientificName": "Thraupis episcopus",
+        "img": "https://th.bing.com/th/id/OSK.8cvNxgAWbhhFZz54ZYHC3NbdKkrHr03YZKp9ur3pNLQ?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3"
+        },
+        {
+        "id": 7,
+        "name": "Batará carcajada",
+        "scientificName": "Thamnophilus multistriatus",
+        "img": "https://i.pinimg.com/736x/11/76/85/117685c9e0199ce29b2989613792c5ee.jpg"
+
+        },
+        {
+        "id": 8,
+        "name": "Bichofué",
+        "scientificName": "Pitangus sulphuratus",
+        "img": "https://www.museobolivariano.org.co/wp-content/uploads/2021/07/bichofue-pitangus-sulphuratus-philippe-vermeire-1024x1024.jpg"
+        },
+        {
+        "id": 9,
+        "name": "Canario",
+        "scientificName": "Sicalis flaveola",
+        "img": "https://th.bing.com/th/id/OSK.HERORW0f9vUnG9srCXOpUgeW5xv2j4ohks7nDlWdEs-ett8?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3"
+        },
+        {
+        "id": 10,
+        "name": "Carpintero listado",
+        "scientificName": "Dryocopus lineatus",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Dryocopus_lineatus_1.jpg/500px-Dryocopus_lineatus_1.jpg"
+        },
+        {
+        "id": 11,
+        "name": "Carriquí pechiblanco",
+        "scientificName": "Cyanocorax affinis",
+        "img": "https://c8.alamy.com/comp/DE3CKM/black-chested-jay-cyanocorax-affinis-DE3CKM.jpg"
+        },
+         {
+        "id": 12,
+        "name": "Carriquí ventriamarillo",
+        "scientificName": "Cyanocorax yncas"
+        },
+        {
+        "id": 13,
+        "name": "Carricero variasuriano",
+        "scientificName": "Cyclarhis nigrirostris",
+        "img": "https://live.staticflickr.com/4249/34421623190_b655166a43_b.jpg"
+        },
+        {
+        "id": 14,
+        "name": "Fiofio ventriamarillo",
+        "scientificName": "Elaenia flavogaster",
+        "img": "https://i0.wp.com/chipes.org/wp-content/uploads/2022/10/Elaenia-flavogaster-1.jpg?fit=2510%2C1670&ssl=1&is-pending-load=1"
+        },
+        {
+        "id": 15,
+        "name": "Mirla o mayo",
+        "scientificName": "Turdus ignobilis",
+        "img": "https://i1.wp.com/birdscolombia.com/wp-content/uploads/2016/08/turdus-ignobilis1.jpg?resize=1180%2C787&ssl=1"
+        },
+        {
+        "id": 16,
+        "name": "Mosquero cardenal",
+        "scientificName": "Pyrocephalus rubinus",
+        "img": "https://s3.amazonaws.com/media.wikiaves.com.br/images/1305/5031078g_ed68e853fe01d9cb6e05b0531a3a6ded.jpg"
+        },
+        {
+        "id": 17,
+        "name": "Pibí boreal",
+        "scientificName": "Contopus cooperi",
+        "img": "https://th.bing.com/th/id/R.dceea28eb316a7738cec8f5c23deb1bb?rik=AfhJbqXYFYwu4w&riu=http%3a%2f%2ffarm2.staticflickr.com%2f1046%2f4600693992_d5c4c5fc87_o.jpg&ehk=IfsiYzLksORRT1593ZNltWtz2WVi4Y5ArF%2bIcc85Mjc%3d&risl=&pid=ImgRaw&r=0"
+        },
+        {
+        "id": 18,
+        "name": "Sirirí",
+        "scientificName": "Tyrannus melancholicus"
+        },
+        {
+        "id": 19,
+        "name": "Tangara cabeciazul",
+        "scientificName": "Stilpnia cyanicollis"
+        },
+        {
+        "id": 20,
+        "name": "Torcaza",
+        "scientificName": "Zenaida auriculata"
+        },
+        {
+        "id": 21,
+        "name": "Toche pechirrojo",
+        "scientificName": "Icterus nigrogularis"
+        }
+    ]
+    }
+]
