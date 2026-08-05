@@ -3,6 +3,7 @@ let home = document.getElementById("home");
 let exploreP = document.getElementById("categories");
 const mainDisplay = document.getElementById("exploreCategories");
 let animals = [];
+let exploreState = "all";
 exploreCat.addEventListener("click", () => {
     home.classList.add("hidden");
     exploreP.classList.remove("hidden");
@@ -32,38 +33,51 @@ function displayAnimals(prods) {
     if (prods.length === 0) {
         const searchText = inp.value.trim();
         const filterText = filterCat.options[filterCat.selectedIndex].text;
-
         mainDisplay.innerHTML = `
             <div class="no-results">
-                <h1>🔎</h1>
-                <h2>No encontramos especies</h2>
-                <p>No hay resultados para "<strong>${searchText}</strong>"</p>
-                <p>Filtro utilizado: ${filterText}</p>
-                </div>
-    `;
-    return;
-    };
-    for (let prod of prods) {
-        for (let specie of prod.especies) {
-            let div = document.createElement("div");
-            div.dataset.id = specie.id;
-            div.classList.add("animalCard")
-            div.innerHTML = `
-            <img class = "animalImg" src="${specie.img}" alt="">
-            <div class = "animalInfo">
-                <h4>${specie.name}</h4>
-                <p class="animalScientificName">${specie.scientificName}</p>
-                <button class="animalCategory"> ${prod.category}</button>
+                <img class="no-results-img" src=".ChatGPT Image 3 ago 2026, 07_57_06 p.m..png" alt="No results found">
             </div>
         `;
-        const categoryButtonColor = colorCategory(prod.category);
-        const categoryButton = div.querySelector(".animalCategory");
-        categoryButton.style.backgroundColor = categoryButtonColor;
-        mainDisplay.appendChild(div);
-        }
+        mainDisplay.style.display = "flex";
+        mainDisplay.style.flexDirection = "column";
+        return;
+    };
+    mainDisplay.style.display = "grid";
+    switch (exploreState) {
+        case "all":
+            for (let prod of prods) {
+                for (let specie of prod.especies) {
+                    let div = document.createElement("div");
+                    div.dataset.id = specie.id;
+                    div.classList.add("animalCard")
+                    div.innerHTML = `
+                    <img class = "animalImg" src="${specie.img}" alt="">
+                    <div class = "animalInfo">
+                        <h4>${specie.name}</h4>
+                        <p class="animalScientificName">${specie.scientificName}</p>
+                        <button class="animalCategory"> ${prod.category}</button>
+                    </div>
+                `;
+                const categoryButtonColor = colorCategory(prod.category);
+                const categoryButton = div.querySelector(".animalCategory");
+                categoryButton.style.backgroundColor = categoryButtonColor;
+                mainDisplay.appendChild(div);
+                }
+            }
+        break;
+        case "categories":
+            for (let category of prods) {
+                let div = document.createElement("div");
+                div.classList.add("animalCard");
+                div.innerHTML = `
+                    <h3>${category.category}</h3>
+                    <img class="animalImg" src="${category.categoryImg}" alt="${category.category}">
+                `;
+                div.style.backgroundColor = colorCategory(category.category);
+                mainDisplay.appendChild(div);
+            }
     }
 }
-
 async function load() {
     const response = await fetch("./categories.json");
     animals = await response.json();
@@ -72,10 +86,6 @@ async function load() {
 }
 
 load();
-// const homeActions = document.getElementById("actionsPan");
-// homeActions.addEventListener("click", (e) => {
-//     const action = e.target.closest(".actionCard");
-// })
 const filterCat = document.getElementById("filterCat");
 const inp = document.getElementById("filter");
 function filterAnimals() {
@@ -85,35 +95,40 @@ function filterAnimals() {
         displayAnimals(animals);
         return;
     };
-    switch (filterCat.value) {
-        case "catego": 
-            filteredAn = animals.filter(value => value.category.toLowerCase().includes(text));
-            break;
-        case "name":
-            filteredAn = animals
-                .map(category => {
-                    const filteredSpecies = category.especies.filter(specie => specie.name.toLowerCase().includes(text));
-                    return {
-                    ...category,
-                    especies: filteredSpecies
-                    };
-                })
-                .filter(category => category.especies.length > 0);
-            break;
-        case "sciNa":
-    filteredAn = animals
-                .map(category => {
-                    const filteredSpecies = category.especies.filter(specie =>
-                        specie.scientificName.toLowerCase().includes(text)
-                    );
-
-                    return {
-                        ...category,
-                        especies: filteredSpecies
-                    };
-                })
-                .filter(category => category.especies.length > 0);
-    break;
+    switch (exploreState) {
+        case "all":
+            switch (filterCat.value) {
+                case "catego": 
+                    filteredAn = animals.filter(value => value.category.toLowerCase().includes(text));
+                    break;
+                case "name":
+                    filteredAn = animals
+                        .map(category => {
+                            const filteredSpecies = category.especies.filter(specie => specie.name.toLowerCase().includes(text));
+                            return {
+                                ...category,
+                                especies: filteredSpecies
+                            };
+                        })
+                        .filter(category => category.especies.length > 0);
+                break;
+                case "sciNa":
+                    filteredAn = animals
+                    .map(category => {
+                        const filteredSpecies = category.especies.filter(specie =>
+                            specie.scientificName.toLowerCase().includes(text)
+                        );
+                        return {
+                            ...category,
+                            especies: filteredSpecies
+                        };
+                    })
+                    .filter(category => category.especies.length > 0);
+                break;
+            }
+        break;
+        case "categories":
+            filteredAn = animals.filter(value => value.category.includes(text));
     }
     displayAnimals(filteredAn);
 }
@@ -121,3 +136,20 @@ inp.addEventListener("input", filterAnimals);
 filterCat.addEventListener("change", (event) => {
     inp.value = "";
 })
+
+const exploreButtons = document.querySelector(".exploreButtons");
+exploreButtons.addEventListener("click", (event) => {
+    let buttonId = event.target.id;
+    switch (buttonId) {
+        case "all":
+            exploreState = "all";
+            filterCat.classList.remove("hidden");
+            break;
+        case "categories":
+            exploreState = "categories";
+            filterCat.classList.add("hidden");
+            break;
+    }
+    displayAnimals(animals);
+})
+
