@@ -35,7 +35,7 @@ function displayAnimals(prods) {
         const filterText = filterCat.options[filterCat.selectedIndex].text;
         mainDisplay.innerHTML = `
             <div class="no-results">
-                <img class="no-results-img" src=".ChatGPT Image 3 ago 2026, 07_57_06 p.m..png" alt="No results found">
+                <img class="no-results-img" src="no-results.png" alt="No results found">
             </div>
         `;
         mainDisplay.style.display = "flex";
@@ -66,7 +66,9 @@ function displayAnimals(prods) {
             }
         break;
         case "categories":
-            for (let category of prods) {
+            for (let category of prods) {`
+                console.log(categoryImg);
+                console.log(category.category);`
                 let div = document.createElement("div");
                 div.classList.add("animalCard");
                 div.innerHTML = `
