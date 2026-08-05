@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <section class="home" id="home">
@@ -33,22 +33,21 @@
     </section>
     <section id="categories" class="hidden sect">
         <section class="upperPan">
-           <h1><-</h1>
-            <h3>Volver</h3>
+            <h2 class="dark-background">Volver</h2>
+            <h2 class="dark-background">Explorar fauna</h2>
         </section>
         <header class="ExploreSearchPan">
-            <h2>Explorar fauna</h2>
-            <input id="filter" type="search" placeholder="Buscar especie">
-            <select name="Categorías" id="filterCat">
+            <input id="filter" class="filter" type="search" placeholder="Buscar especie">
+            <select class="cat" name="Categorías" id="filterCat">
                 <option value="catego">Por categoría</option>
                 <option value="name">Nombre cotidiano</option>
                 <option value="sciNa">Nombre científico</option>
             </select>
         </header>
         <div class="exploreButtons">
-            <button class="see">Todo</button>
-            <button class="see">Categorías</button>
-            <button class="see">¡Juega!</button>
+            <button id="all" class="see">Todo</button>
+            <button id="categories" class="see">Categorías</button>
+            <button id="play" class="see">¡Juega!</button>
         </div>
         <main id="exploreCategories" class="anList"></main>
     </section>
