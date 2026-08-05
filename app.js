@@ -66,9 +66,9 @@ function displayAnimals(prods) {
             }
         break;
         case "categories":
-            for (let category of prods) {`
+            for (let category of prods) {
                 console.log(categoryImg);
-                console.log(category.category);`
+                console.log(category.category);
                 let div = document.createElement("div");
                 div.classList.add("animalCard");
                 div.innerHTML = `
