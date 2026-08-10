@@ -109,41 +109,44 @@
         {
         "id": 17,
         "name": "Sirirí",
-        "scientificName": "Tyrannus melancholicus"
+        "scientificName": "Tyrannus melancholicus",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbv-AuJY2Hb81A9qLVayVl5sD22FS5xjYBafloqPj5VV9gHF_EPNaBgC9rPiAAlu9IZwSDMoCE1HatbT5itxi6caIBLwir7Prp4zsArA&s=10"
         },
         {
         "id": 18,
         "name": "Tangara cabeciazul",
-        "scientificName": "Stilpnia cyanicollis"
+        "scientificName": "Stilpnia cyanicollis",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5DwbdPmwFP-bfCqyh4hjZYXJE13ntj9jtu8eh_CqALGwnsD5f-isT7bYvAjMj4bvf4XCifXHgVXwpNMhtjewm_p5lt_PwrQPOWY_x5w&s=10"
         },
         {
         "id": 19,
         "name": "Torcaza",
-        "scientificName": "Zenaida auriculata"
+        "scientificName": "Zenaida auriculata",
+        "img": "https://cdn.download.ams.birds.cornell.edu/api/v2/asset/622980687/1200"
         },
         {
         "id": 20,
         "name": "Picogrueso pechirrosa",
         "scientificName": "Pheucticus ludovicianus",
-        "img": ""
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvvbc4LTwVgcJRgR0sGDpzX8FwuQzNIdEwSll1eV2DAA&s=10"
       },
       {
         "id": 21,
         "name": "Guacharaca común",
         "scientificName": "Ortalis columbiana",
-        "img": ""
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbWW0igss-WMxfxTwE5AWencEuey0Hd72FZAZe7KtDJA&s=10"
       },
       {
         "id": 22,
         "name": "Tangara rastrojera",
         "scientificName": "Stilpnia vitriolina",
-        "img": ""
+        "img": "https://cdn.download.ams.birds.cornell.edu/api/v1/asset/55593551/320"
       },
       {
         "id": 23,
         "name": "Cucarachero",
         "scientificName": "Troglodytes musculus",
-        "img": ""
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB-XJCWoOEXeYbeh3KPXUMdklj8D5Zj2nzT_OgEfCAf86gauLdKsCC3Q46c5a0ilcqPoKt30hru7-2crJg21id5ide_A7aA7v63zAqDw&s=10"
       },
       {
         "id": 24,
@@ -155,349 +158,349 @@
         "id": 25,
         "name": "Colarraqueta de botas blancas",
         "scientificName": "Ocreatus underwoodii",
-        "img": ""
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAeymqlbQBdGQRgjPTTAZTbId2audL0nKfC5KcU85Rl2u8RorCk9fPDyk&s=10"
       },
       {
         "id": 26,
         "name": "Tangara lacrimosa",
         "scientificName": "Anisognathus lacrymosus",
-        "img": ""
+        "img": "https://cdn.download.ams.birds.cornell.edu/api/v2/asset/70019071/900"
       },
       {
         "id": 27,
         "name": "Mirla patinaranja",
         "scientificName": "Turdus fuscater",
-        "img": ""
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQidmsUlXRreYaZm1W49p_8YYIgHsmHrBA8ULTN-OCn8Whgd8KuIA5GeaU&s=10"
       },
       {
         "id": 28,
         "name": "Barranquero andino",
         "scientificName": "Momotus aequatorialis",
-        "img": ""
+        "img": "https://i0.wp.com/birdscolombia.com/wp-content/uploads/2019/12/momotus-aequatorialis.jpg?resize=1180%2C1783&ssl=1"
       },
       {
         "id": 29,
         "name": "Carpintero bellotero",
         "scientificName": "Melanerpes formicivorus",
-        "img": ""
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG36JWnSnDRLxUlot5RuGWulFpHz1OyPcqUSNECYhx1Q&s=10"
       },
       {
         "id": 30,
         "name": "Trepatroncos montano",
         "scientificName": "Lepidocolaptes lacrymiger",
-        "img": ""
+        "img": "https://cdn.download.ams.birds.cornell.edu/api/v2/asset/55816371/900"
       },
       {
         "id": 31,
         "name": "Cernícalo americano",
         "scientificName": "Falco sparverius",
-        "img": ""
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQA1rA2fukd9_FWNh7ISvDXV68t2SuPY7nbbpfvspBClH_KNeSdrjEv2qgembkaEYo2vQBPUhFp3-st6SXYCChyBZAnjFf8qLD4vfXRBYY&s=10"
       },
       {
         "id": 32,
         "name": "Mosquero negro",
         "scientificName": "Sayornis nigricans",
-        "img": ""
+        "img": "https://cdn.download.ams.birds.cornell.edu/api/v2/asset/301873541/900"
       },
       {
         "id": 33,
         "name": "Reinita gorjinaranja",
         "scientificName": "Setophaga fusca",
-        "img": ""
+        "img": "https://i0.wp.com/birdscolombia.com/wp-content/uploads/2020/04/Setophaga-fusca-1.jpg?fit=1024%2C683&ssl=1"
       },
       {
         "id": 34,
         "name": "Jilguero aliblanco",
         "scientificName": "Spinus psaltria",
-        "img": ""
+        "img": "https://i0.wp.com/birdscolombia.com/wp-content/uploads/2019/05/spinus-psaltria.jpg?fit=2048%2C1277&ssl=1"
       },
       {
         "id": 35,
         "name": "Gallinazo",
         "scientificName": "Coragyps atratus",
-        "img": ""
+        "img": "https://cdn.download.ams.birds.cornell.edu/api/v2/asset/321069401/1200"
       },
       {
         "id": 36,
         "name": "Martín pescador",
         "scientificName": "Megaceryle torquata",
-        "img": ""
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUs-6MNHzbzT0Fic7KnWvVvY4a5GPNAN1SbyQNmEFd9M3rqFPFirT3PIPqoUswBpHwHKz7i5XHoW6oInm_HE1Epkfq6w9oMRunNa8t53Q&s=10"
       },
       {
         "id": 37,
         "name": "Tangara flamígera",
         "scientificName": "Ramphocelus flammigerus",
-        "img": ""
+        "img": "https://cdn.download.ams.birds.cornell.edu/api/v2/asset/484480531/1200"
       },
       {
         "id": 38,
         "name": "Sinsonte",
         "scientificName": "Mimus polyglottos",
-        "img": ""
+        "img": "https://upload.wikimedia.org/wikipedia/commons/1/16/Mimus_polyglottos1.jpg?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original"
       },
       {
         "id": 39,
         "name": "Tortolita rojiza",
         "scientificName": "Columbina talpacoti",
-        "img": ""
+        "img": "https://cdn.download.ams.birds.cornell.edu/api/v2/asset/631764176/1200"
       },
       {
         "id": 40,
         "name": "Bienteveo rayado",
         "scientificName": "Myiodynastes maculatus",
-        "img": ""
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTanwAts_Qy_qzq9AmV8AkB2qjRNicFdDiEThYpx-JuLZAhJsSVEURBflt_s8wPU8e1Gx1IwPNUDR-JX89M6M_8-6b0Qzcv6GPhNnyaBA&s=10"
       },
       {
         "id": 41,
         "name": "Colibrí coliazul",
         "scientificName": "Saucerottia saucerottei",
-        "img": ""
+        "img": "https://cdn.download.ams.birds.cornell.edu/api/v2/asset/41373721/900"
       },
       {
         "id": 42,
         "name": "Cacique candela",
         "scientificName": "Hypopyrrhus pyrohypogaster",
-        "img": ""
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZzDe0NFAxzrNbD2MXDbWE8pDwBWSwxIKocPoA2g77qpT5ey3W7OoGfiUYs6e0DZ2NcZGwGGeZkKf3YhdcMO7lc5w_XU6a4DFsLBjlXfg&s=10"
       },
       {
         "id": 43,
         "name": "Gavilán pollero",
         "scientificName": "Rupornis magnirostris",
-        "img": ""
+        "img": "https://i0.wp.com/birdscolombia.com/wp-content/uploads/2019/09/rupornis-magnirostris.jpg?fit=1046%2C1348&ssl=1"
       },
       {
         "id": 44,
         "name": "Coquito o ibis negro",
         "scientificName": "Phimosus infuscatus",
-        "img": ""
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvvj4FIruf3B23LkdnHW-aWguzGhZchiICTl7azSmcH42xoGjurHksR7PBIxTu-klyis2GKCA7lV9XQeHGjDT_AM6KDHvigEWliYlGZA&s=10"
       },
       {
         "id": 45,
         "name": "Tangara coroninegra",
         "scientificName": "Stilpnia heinei",
-        "img": ""
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqQDoUQFxNrot02Hgb0QJhbbauhFI_b4ckg82tUJCaxvE5CSy9Nhb2GqWuH6E5rpssMe_Bnabpjl-kfYEPmDFPFJxk4dtcwn7nVT6Go6o&s=10"
       },
       {
         "id": 46,
         "name": "Gorrión copetón",
         "scientificName": "Zonotrichia capensis",
-        "img": ""
+        "img": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Zonotrichia_capensis_-Manizales%2C_Caldas%2C_Colombia-8-b.jpg"
       },
       {
         "id": 47,
         "name": "Cuco ardilla común",
         "scientificName": "Piaya cayana",
-        "img": ""
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXfWjyci0HiSM4KwPw6P-HLh6ML6Y0jjKpqjoryynbfR8Sd4-Mgi9vrZUruHaaGg9CZemKdSdZF12J9oMryqnI9kkXVxJMj44AJp00lQ&s=10"
       },
       {
         "id": 48,
         "name": "Turpial amarillo",
         "scientificName": "Icterus nigrogularis",
-        "img": ""
+        "img": "https://upload.wikimedia.org/wikipedia/commons/d/d6/Icterus_nigrogularis_2.jpg"
       },
       {
         "id": 49,
         "name": "Reinita cabecidorada",
         "scientificName": "Protonotaria citrea",
-        "img": ""
+        "img": "https://cdn.download.ams.birds.cornell.edu/api/v2/asset/296766141/900"
       },
       {
         "id": 50,
         "name": "Garcilla bueyera",
         "scientificName": "Bubulcus ibis",
-        "img": ""
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhBC98gJ8tJMVGtBXMplftITrbBw61nVXeE4v7G0suYts5kR36ErM9YkV7ygR5DaoWqUJQdh37ajyLosA41mQ1-HT_nmSpqn-iuHcrIkg&s=10"
       },
       {
         "id": 51,
         "name": "Tordo llanero",
         "scientificName": "Quiscalus lugubris",
-        "img": ""
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEiMyn_GMGdmB0ynhbctJzbSTtLjFms-8E1bWljbVYe2w5Ag98n7phRBQxh7EqHQvefi3OPElurzh4YTaDEx1epmMKlFwx26V7oXa_5g&s=10"
       },
       {
         "id": 52,
         "name": "Polla azul",
         "scientificName": "Porphyrio martinica",
-        "img": ""
+        "img": "https://www.corpoboyaca.gov.co/cms/wp-content/uploads/2020/06/TINGUA.jpg"
       },
       {
         "id": 53,
         "name": "Guaco",
         "scientificName": "Nycticorax nycticorax",
-        "img": ""
+        "img": "https://i0.wp.com/birdscolombia.com/wp-content/uploads/2018/08/nycticorax-nycticorax.png?resize=844%2C1125&ssl=1"
       },
       {
         "id": 54,
         "name": "Garrapatero aní",
         "scientificName": "Crotophaga ani",
-        "img": ""
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCLZq5AJJfaBdxOR1vyyl7C5VRC-PKhOb-P-MwdmPPEZmYUwpGoH53iRBW0DL-LYQwiV1s8Fj08BFjs5PMzeYb2qmhvyU1i4MMKXet2w&s=10"
       },
       {
         "id": 55,
         "name": "Pepitero oliváceo",
         "scientificName": "Saltator olivascens",
-        "img": ""
+        "img": "https://i0.wp.com/birdscolombia.com/wp-content/uploads/2023/06/Saltator-olivascens.jpeg?resize=1024%2C683&ssl=1"
       },
       {
         "id": 56,
         "name": "Semillero ventriamarillo",
         "scientificName": "Sporophila nigricollis",
-        "img": ""
+        "img": "https://cdn.download.ams.birds.cornell.edu/api/v1/asset/243574181/320"
       },
       {
         "id": 57,
         "name": "Pigua",
         "scientificName": "Daptrius chimachima",
-        "img": ""
+        "img": "https://i0.wp.com/birdscolombia.com/wp-content/uploads/2016/08/milvago-chimachima11.jpg?fit=5472%2C3648&ssl=1"
       },
       {
         "id": 58,
         "name": "Garcita verdosa",
         "scientificName": "Butorides virescens",
-        "img": ""
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ14sESJJOvB9ehMEuPvyXJc69LUKpp-PTntMFyDZ6UyzLcEuUOgoDtB9r8hCQkTgpGZFSnOeQrLCAaX6ciZHiKZSJT9yVMcq9IfEVjtA&s=10"
       }
     ]
     },
     {
     "category": "Insectos",
-    "categoryImg": "",
+    "categoryImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIIlRpgeqkiKFUcMeO4tgzB9TSdKb5543RZTOk6ZntBgdNPAoh7t0rGoc&s=10",
     "especies": [
       {
         "id": 59,
         "name": "Abeja europea o abeja de la miel",
         "scientificName": "Apis mellifera",
-        "img": ""
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQS2ZNoZOUh03Kz3WG8ZMRKRRh0k2_xAtq3haUUD1CJRQ&s=10"
       },
       {
         "id": 60,
         "name": "Mariposa monarca",
         "scientificName": "Danaus plexippus",
-        "img": ""
+        "img": "https://inaturalist-open-data.s3.amazonaws.com/photos/227923335/large.jpeg"
       },
       {
         "id": 61,
         "name": "Mariposa alas de cebra",
         "scientificName": "Heliconius erato",
-        "img": ""
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvPASSnJrv6mUK1biGhAHh1Bt4HOI5IIk1NcoPMVhqwFVxMeKPzoUEuslfX_7qfEkribseZSDMfte69pMb1uQ4h1LDxWRTXUMAWv6a-qk&s=10"
       },
       {
         "id": 62,
         "name": "Mariposa malaquita",
         "scientificName": "Siproeta stelenes",
-        "img": ""
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSL1usLMp1SiPbWiN70pg_xDLrchTwbAA5rixRMHqBdDtBwRLbgwTn40rvxuWUxwLcVeyWdqvs04YMc2KBwkZDmkGim8aNFMmjib9Tcc2M&s=10"
       },
       {
         "id": 63,
         "name": "Mariquita o catarina",
-        "scientificName": "Coccinellidae spp.",
-        "img": ""
+        "scientificName": "Coccinellidae",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/4/42/Ladybug.jpg?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original"
       },
       {
         "id": 64,
         "name": "Mariposa Morpho azul",
         "scientificName": "Morpho peleides",
-        "img": ""
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTWlTTLsY4ucidH5bknvyrITP9DV8TViryPhxssKpECPOwlSUdaIMCot9PmTe7KsL7x9UAuk0Knu116-iDkvBwTnglaQcZNj6Gfw9UGw&s=10"
       },
       {
         "id": 65,
         "name": "Mariposa Rhetus",
         "scientificName": "Rhetus arcius",
-        "img": ""
+        "img": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Rhetus_arcius.jpg?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original"
       },
       {
         "id": 66,
         "name": "Mariposa Actinote",
         "scientificName": "Altinote ozomene",
-        "img": ""
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3D5giXeVUOgzvzfhWxD1PVTSh-MW4joOh-ngehYjZE6t_i5Z-bwC1EkTT70wTNpKGLF_1_R2boBgOM3YRrZ7HuIeNF3bet6miVzuxmAM&s=10"
       },
       {
         "id": 67,
         "name": "Mariposa transparente",
         "scientificName": "Greta oto",
-        "img": ""
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmBz14iLAqXXqXYJ6MDPAeSMaFJmEZr2IitpQI2gN_4HnmfAlbBS6oa_r05uhnyv9NdyNt_Y43CUZzAJmMZhiQ1Bwn-IAHIJpVn-vwMiE&s=10"
       },
       {
         "id": 68,
         "name": "Abeja angelita",
         "scientificName": "Tetragonisca angustula",
-        "img": ""
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAwTU5_Ocl_rvuZ9-CJ9U96QLXBu2rgjeFxKS44j1oI4FFHFxwV-e_Vujo_fSxUI7fzlvkZ9mGPUF-gaapl3Z9q78Ipfp-1su1Vvb7c-c&s=10"
       },
       {
         "id": 69,
         "name": "Abeja euglosina negra con bandas naranjas",
         "scientificName": "Eulaema cingulata",
-        "img": ""
+        "img": "https://ecosdelbosque.com/sites/default/files/styles/specie_slider/public/2021-01/eulaema_cingulata_01.jpg?itok=oWTQv2V7"
       }
     ]
   },
   {
     "category": "Mamíferos",
-    "categoryImg": "",
+    "categoryImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6yHHufkigZwhf3Fss9fal6aAgGpM9u2UfYwSmYmwozA0jS0rzn5F4N6Y&s=10",
     "especies": [
       {
         "id": 70,
         "name": "Zorro perro",
         "scientificName": "Cerdocyon thous",
-        "img": ""
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPWd3O5ZzaYECIKMdjMFMuy2RpVa6iSSQYe3vjkYOh8bzm-97XUGZ8SpYbUNdx6iJRqrpXEZC5kSz1OIfZIWSJEInIb053IGNuoAi0ow&s=10"
       },
       {
         "id": 71,
         "name": "Zarigüeya común",
         "scientificName": "Didelphis marsupialis",
-        "img": ""
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBcaK79ZVgOutlIjNa_sG7RQgmRt07ba1jOTLc0DL5si8GPqLHc6-NTV5w2EhIKUIkucly4Ax3m_v0XlUzf-r7DG9bGFvt9gKoGO49xrU&s=10"
       },
       {
         "id": 72,
         "name": "Zarigüeya orejiblanca andina",
         "scientificName": "Didelphis pernigra",
-        "img": ""
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQL0H97D8dv87npt5saiWi-Mngg2OgvTQb6tNofph3AJAPk0r1e4oBvc6Y&s=10"
       },
       {
         "id": 73,
         "name": "Ardilla colorada",
         "scientificName": "Sciurus granatensis",
-        "img": ""
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcrLfW0cU0B0wfEfFGj85u5Akw3gBv7hgWGVfRm4oqlyYtAqMWMt1TXdco&s=10"
       },
       {
         "id": 74,
         "name": "Armadillo de nueve bandas",
         "scientificName": "Dasypus novemcinctus",
-        "img": ""
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Dasypus_novemcinctus_en_Zool%C3%B3gico_de_Paraguan%C3%A1.jpg/250px-Dasypus_novemcinctus_en_Zool%C3%B3gico_de_Paraguan%C3%A1.jpg?utm_source=es.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
       },
       {
         "id": 75,
         "name": "Murciélago frugívoro grande",
         "scientificName": "Artibeus lituratus",
-        "img": ""
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWYxEzWFP95G_5-SBoMX5vZnweDK96_jSzgewcTMAy3Qvm_7txq98sG9qt&s=10"
       }
     ]
   },
   {
     "category": "Reptiles",
-    "categoryImg": "",
+    "categoryImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy4uA9NRkAVwgrMc_jKxgMV5bnoldC_y_8E1YgJQUmBg&s=10",
     "especies": [
       {
         "id": 76,
         "name": "Iguana verde",
         "scientificName": "Iguana iguana",
-        "img": ""
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS70X00lbqzNhxQJ3WaK5XzT6SexyoJaII7V3nUu2teMSKoVLFddF09rXWjZ_NgZ1nxpgonem78rk5ThVgk-q9yEzA5KQTtoPbd81T5KA&s=10"
       },
       {
         "id": 77,
         "name": "Basilisco común",
         "scientificName": "Basiliscus basiliscus",
-        "img": ""
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWLXSEOy-z1Gbde7e7sCPJjOiy31DujQs5xlpKXTSTow&s=10"
       },
       {
         "id": 78,
         "name": "Anolis de Medellín",
         "scientificName": "Anolis mariarum",
-        "img": ""
+        "img": "https://reptile-database.reptarium.cz/content/photo_rd_00/Anolis-mariarum-03000028157_01.jpg"
       },
       {
         "id": 79,
         "name": "Serpiente corredora de Daniel",
         "scientificName": "Mastigodryas danieli",
-        "img": ""
+        "img": "https://pictureanimal.com/wiki-image/1080/153420681441181726.jpeg"
       }
     ]
   }
