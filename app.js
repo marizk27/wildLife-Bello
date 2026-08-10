@@ -81,7 +81,7 @@ function displayAnimals(prods) {
     }
 }
 async function load() {
-    const response = await fetch("./categories.json");
+    const response = await fetch("./initialcategories.json");
     animals = await response.json();
     mainDisplay.innerHTML = "";
     displayAnimals(animals);
