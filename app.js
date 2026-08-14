@@ -153,5 +153,11 @@ exploreButtons.addEventListener("click", (event) => {
             break;
     }
     displayAnimals(animals);
+});
+
+exploreP.addEventListener("click", (e) => {
+    const card = e.target.closest(".animalCard");
+    let specie = animals.find(value => value.id === card.dataset.id);
+    console.log(`This is a ${specie.name}`);
 })
 
