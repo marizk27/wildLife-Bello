@@ -169,11 +169,6 @@ mainDisplay.addEventListener("click", (e) => {
         }
     }
 
-    if (factPanel) {
-    factPanel.remove();
-    clearTimeout(factTimeout);
-}
-
     if (!card) {
         return;
     }
@@ -209,8 +204,6 @@ mainDisplay.addEventListener("click", (e) => {
     `;
 
     animalInfo.appendChild(expandedInfo);
-
-    animalInfo.appendChild(iggyFact);
     card.classList.add("expanded");
     cardarr.push(card);
 })
