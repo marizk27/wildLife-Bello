@@ -144,7 +144,7 @@ body {
 }
 
 .cat {
-    width: 30%;
+    width: 90%;
     height:3em;
 
     padding:0 45px 0 18px;
@@ -156,7 +156,6 @@ body {
     border-radius:18px;
 
     background:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='%2349B675' viewBox='0 0 16 16'%3E%3Cpath d='M1.5 5l6.5 6 6.5-6'/%3E%3C/svg%3E")
         no-repeat right 16px center,
         rgba(255,255,255,.85);
 
@@ -244,6 +243,7 @@ body {
 /* animalcards */
 
 .animalCard {
+    position: relative;
     width: 90%;
     border: 1px solid #7c6e6e;
     border-radius: 2em;
@@ -255,8 +255,11 @@ body {
     flex-direction: column;
     box-shadow: -1px 2px 2rem rgba(141, 86, 64, 0.568);
     margin-left: 0.4em;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, height 1s ease;
+}
+
+.animalCard.expanded {
+    height: 29em;
 }
 
 .animalCard:hover {
@@ -290,8 +293,58 @@ body {
 .animalImg {
     border-radius: 2em;
     height: 60%;
-    width: 130%;
+    width: 106%;
     object-fit: cover;
+}
+.animalCard.expanded .animalImg {
+    aspect-ratio: 16/9;
+    width: 106%;
+}
+.iggyFact {
+    position: absolute;
+    z-index: 10;
+
+    width: 16em;
+    height: 9em;
+
+    right: 1em;
+    bottom: 3em;
+
+    pointer-events: none;
+}
+
+.iggyFact .iggy {
+    position: absolute;
+    width: 5em;
+    height: 5em;
+    left: 1.6em;
+    bottom: 3em;
+}
+.iggyFact .iggy img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.factBubble {
+    position: absolute;
+    z-index: 100;
+    width: 9em;
+    min-height: 4em;
+
+    right: -3em;
+    bottom: 2em;
+    box-sizing: border-box;
+    border-radius: 1.2em;
+    background-color: #f5f8df;
+    border: 2px solid #7aa88f;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 0.8em;
+    text-align: center;
 }
 
 .hidden {

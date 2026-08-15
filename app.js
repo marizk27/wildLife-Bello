@@ -2,6 +2,8 @@ const exploreCat = document.getElementById("explore");
 let home = document.getElementById("home");
 let exploreP = document.getElementById("categories");
 const mainDisplay = document.getElementById("exploreCategories");
+let factPanel = null;
+let factTimeout = null;
 let animals = [];
 let exploreState = "all";
 exploreCat.addEventListener("click", () => {
@@ -154,11 +156,62 @@ exploreButtons.addEventListener("click", (event) => {
     }
     displayAnimals(animals);
 });
-
+let cardarr = [];
 mainDisplay.addEventListener("click", (e) => {
-    console.log("click animal!")
     const card = e.target.closest(".animalCard");
-    let specie = animals.find(value => value.id === card.dataset.id);
-    console.log(`This is a ${specie.name}`);
+    if (cardarr.length > 0) {
+        let toSmall = cardarr.shift();
+        toSmall.classList.remove("expanded");
+        const oldInfo = toSmall.querySelector(".expandedInfo");
+
+        if (oldInfo) {
+            oldInfo.remove();
+        }
+    }
+
+    if (factPanel) {
+    factPanel.remove();
+    clearTimeout(factTimeout);
+}
+
+    if (!card) {
+        return;
+    }
+    const specie = animals
+        .flatMap(category => category.especies)
+        .find(specie => specie.id === Number(card.dataset.id));
+    
+    const category = animals.find(category =>
+        category.especies.some(animal => animal.id === specie.id)
+    );
+
+    const randomFact = category.funFacts[
+        Math.floor(Math.random() * category.funFacts.length)
+    ];
+    const animalInfo = card.querySelector(".animalInfo");
+    const expandedInfo = document.createElement("div");
+    expandedInfo.classList.add("expandedInfo");
+
+    expandedInfo.innerHTML = `
+        <p class="conservation">
+            🟢 ${specie.endangered}
+        </p>
+
+        <p>
+            <strong>Función ecológica:</strong><br>
+            ${specie.function}
+        </p>
+
+        <div class="expandedActions">
+            <button class="favoriteBtn">♡ Guardar</button>
+            <button class="moreInfoBtn">Más información</button>
+        </div>
+    `;
+
+    animalInfo.appendChild(expandedInfo);
+
+    animalInfo.appendChild(iggyFact);
+    card.classList.add("expanded");
+    cardarr.push(card);
 })
 

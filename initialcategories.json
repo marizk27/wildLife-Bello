@@ -1,12 +1,20 @@
 [
     {
         "category": "Anfíbios",
+        "funFacts": [
+            "Los anfibios pueden servir como indicadores de la salud de los ecosistemas.",
+            "Muchos anfibios ayudan a controlar las poblaciones de insectos.",
+            "Algunos anfibios pueden absorber agua a través de su piel.",
+            "La piel de los anfibios es muy sensible a los cambios del ambiente."
+        ],
         "categoryImg": "https://static.techno-science.net/illustrations/definitions/1200px/d/dendropsophus-bogerti_b06189a5b61554343bdd93dabab8b01c.jpg",
         "especies": [
             {
             "id": 1,
             "name": "Sapo común",
             "scientificName": "Rhinella horribilis",
+            "endangered": "LC",
+            "function": "Controlador de invertebrados del suelo.",
             "img": "https://media.istockphoto.com/id/1720406916/photo/rhinella-horribilis-giant-toad-tortuguero-costa-rica-wildlife.jpg?s=1024x1024&w=is&k=20&c=VvuvDMgKY-aB_Ms9pKYzNBMrzGSGMuMlRVizne0V_e8="
             },
             {
