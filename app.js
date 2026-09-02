@@ -156,19 +156,17 @@ exploreButtons.addEventListener("click", (event) => {
     }
     displayAnimals(animals);
 });
-let cardarr = [];
+let cardArray = [];
 mainDisplay.addEventListener("click", (e) => {
     const card = e.target.closest(".animalCard");
-    if (cardarr.length > 0) {
-        let toSmall = cardarr.shift();
+    if (cardArray.length > 0) {
+        let toSmall = cardArray.shift();
         toSmall.classList.remove("expanded");
         const oldInfo = toSmall.querySelector(".expandedInfo");
-
         if (oldInfo) {
             oldInfo.remove();
         }
     }
-
     if (!card) {
         return;
     }
@@ -179,10 +177,6 @@ mainDisplay.addEventListener("click", (e) => {
     const category = animals.find(category =>
         category.especies.some(animal => animal.id === specie.id)
     );
-
-    const randomFact = category.funFacts[
-        Math.floor(Math.random() * category.funFacts.length)
-    ];
     const animalInfo = card.querySelector(".animalInfo");
     const expandedInfo = document.createElement("div");
     expandedInfo.classList.add("expandedInfo");
@@ -205,6 +199,6 @@ mainDisplay.addEventListener("click", (e) => {
 
     animalInfo.appendChild(expandedInfo);
     card.classList.add("expanded");
-    cardarr.push(card);
+    cardArray.push(card);
 })
 
