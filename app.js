@@ -200,15 +200,15 @@ mainDisplay.addEventListener("click", (e) => {
 
 
 let favoriteAnimals = new Set();
-if (cardArray.length > 0) {
+
+while (true) {
+    if (cardArray.length > 0) {
     const favoritesBtn = cardArray[cardArray.length - 1].querySelector(".favoriteBtn");
-    console.log(favoritesBtn)
     favoritesBtn.addEventListener("click", (e) => {
-        console.log("Favorito agregado");
         card = e.target.closest(".animalCard");
         favoriteAnimals.add(card);
         const favoriteButton = card.querySelector(".favoriteBtn");
         favoriteButton.textContent = "♥ Guardado";
         favoriteButton.disabled = true;
     });
-}
+}}
