@@ -320,32 +320,6 @@ body {
     left: 1.6em;
     bottom: 3em;
 }
-.iggyFact .iggy img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-.factBubble {
-    position: absolute;
-    z-index: 100;
-    width: 9em;
-    min-height: 4em;
-
-    right: -3em;
-    bottom: 2em;
-    box-sizing: border-box;
-    border-radius: 1.2em;
-    background-color: #f5f8df;
-    border: 2px solid #7aa88f;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 0.8em;
-    text-align: center;
-}
 
 .hidden {
     display: none;
