@@ -173,14 +173,10 @@ mainDisplay.addEventListener("click", (e) => {
     const specie = animals
         .flatMap(category => category.especies)
         .find(specie => specie.id === Number(card.dataset.id));
-    
-    const category = animals.find(category =>
-        category.especies.some(animal => animal.id === specie.id)
-    );
     const animalInfo = card.querySelector(".animalInfo");
     const expandedInfo = document.createElement("div");
     expandedInfo.classList.add("expandedInfo");
-
+    card.dataset.status = specie.endangered;
     expandedInfo.innerHTML = `
         <p class="conservation">
             🟢 ${specie.endangered}

@@ -279,6 +279,9 @@ body {
 }
 
 .animalCategory {
+    color: white;
+    font-weight: 600;
+    padding: 0.25em 0.8em;
     height: 1.5em;
     width: 5em;
     font-size: 0.8rem;
@@ -296,29 +299,61 @@ body {
     width: 106%;
     object-fit: cover;
 }
+/* expanded  */
 .animalCard.expanded .animalImg {
     aspect-ratio: 16/9;
     width: 106%;
 }
-.iggyFact {
-    position: absolute;
-    z-index: 10;
+.conservation {
+    min-width: 2.8em;
+    padding: 0.25em 0.6em;
 
-    width: 16em;
-    height: 9em;
+    border-radius: 1em;
 
-    right: 1em;
-    bottom: 3em;
+    font-weight: bold;
+    color: white;
 
-    pointer-events: none;
+    text-align: center;
 }
 
-.iggyFact .iggy {
-    position: absolute;
-    width: 5em;
-    height: 5em;
-    left: 1.6em;
-    bottom: 3em;
+/* color  */
+
+.animalCard[data-status="LC"] .status {
+    background-color: #55bd58;
+}
+
+.animalCard[data-status="VU"] .status {
+    background-color: #ffd21c;
+    color: #333;
+}
+
+.animalCard[data-status="DD"] .status {
+    background-color: #888;
+}
+
+.animalCard[data-status="NT"] .status {
+    background-color: #b5d936;
+}
+
+
+.animalCard[data-status="LC"].expanded {
+    border-color: #55bd58;
+    box-shadow: 0 5px 25px rgba(85, 189, 88, 0.35);
+}
+
+.animalCard[data-status="VU"].expanded {
+    border-color: #ffd21c;
+    box-shadow: 0 5px 25px rgba(255, 210, 28, 0.35);
+}
+
+.animalCard[data-status="DD"].expanded {
+    border-color: #888;
+    box-shadow: 0 5px 25px rgba(100, 100, 100, 0.3);
+}
+
+.animalCard[data-status="NT"].expanded {
+    border-color: #b5d936;
+    box-shadow: 0 5px 25px rgba(181, 217, 54, 0.35);
 }
 
 .hidden {
