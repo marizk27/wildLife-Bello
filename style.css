@@ -318,20 +318,20 @@ body {
 
 /* color  */
 
-.animalCard[data-status="LC"] .status {
+.animalCard[data-status="LC"] .conservation {
     background-color: #55bd58;
 }
 
-.animalCard[data-status="VU"] .status {
+.animalCard[data-status="VU"] .conservation {
     background-color: #ffd21c;
     color: #333;
 }
 
-.animalCard[data-status="DD"] .status {
+.animalCard[data-status="DD"] .conservation {
     background-color: #888;
 }
 
-.animalCard[data-status="NT"] .status {
+.animalCard[data-status="NT"] .conservation {
     background-color: #b5d936;
 }
 
