@@ -198,3 +198,15 @@ mainDisplay.addEventListener("click", (e) => {
     cardArray.push(card);
 })
 
+
+let favoriteAnimals = new Set();
+if (cardArray.length > 0) {
+    const favoritesBtn = cardArray[cardArray.length - 1].querySelector(".favoriteBtn");
+    favoritesBtn.addEventListener("click", (e) => {
+        card = e.target.closest(".animalCard");
+        favoriteAnimals.add(card);
+        const favoriteButton = card.querySelector(".favoriteBtn");
+        favoriteButton.textContent = "♥ Guardado";
+        favoriteButton.disabled = true;
+    });
+}
