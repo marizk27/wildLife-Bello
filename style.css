@@ -355,6 +355,50 @@ body {
     box-shadow: 0 5px 25px rgba(181, 217, 54, 0.35);
 }
 
+.expandedActions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4em;
+    margin-top: 0.5em;
+}
+
+.favoriteBtn,
+.moreInfoBtn {
+    border: none;
+    padding: 0.45em 0.7em;
+    border-radius: 1em;
+    font-size: 0.8em;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Guardar */
+
+.favoriteBtn {
+    background-color: #77c96b;
+    color: white;
+}
+
+/* Más información */
+
+.moreInfoBtn {
+    background-color: #f1f1df;
+    color: #315b3b;
+    border: 1px solid #77a88d;
+}
+
+.favoriteBtn:hover,
+.moreInfoBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.favoriteBtn:active,
+.moreInfoBtn:active {
+    transform: scale(0.93);
+}
+
 .hidden {
     display: none;
 }
