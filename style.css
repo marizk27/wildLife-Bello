@@ -311,27 +311,27 @@ body {
     border-radius: 1em;
 
     font-weight: bold;
-    color: white;
+    color: rgb(8, 8, 8);
 
     text-align: center;
 }
 
 /* color  */
 
-.animalCard[data-status="LC"] .conservation {
+.animalCard[data-status="LC"].conservation {
     background-color: #55bd58;
 }
 
-.animalCard[data-status="VU"] .conservation {
+.animalCard[data-status="VU"].conservation {
     background-color: #ffd21c;
     color: #333;
 }
 
-.animalCard[data-status="DD"] .conservation {
+.animalCard[data-status="DD"].conservation {
     background-color: #888;
 }
 
-.animalCard[data-status="NT"] .conservation {
+.animalCard[data-status="NT"].conservation {
     background-color: #b5d936;
 }
 
