@@ -157,8 +157,9 @@ exploreButtons.addEventListener("click", (event) => {
     displayAnimals(animals);
 });
 let cardArray = [];
-mainDisplay.addEventListener("click", (e) => {
-    const card = e.target.closest(".animalCard");
+
+
+function removeExpandedInfo() {
     if (cardArray.length > 0) {
         let toSmall = cardArray.shift();
         toSmall.classList.remove("expanded");
@@ -167,6 +168,56 @@ mainDisplay.addEventListener("click", (e) => {
             oldInfo.remove();
         }
     }
+}
+
+function mainDisplays() {
+    switch (exploreState) {
+        case "all":
+                    removeExpandedInfo();
+            if (!card) {
+                return;
+            }
+            const specie = animals
+                .flatMap(category => category.especies)
+                .find(specie => specie.id === Number(card.dataset.id));
+            const animalInfo = card.querySelector(".animalInfo");
+            const expandedInfo = document.createElement("div");
+            expandedInfo.classList.add("expandedInfo");
+            card.dataset.status = specie.endangered;
+            expandedInfo.innerHTML = `
+                <p class="conservation">
+                    ${specie.endangered}
+                </p>
+
+                <p>
+                    <strong>Función ecológica:</strong><br>
+                    ${specie.function}
+                </p>
+
+                <div class="expandedActions">
+                    <button class="favoriteBtn">♡ Guardar</button>
+                    <button class="moreInfoBtn">Más información</button>
+                </div>
+            `;
+
+            animalInfo.appendChild(expandedInfo);
+            card.classList.add("expanded");
+            cardArray.push(card);
+        break;
+        case "categories":
+            exploreState = "all";
+            mainDisplay.innerHTML = "";
+            const category = animals.find(category => category.category === card.querySelector("h3").textContent);
+            let div = document.createElement("div");
+           displayAnimals([category]);
+
+}
+
+
+}
+mainDisplay.addEventListener("click", (e) => {
+    const card = e.target.closest(".animalCard");
+    removeExpandedInfo();
     if (!card) {
         return;
     }
