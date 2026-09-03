@@ -179,7 +179,7 @@ mainDisplay.addEventListener("click", (e) => {
     card.dataset.status = specie.endangered;
     expandedInfo.innerHTML = `
         <p class="conservation">
-            🟢 ${specie.endangered}
+             ${specie.endangered}
         </p>
 
         <p>
