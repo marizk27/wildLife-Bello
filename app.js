@@ -202,9 +202,9 @@ mainDisplay.addEventListener("click", (e) => {
     animalInfo.appendChild(expandedInfo);
     card.classList.add("expanded");
     cardArray.push(card);
-    let favoriteBtn = expandedInfo.getElementById("favoriteBtn");
-    favoriteBtn.addEventListener("click", (e) => {
+    expandedInfo.addEventListener("click", (e) => {
         const animalId = card.dataset.id;
+        favoriteBtn = e.target;
         if (favoriteAnimals.has(animalId)) {
             favoriteAnimals.delete(animalId);
             favoriteBtn.textContent = "♡ Guardar";
