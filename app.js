@@ -211,8 +211,7 @@ mainDisplay.addEventListener("click", (e) => {
         } else {
             favoriteAnimals.add(animalId);
             favoriteBtn.textContent = "♥ Guardado";
-            console.log(card);
-            console.log(favoriteBtn);
+            display(animals);
         }
     })
 })
