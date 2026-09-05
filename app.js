@@ -132,7 +132,7 @@ function filterAnimals() {
             }
         break;
         case "categories":
-            filteredAn = animals.filter(value => value.category.includes(text));
+            let filteredAn = animals.filter(value => value.category.includes(text));
     }
     displayAnimals(filteredAn);
 }
@@ -202,6 +202,17 @@ mainDisplay.addEventListener("click", (e) => {
     animalInfo.appendChild(expandedInfo);
     card.classList.add("expanded");
     cardArray.push(card);
+    let favoriteBtn = expandedInfo.querySelector(".favoriteBtn");
+    favoriteBtn.addEventListener("click", (e) => {
+        const animalId = card.dataset.id;
+        if (favoriteAnimals.has(animalId)) {
+            favoriteAnimals.delete(animalId);
+            favoriteBtn.textContent = "♡ Guardar";
+        } else {
+            favoriteAnimals.add(animalId);
+            favoriteBtn.textContent = "♥ Guardado";
+        }
+    })
 })
 
 
