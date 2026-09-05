@@ -194,7 +194,7 @@ mainDisplay.addEventListener("click", (e) => {
         </p>
 
         <div class="expandedActions">
-            <button class="favoriteBtn">♡ Guardar</button>
+            <button id="favoriteBtn" class="favoriteBtn">♡ Guardar</button>
             <button class="moreInfoBtn">Más información</button>
         </div>
     `;
@@ -202,7 +202,7 @@ mainDisplay.addEventListener("click", (e) => {
     animalInfo.appendChild(expandedInfo);
     card.classList.add("expanded");
     cardArray.push(card);
-    let favoriteBtn = expandedInfo.querySelector(".favoriteBtn");
+    let favoriteBtn = expandedInfo.getElementById("favoriteBtn");
     favoriteBtn.addEventListener("click", (e) => {
         const animalId = card.dataset.id;
         if (favoriteAnimals.has(animalId)) {
@@ -211,7 +211,7 @@ mainDisplay.addEventListener("click", (e) => {
         } else {
             favoriteAnimals.add(animalId);
             favoriteBtn.textContent = "♥ Guardado";
-            display(animals);
+            displayAnimals(animals);
         }
     })
 })
