@@ -102,6 +102,29 @@
     </section>
 
     <!-- =========================================
+         SECCIÓN REPORTAR AVISTAMIENTO
+         ========================================= -->
+    <section id="reportSection" class="hidden sect">
+        <section class="upperPan">
+            <button type="button" id="reportBack" class="dark-background">Volver</button>
+            <h2 class="dark-background">Reportar Avistamiento</h2>
+        </section>
+
+        <div class="authContainer">
+            <div class="authBox" style="max-width: 550px;">
+                <h3>Registrar un nuevo hallazgo</h3>
+                <form id="reportForm">
+                    <input type="text" id="reportSpecies" placeholder="Nombre de la especie avistada" required class="filter" style="width:100%; box-sizing:border-box;">
+                    <input type="text" id="reportLocation" placeholder="Ubicación (ej: Vereda, Parque, etc.)" required class="filter" style="width:100%; box-sizing:border-box;">
+                    <input type="date" id="reportDate" required class="filter" style="width:100%; box-sizing:border-box;">
+                    <textarea id="reportNotes" placeholder="Notas adicionales sobre el avistamiento..." class="filter" style="width:100%; height:80px; resize:none; box-sizing:border-box;"></textarea>
+                    <button type="submit" class="see" style="width:100%; margin-top:10px;">Enviar Reporte</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
          SECCIÓN EXPLORAR FAUNA
          ========================================= -->
     <section id="categories" class="hidden sect">
