@@ -1,7 +1,7 @@
 // ==========================================================
 // FAUNO BELO - LÓGICA DE NAVEGACIÓN Y VISTAS
 // ==========================================================
-let animals = [];
+var animals = [];
 async function load() {
     const response = await fetch("./initialcategories.json");
     animals = await response.json();
