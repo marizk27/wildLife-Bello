@@ -1,9 +1,9 @@
 // ==================================================
-// FAUNO BELO - APP.JS (CON GESTIÓN DE USUARIOS)
+// FAUNO BELO - APP.JS COMPLETO
 // ==================================================
 
 console.log("================================");
-console.log("FAUNO BELO - SISTEMA DE USUARIOS");
+console.log("FAUNO BELO - SISTEMA INTEGRADO");
 console.log("================================");
 
 const home = document.getElementById("home");
@@ -51,26 +51,22 @@ let favoriteAnimals = new Set();
 let currentUser = localStorage.getItem("faunoBelo_activeUser") || null;
 
 function updateProfileButton() {
-    if (currentUser) {
-        profileBtnText.textContent = currentUser;
-    } else {
-        profileBtnText.textContent = "Perfil";
+    if (profileBtnText) {
+        profileBtnText.textContent = currentUser ? currentUser : "Perfil";
     }
 }
 updateProfileButton();
 
-// Botón de Perfil en la pantalla principal
+// Evento de clic en botón de Perfil (Abre login o panel de usuario)
 if (profileBtn) {
     profileBtn.addEventListener("click", () => {
         home.classList.add("hidden");
         if (currentUser) {
-            // Mostrar panel de usuario logueado
-            userNameDisplay.textContent = currentUser;
-            statFavorites.textContent = favoriteAnimals.size;
-            userProfileSection.classList.remove("hidden");
+            if (userNameDisplay) userNameDisplay.textContent = currentUser;
+            if (statFavorites) statFavorites.textContent = favoriteAnimals.size;
+            if (userProfileSection) userProfileSection.classList.remove("hidden");
         } else {
-            // Mostrar ventana de login/registro
-            authSection.classList.remove("hidden");
+            if (authSection) authSection.classList.remove("hidden");
         }
     });
 }
@@ -107,7 +103,7 @@ if (showLogin) {
     });
 }
 
-// REGISTRO DE USUARIO (Guardar en localStorage)
+// REGISTRO DE USUARIO
 if (registerForm) {
     registerForm.addEventListener("submit", (e) => {
         e.preventDefault();
