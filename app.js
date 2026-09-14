@@ -27,6 +27,26 @@ function showSection(sectionId) {
     }
 }
 
+
+function displayAnimals(animals) {
+    for (let category of animals) {
+                for (let specie of category.especies) {
+                    let div = document.createElement("div");
+                    div.dataset.id = specie.id;
+                    div.classList.add("animalCard")
+                    div.innerHTML = `
+                    <img class = "animalImg" src="${specie.img}" alt="">
+                    <div class = "animalInfo">
+                        <h4>${specie.name}</h4>
+                        <p class="animalScientificName">${specie.scientificName}</p>
+                        <button class="animalCategory"> ${prod.category}</button>
+                    </div>
+                `;
+                const categories = document.getElementById('categories');
+                categories.appendChild(div);
+                }
+            }
+}
 // Inicializar la aplicación y enlazar los eventos de los botones al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
     // Mostrar la pantalla de inicio por defecto
@@ -47,25 +67,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const exploreBtn = document.getElementById('explore');
     if (exploreBtn) {
         exploreBtn.addEventListener('click', () => {
-            showSection('categories');
-            for (let category of animals) {
-                for (let specie of category.especies) {
-                    let div = document.createElement("div");
-                    div.dataset.id = specie.id;
-                    div.classList.add("animalCard")
-                    div.innerHTML = `
-                    <img class = "animalImg" src="${specie.img}" alt="">
-                    <div class = "animalInfo">
-                        <h4>${specie.name}</h4>
-                        <p class="animalScientificName">${specie.scientificName}</p>
-                        <button class="animalCategory"> ${prod.category}</button>
-                    </div>
-                `;
-                const categories = document.getElementById('categories');
-                categories.appendChild(div);
-                }
-            }
-                
+            load();
+            showSection('categories');  
+            displayAnimals(animals)
         });
     }
 
