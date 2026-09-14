@@ -1,152 +1,28 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fauno Belo</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<!-- Ejemplo de la tarjeta de la especie con el botón -->
+<div class="especie-card">
+    <h3>Carriquí vertiamarillo</h3>
+    <p>Cyanocorax yncas</p>
+    <button onclick="mostrarMasInformacion()">Más información</button>
+</div>
 
-    <!-- 1. PANTALLA DE INICIO -->
-    <section id="home">
-        <h1>Fauno Belo</h1>
-        <p>Por la vida, la naturaleza y nuestro futuro</p>
-        <button onclick="showSection('categories')">Explorar</button>
-        <button onclick="showSection('userProfileSection')">Perfil</button>
-        <button onclick="showSection('reportSection')">Reportar Avistamiento</button>
-    </section>
+<!-- Contenedor donde aparecerá la ficha detallada -->
+<div id="ficha-detallada" style="display: none;">
+    <h2>Carriquí vertiamarillo</h2>
+    <p><strong>Nombre científico:</strong> Cyanocorax yncas[cite: 2]</p>
+    <p><strong>Estado IUCN:</strong> Preocupación menor (LC)[cite: 2]</p>
+    <p><strong>Características físicas:</strong> Tiene la cabeza negra con una franja celeste brillante que forma una corona desde la frente hasta la nuca. Su espalda, alas y cola son de un verde intenso, mientras que el pecho y el vientre son amarillo claro. Presenta una máscara negra alrededor de los ojos y un pico robusto de color oscuro. Su colorido plumaje la hace fácilmente reconocible en los bosques donde habita[cite: 2].</p>
+    <p><strong>Función ecológica:</strong> Dispersión de semillas[cite: 2]</p>
+    <p><strong>Áreas de distribución:</strong> Área de recreación Piamonte y Páramo de las Baldías[cite: 2]</p>
+    <p><strong>Amenazas:</strong> Pérdida y fragmentación del hábitat[cite: 2]</p>
+</div>
 
-    <!-- 2. SECCIÓN DE EXPLORACIÓN / CATEGORÍAS -->
-    <section id="categories" class="hidden">
-        <div class="top-nav">
-            <button onclick="showSection('home')">Volver</button>
-            <button onclick="showSection('home')">Explorar fauna</button>
-        </div>
-
-        <div class="filters-bar">
-            <input type="text" placeholder="Buscar especie...">
-            <select>
-                <option value="">Por categoría</option>
-                <option value="anfibios">Anfibios</option>
-                <option value="aves">Aves</option>
-            </select>
-        </div>
-
-        <div style="margin-bottom: 20px;">
-            <button>Todo</button>
-            <button>Categorías</button>
-            <button onclick="showSection('gameSection')">Jugar Trivia</button>
-        </div>
-
-        <!-- Contenedor con TODAS las Tarjetas de Animales -->
-        <div id="exploreCategories">
-            <!-- Tarjeta 1 -->
-            <div class="animalCard">
-                <img src="ruta-o-enlace-imagen.jpg" alt="Sapo común" class="animalImg">
-                <div class="animalInfo">
-                    <h4>Sapo común</h4>
-                    <p class="animalScientificName">Rhinella horribilis</p>
-                    <button class="animalCategory">Anfibios</button>
-                </div>
-            </div>
-
-            <!-- Tarjeta 2 -->
-            <div class="animalCard">
-                <img src="ruta-o-enlace-imagen.jpg" alt="Rana comunita" class="animalImg">
-                <div class="animalInfo">
-                    <h4>Rana comunita</h4>
-                    <p class="animalScientificName">Pristimantis achatinus</p>
-                    <button class="animalCategory">Anfibios</button>
-                </div>
-            </div>
-
-            <!-- Tarjeta 3 -->
-            <div class="animalCard">
-                <img src="ruta-o-enlace-imagen.jpg" alt="Rana arborícola" class="animalImg">
-                <div class="animalInfo">
-                    <h4>Rana arborícola</h4>
-                    <p class="animalScientificName">Dendropsophus bogerti</p>
-                    <button class="animalCategory">Anfibios</button>
-                </div>
-            </div>
-
-            <!-- Tarjeta 4 -->
-            <div class="animalCard">
-                <img src="ruta-o-enlace-imagen.jpg" alt="Rana paisa" class="animalImg">
-                <div class="animalInfo">
-                    <h4>Rana paisa</h4>
-                    <p class="animalScientificName">Pristimantis paisa</p>
-                    <button class="animalCategory">Anfibios</button>
-                </div>
-            </div>
-
-            <!-- Tarjeta 5 -->
-            <div class="animalCard">
-                <img src="ruta-o-enlace-imagen.jpg" alt="Azulejo" class="animalImg">
-                <div class="animalInfo">
-                    <h4>Azulejo</h4>
-                    <p class="animalScientificName">Thraupis episcopus</p>
-                    <button class="animalCategory">Aves</button>
-                </div>
-            </div>
-
-            <!-- Tarjeta 6 -->
-            <div class="animalCard">
-                <img src="ruta-o-enlace-imagen.jpg" alt="Batará carcajada" class="animalImg">
-                <div class="animalInfo">
-                    <h4>Batará carcajada</h4>
-                    <p class="animalScientificName">Thamnophilus multistriatus</p>
-                    <button class="animalCategory">Aves</button>
-                </div>
-            </div>
-
-            <!-- Tarjeta 7 -->
-            <div class="animalCard">
-                <img src="ruta-o-enlace-imagen.jpg" alt="Bichofué" class="animalImg">
-                <div class="animalInfo">
-                    <h4>Bichofué</h4>
-                    <p class="animalScientificName">Pitangus sulphuratus</p>
-                    <button class="animalCategory">Aves</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. SECCIÓN DE PERFIL -->
-    <section id="userProfileSection" class="hidden">
-        <button onclick="showSection('home')">Volver</button>
-        <h2>Perfil de Usuario</h2>
-        <p>Favoritos guardados: 0</p>
-        <p>Reportes realizados: 0</p>
-        <button onclick="showSection('home')">Cerrar Sesión</button>
-    </section>
-
-    <!-- 4. SECCIÓN DE REPORTES -->
-    <section id="reportSection" class="hidden">
-        <button onclick="showSection('home')">Volver</button>
-        <h2>Reportar Avistamiento</h2>
-        <form onsubmit="event.preventDefault(); alert('Reporte enviado');">
-            <input type="text" placeholder="Especie vista">
-            <input type="text" placeholder="Ubicación">
-            <input type="date">
-            <textarea placeholder="Notas adicionales"></textarea>
-            <button type="submit">Enviar Reporte</button>
-        </form>
-    </section>
-
-    <!-- 5. SECCIÓN DE MINIJUEGO -->
-    <section id="gameSection" class="hidden">
-        <button onclick="showSection('categories')">Volver</button>
-        <h2>Minijuego Trivia</h2>
-        <p>¿A qué categoría pertenece esta especie?</p>
-        <div id="gameOptions">
-            <button class="gameOptionBtn">Anfibio</button>
-            <button class="gameOptionBtn">Ave</button>
-        </div>
-    </section>
-
-    <!-- Enlace al archivo de JavaScript -->
-    <script src="app.js"></script>
-</body>
-</html>
+<script>
+function mostrarMasInformacion() {
+    var ficha = document.getElementById("ficha-detallada");
+    if (ficha.style.display === "none") {
+        ficha.style.display = "block"; // Muestra la ficha detallada
+    } else {
+        ficha.style.display = "none"; // La oculta si se vuelve a hacer clic
+    }
+}
+</script>
