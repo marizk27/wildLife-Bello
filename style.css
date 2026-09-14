@@ -7,6 +7,9 @@ body {
     padding: 0;
     background-color: #0f2515;
     color: #333;
+    width: 100vw;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
 .hidden {
@@ -18,20 +21,20 @@ body {
    ========================================= */
 .home {
     position: relative;
-    width: 100%;
+    width: 100vw;
     min-height: 100vh;
     background: linear-gradient(135deg, #0f2515 0%, #1b4d2e 50%, #0d1f11 100%);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 20px;
+    align-items: center;
+    padding: 30px;
     box-sizing: border-box;
 }
 
 .homeHeaderTop {
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 1400px;
     display: flex;
     justify-content: flex-start;
 }
@@ -40,7 +43,7 @@ body {
     background-color: #1e5631;
     color: white;
     border: none;
-    padding: 10px 22px;
+    padding: 12px 25px;
     border-radius: 30px;
     font-size: 1rem;
     font-weight: bold;
@@ -59,31 +62,35 @@ body {
 /* CONTENEDOR CENTRAL */
 .heroContainer {
     text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
+    width: 100%;
+    max-width: 900px;
+    margin: auto 0;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .brandBox {
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 
 .logoCircle {
-    width: 90px;
-    height: 90px;
+    width: 100px;
+    height: 100px;
     background-color: #1e5631;
     border-radius: 50%;
-    margin: 0 auto 15px auto;
+    margin: 0 auto 20px auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     box-shadow: 0 6px 15px rgba(0,0,0,0.3);
     border: 3px solid rgba(255,255,255,0.2);
 }
 
 .brandBox h1 {
-    font-size: 3.5rem;
+    font-size: 4rem;
     color: #ffffff;
     margin: 0 0 10px 0;
     text-shadow: 0 3px 6px rgba(0,0,0,0.6);
@@ -92,7 +99,7 @@ body {
 }
 
 .brandBox p {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: #e8f5e9;
     margin: 0 0 15px 0;
     text-shadow: 0 2px 4px rgba(0,0,0,0.6);
@@ -101,7 +108,7 @@ body {
 
 .dividerLine {
     color: #81c784;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     letter-spacing: 5px;
 }
 
@@ -111,16 +118,16 @@ body {
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
-    margin-bottom: 40px;
+    width: 100%;
 }
 
 .actionBtn {
     background-color: #1b4d2e;
     color: white;
     border: 2px solid rgba(255, 255, 255, 0.2);
-    padding: 15px 35px;
+    padding: 16px 40px;
     border-radius: 35px;
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     font-weight: bold;
     cursor: pointer;
     display: flex;
@@ -144,15 +151,17 @@ body {
     justify-content: center;
     align-items: center;
     padding: 40px 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .authBox {
     background: white;
-    padding: 30px;
+    padding: 35px;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     width: 100%;
-    max-width: 400px;
+    max-width: 420px;
     text-align: center;
 }
 
@@ -189,7 +198,7 @@ body {
     border-radius: 15px;
     text-align: center;
     max-width: 500px;
-    margin: 30px auto;
+    margin: 40px auto;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
@@ -225,21 +234,23 @@ body {
 }
 
 /* =========================================
-   SECCIÓN EXPLORAR Y TARJETAS
+   SECCIÓN EXPLORAR Y TARJETAS (PANTALLA COMPLETA)
    ========================================= */
 .sect {
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    background-color: #f0f4f1;
+    padding: 30px 40px;
+    width: 100vw;
     min-height: 100vh;
+    margin: 0;
+    background-color: #f0f4f1;
+    box-sizing: border-box;
 }
 
 .upperPan {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    width: 100%;
 }
 
 .ExploreSearchPan {
@@ -247,15 +258,16 @@ body {
     gap: 15px;
     margin-bottom: 20px;
     flex-wrap: wrap;
+    width: 100%;
 }
 
 .filter, .cat {
-    padding: 12px;
+    padding: 14px;
     border-radius: 10px;
     border: 1px solid #c8e6c9;
     font-size: 1rem;
     flex: 1;
-    min-width: 200px;
+    min-width: 220px;
     background: white;
     outline: none;
 }
@@ -270,7 +282,7 @@ body {
     background-color: #2e7d32;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 22px;
     border-radius: 10px;
     cursor: pointer;
     font-weight: bold;
@@ -284,17 +296,18 @@ body {
     background-color: #2c3e50;
     color: white;
     border: none;
-    padding: 10px 18px;
+    padding: 10px 20px;
     border-radius: 10px;
     cursor: pointer;
     font-weight: bold;
 }
 
-/* GRILLA DE ANIMALES */
+/* GRILLA DE ANIMALES CENTRADA Y EXPANDIDA */
 .anList {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    width: 100%;
 }
 
 .animalCard {
@@ -399,8 +412,8 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.6);
     display: flex;
     justify-content: center;
