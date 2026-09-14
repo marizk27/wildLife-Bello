@@ -13,12 +13,10 @@
 <body>
 
     <!-- =====================================================
-         PÁGINA PRINCIPAL
+         INICIO
          ===================================================== -->
 
     <section class="home" id="home">
-
-        <!-- BARRA SUPERIOR -->
 
         <header class="homeHeaderTop">
 
@@ -28,32 +26,21 @@
                 id="profile"
             >
                 <span class="profileIcon">👤</span>
-
-                <span id="profileBtnText">
-                    Perfil
-                </span>
+                <span id="profileBtnText">Perfil</span>
             </button>
 
         </header>
 
-
-        <!-- HERO -->
 
         <div class="heroContainer">
 
             <div class="brandBox">
 
                 <div class="logoCircle">
-
-                    <span class="deerIcon">
-                        🦌
-                    </span>
-
+                    <span class="deerIcon">🦌</span>
                 </div>
 
-                <h1>
-                    Fauno Belo
-                </h1>
+                <h1>Fauno Belo</h1>
 
                 <p>
                     Por la vida, la naturaleza y nuestro futuro
@@ -66,8 +53,6 @@
             </div>
 
 
-            <!-- BOTONES PRINCIPALES -->
-
             <div class="heroActions">
 
                 <button
@@ -75,10 +60,7 @@
                     id="explore"
                     class="actionBtn"
                 >
-                    <span class="btnIcon">
-                        🧭
-                    </span>
-
+                    <span class="btnIcon">🧭</span>
                     Explorar
                 </button>
 
@@ -88,10 +70,7 @@
                     id="report"
                     class="actionBtn"
                 >
-                    <span class="btnIcon">
-                        🔭
-                    </span>
-
+                    <span class="btnIcon">🔭</span>
                     Reportar avistamiento
                 </button>
 
@@ -103,7 +82,7 @@
 
 
     <!-- =====================================================
-         AUTENTICACIÓN
+         LOGIN / REGISTRO
          ===================================================== -->
 
     <section
@@ -129,8 +108,6 @@
 
 
         <div class="authContainer">
-
-            <!-- LOGIN -->
 
             <div
                 class="authBox"
@@ -165,7 +142,6 @@
                     <button
                         type="submit"
                         class="see"
-                        style="width:100%; margin-top:10px;"
                     >
                         Entrar
                     </button>
@@ -188,8 +164,6 @@
 
             </div>
 
-
-            <!-- REGISTRO -->
 
             <div
                 class="authBox hidden"
@@ -224,7 +198,6 @@
                     <button
                         type="submit"
                         class="see"
-                        style="width:100%; margin-top:10px;"
                     >
                         Registrarse
                     </button>
@@ -253,7 +226,7 @@
 
 
     <!-- =====================================================
-         PERFIL DE USUARIO
+         PERFIL
          ===================================================== -->
 
     <section
@@ -284,11 +257,9 @@
                 👤
             </div>
 
-
             <h2 id="userNameDisplay">
                 Usuario
             </h2>
-
 
             <p>
                 ¡Bienvenido de nuevo a la comunidad
@@ -329,17 +300,6 @@
             <button
                 type="button"
                 id="logoutBtn"
-                style="
-                    background:#d81b60;
-                    color:white;
-                    border:none;
-                    padding:10px;
-                    border-radius:10px;
-                    cursor:pointer;
-                    font-weight:bold;
-                    margin-top:20px;
-                    width:100%;
-                "
             >
                 Cerrar Sesión
             </button>
@@ -377,10 +337,7 @@
 
         <div class="authContainer">
 
-            <div
-                class="authBox"
-                style="max-width:550px;"
-            >
+            <div class="authBox reportBox">
 
                 <h3>
                     Registrar un nuevo hallazgo
@@ -395,10 +352,6 @@
                         placeholder="Nombre de la especie avistada"
                         required
                         class="filter"
-                        style="
-                            width:100%;
-                            box-sizing:border-box;
-                        "
                     >
 
 
@@ -408,10 +361,6 @@
                         placeholder="Ubicación (ej: Vereda, Parque, etc.)"
                         required
                         class="filter"
-                        style="
-                            width:100%;
-                            box-sizing:border-box;
-                        "
                     >
 
 
@@ -420,10 +369,6 @@
                         id="reportDate"
                         required
                         class="filter"
-                        style="
-                            width:100%;
-                            box-sizing:border-box;
-                        "
                     >
 
 
@@ -431,22 +376,12 @@
                         id="reportNotes"
                         placeholder="Notas adicionales sobre el avistamiento..."
                         class="filter"
-                        style="
-                            width:100%;
-                            height:80px;
-                            resize:none;
-                            box-sizing:border-box;
-                        "
                     ></textarea>
 
 
                     <button
                         type="submit"
                         class="see"
-                        style="
-                            width:100%;
-                            margin-top:10px;
-                        "
                     >
                         Enviar Reporte
                     </button>
@@ -466,7 +401,7 @@
 
     <section
         id="categories"
-        class="hidden sect"
+        class="hidden sect exploreSection"
     >
 
         <section class="upperPan">
@@ -500,7 +435,6 @@
 
             <select
                 class="cat"
-                name="Categorías"
                 id="filterCat"
             >
 
@@ -528,7 +462,7 @@
             <button
                 type="button"
                 id="all"
-                class="see"
+                class="see activeExploreButton"
             >
                 Todo
             </button>
@@ -554,7 +488,7 @@
         </div>
 
 
-        <!-- AQUÍ SE GENERAN LAS TARJETAS -->
+        <!-- TARJETAS -->
 
         <main
             id="exploreCategories"
@@ -565,7 +499,7 @@
 
 
     <!-- =====================================================
-         MINIJUEGO
+         JUEGO
          ===================================================== -->
 
     <section
@@ -592,21 +526,9 @@
 
         <div class="authContainer">
 
-            <div
-                class="authBox"
-                style="
-                    max-width:600px;
-                    text-align:center;
-                "
-            >
+            <div class="authBox gameBox">
 
-                <h3
-                    id="gameQuestionTitle"
-                    style="
-                        color:#1b5e20;
-                        margin-bottom:15px;
-                    "
-                >
+                <h3 id="gameQuestionTitle">
                     ¿A qué especie corresponde esta imagen?
                 </h3>
 
@@ -617,39 +539,17 @@
                         id="gameImage"
                         src=""
                         alt="Especie misteriosa"
-                        style="
-                            width:100%;
-                            height:240px;
-                            object-fit:cover;
-                            border-radius:12px;
-                            margin-bottom:20px;
-                            border:2px solid #c8e6c9;
-                        "
                     >
 
 
                     <div
                         id="gameOptions"
-                        style="
-                            display:flex;
-                            flex-direction:column;
-                            gap:10px;
-                        "
-                    >
-                    </div>
+                    ></div>
 
                 </div>
 
 
-                <div
-                    id="gameScoreBoard"
-                    style="
-                        margin-top:20px;
-                        font-weight:bold;
-                        color:#2e7d32;
-                        font-size:1.1rem;
-                    "
-                >
+                <div id="gameScoreBoard">
 
                     Puntuación:
 
@@ -667,7 +567,7 @@
 
 
     <!-- =====================================================
-         MODAL DE INFORMACIÓN
+         MODAL MÁS INFORMACIÓN
          ===================================================== -->
 
     <div
