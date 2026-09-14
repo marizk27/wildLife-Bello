@@ -61,6 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         <button class="animalCategory"> ${prod.category}</button>
                     </div>
                 `;
+                const categories = document.getElementById('categories');
+                categories.appendChild(div);
                 }
             }
                 
