@@ -2,10 +2,6 @@
 // FAUNO BELO - APP.JS COMPLETO
 // ==================================================
 
-console.log("================================");
-console.log("FAUNO BELO - SISTEMA INTEGRADO");
-console.log("================================");
-
 const home = document.getElementById("home");
 const exploreP = document.getElementById("categories");
 const authSection = document.getElementById("authSection");
@@ -57,7 +53,7 @@ function updateProfileButton() {
 }
 updateProfileButton();
 
-// Evento de clic en botón de Perfil (Abre login o panel de usuario)
+// Evento de clic en botón de Perfil
 if (profileBtn) {
     profileBtn.addEventListener("click", () => {
         home.classList.add("hidden");
