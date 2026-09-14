@@ -306,6 +306,7 @@ function displayAnimals(prods) {
     }
 }
 
+// Carga unificada y correcta apuntando a initialcategories.json (con toda la data necesaria)
 async function load() {
     try {
         const response = await fetch("./initialcategories.json");
