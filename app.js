@@ -6,14 +6,17 @@ const home = document.getElementById("home");
 const exploreP = document.getElementById("categories");
 const authSection = document.getElementById("authSection");
 const userProfileSection = document.getElementById("userProfileSection");
+const reportSection = document.getElementById("reportSection");
 
 const exploreCat = document.getElementById("explore");
+const reportBtn = document.getElementById("report");
 const profileBtn = document.getElementById("profile");
 const profileBtnText = document.getElementById("profileBtnText");
 
 const backButton = document.getElementById("back");
 const authBack = document.getElementById("authBack");
 const profileBack = document.getElementById("profileBack");
+const reportBack = document.getElementById("reportBack");
 
 const loginBox = document.getElementById("loginBox");
 const registerBox = document.getElementById("registerBox");
@@ -22,9 +25,11 @@ const showLogin = document.getElementById("showLogin");
 
 const loginForm = document.getElementById("loginForm");
 const registerForm = document.getElementById("registerForm");
+const reportForm = document.getElementById("reportForm");
 const logoutBtn = document.getElementById("logoutBtn");
 const userNameDisplay = document.getElementById("userNameDisplay");
 const statFavorites = document.getElementById("statFavorites");
+const statReports = document.getElementById("statReports");
 
 const mainDisplay = document.getElementById("exploreCategories");
 const filterCat = document.getElementById("filterCat");
@@ -43,14 +48,25 @@ let exploreState = "all";
 let cardArray = [];
 let favoriteAnimals = new Set();
 
-// Manejo de Sesión Activa
+// Manejo de Sesión Activa y Datos de Reportes
 let currentUser = localStorage.getItem("faunoBelo_activeUser") || null;
+let userReports = JSON.parse(localStorage.getItem("faunoBelo_userReports")) || {};
 
 function updateProfileButton() {
     if (profileBtnText) {
         profileBtnText.textContent = currentUser ? currentUser : "Perfil";
     }
 }
+
+function updateUserStats() {
+    if (statFavorites) statFavorites.textContent = favoriteAnimals.size;
+    if (statReports && currentUser && userReports[currentUser]) {
+        statReports.textContent = userReports[currentUser].length;
+    } else if (statReports) {
+        statReports.textContent = "0";
+    }
+}
+
 updateProfileButton();
 
 // Evento de clic en botón de Perfil
@@ -59,7 +75,7 @@ if (profileBtn) {
         home.classList.add("hidden");
         if (currentUser) {
             if (userNameDisplay) userNameDisplay.textContent = currentUser;
-            if (statFavorites) statFavorites.textContent = favoriteAnimals.size;
+            updateUserStats();
             if (userProfileSection) userProfileSection.classList.remove("hidden");
         } else {
             if (authSection) authSection.classList.remove("hidden");
@@ -78,6 +94,13 @@ if (authBack) {
 if (profileBack) {
     profileBack.addEventListener("click", () => {
         userProfileSection.classList.add("hidden");
+        home.classList.remove("hidden");
+    });
+}
+
+if (reportBack) {
+    reportBack.addEventListener("click", () => {
+        reportSection.classList.add("hidden");
         home.classList.remove("hidden");
     });
 }
@@ -137,6 +160,7 @@ if (loginForm) {
             currentUser = user;
             localStorage.setItem("faunoBelo_activeUser", currentUser);
             updateProfileButton();
+            updateUserStats();
             
             alert(`¡Bienvenido de nuevo, ${currentUser}!`);
             document.getElementById("loginUser").value = "";
@@ -159,6 +183,51 @@ if (logoutBtn) {
         userProfileSection.classList.add("hidden");
         home.classList.remove("hidden");
         alert("Has cerrado sesión correctamente.");
+    });
+}
+
+// Transición a Reportar Avistamiento
+if (reportBtn) {
+    reportBtn.addEventListener("click", () => {
+        if (!currentUser) {
+            alert("Debes iniciar sesión para reportar un avistamiento.");
+            home.classList.add("hidden");
+            authSection.classList.remove("hidden");
+            return;
+        }
+        home.classList.add("hidden");
+        reportSection.classList.remove("hidden");
+    });
+}
+
+// Envío del Formulario de Reporte
+if (reportForm) {
+    reportForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (!currentUser) {
+            alert("Sesión expirada.");
+            return;
+        }
+
+        const species = document.getElementById("reportSpecies").value.trim();
+        const location = document.getElementById("reportLocation").value.trim();
+        const date = document.getElementById("reportDate").value;
+        const notes = document.getElementById("reportNotes").value.trim();
+
+        if (!userReports[currentUser]) {
+            userReports[currentUser] = [];
+        }
+
+        userReports[currentUser].push({ species, location, date, notes });
+        localStorage.setItem("faunoBelo_userReports", JSON.stringify(userReports));
+
+        updateUserStats();
+
+        alert("¡Avistamiento reportado con éxito! Gracias por contribuir a la conservación.");
+        
+        reportForm.reset();
+        reportSection.classList.add("hidden");
+        home.classList.remove("hidden");
     });
 }
 
@@ -374,6 +443,7 @@ if (mainDisplay) {
                     favoriteAnimals.add(animalId);
                     favoriteBtn.textContent = "♥ Guardado";
                 }
+                updateUserStats();
             });
         }
 
