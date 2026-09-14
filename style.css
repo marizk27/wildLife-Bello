@@ -1,26 +1,154 @@
 /* =========================================
-   ESTILOS GENERALES Y FAUNO BELO THEME
+   ESTILOS GENERALES Y TEMA FAUNO BELO
    ========================================= */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f4f1;
-    color: #2c3e50;
+    background-color: #1b2e1b;
+    color: #333;
 }
 
 .hidden {
     display: none !important;
 }
 
+/* =========================================
+   ESTILO DE LA PÁGINA DE INICIO (BANNER TIPO HERO)
+   ========================================= */
 .home {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    /* Reemplaza 'fondo-selva.jpg' por el nombre de tu imagen o mantén un degradado base si aún no la tienes */
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('./fondo-selva.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.homeHeaderTop {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.profileBtn {
+    background-color: #1e5631;
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: background 0.2s;
+}
+
+.profileBtn:hover {
+    background-color: #143d22;
+}
+
+/* CONTENEDOR CENTRAL */
+.heroContainer {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.brandBox {
+    margin-bottom: 40px;
+}
+
+.logoCircle {
+    width: 90px;
+    height: 90px;
+    background-color: #1e5631;
+    border-radius: 50%;
+    margin: 0 auto 15px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    border: 3px solid rgba(255,255,255,0.2);
+}
+
+.brandBox h1 {
+    font-size: 3.5rem;
+    color: #ffffff;
+    margin: 0 0 10px 0;
+    text-shadow: 0 3px 6px rgba(0,0,0,0.6);
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.brandBox p {
+    font-size: 1.2rem;
+    color: #e8f5e9;
+    margin: 0 0 15px 0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+    font-weight: 500;
+}
+
+.dividerLine {
+    color: #81c784;
+    font-size: 1.2rem;
+    letter-spacing: 5px;
+}
+
+/* BOTONES DE ACCIÓN PRINCIPALES */
+.heroActions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.actionBtn {
+    background-color: #1b4d2e;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    padding: 15px 35px;
+    border-radius: 35px;
+    font-size: 1.15rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    transition: all 0.3s ease;
+}
+
+.actionBtn:hover {
+    background-color: #143d22;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+}
+
+/* =========================================
+   SECCIÓN EXPLORAR Y TARJETAS (SEGUNDA VISTA)
+   ========================================= */
+.sect {
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
-}
-
-.homeHead {
-    width: 100%;
+    background-color: #f0f4f1;
+    min-height: 100vh;
 }
 
 .upperPan {
@@ -28,65 +156,6 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-}
-
-.profile {
-    background: #2e7d32;
-    color: white;
-    padding: 8px 18px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-weight: bold;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.actionsPan {
-    text-align: center;
-    padding: 50px 20px;
-    background: linear-gradient(135deg, #1b5e20, #4caf50);
-    color: white;
-    border-radius: 20px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-    margin-bottom: 30px;
-}
-
-.welcome h1 {
-    font-size: 3rem;
-    margin: 0 0 10px 0;
-}
-
-.welcome p {
-    font-size: 1.2rem;
-    margin-bottom: 25px;
-    opacity: 0.9;
-}
-
-.actionCard {
-    background: white;
-    color: #1b5e20;
-    border: none;
-    padding: 12px 25px;
-    margin: 8px;
-    border-radius: 12px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    font-weight: bold;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: all 0.2s ease;
-}
-
-.actionCard:hover {
-    transform: translateY(-3px);
-    background-color: #f9f9f9;
-}
-
-/* =========================================
-   SECCIÓN EXPLORAR Y TARJETAS
-   ========================================= */
-.sect {
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
 .ExploreSearchPan {
@@ -103,7 +172,6 @@ body {
     font-size: 1rem;
     flex: 1;
     min-width: 200px;
-    outline: none;
     background: white;
 }
 
@@ -121,7 +189,6 @@ body {
     border-radius: 10px;
     cursor: pointer;
     font-weight: bold;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .see:hover {
@@ -191,7 +258,6 @@ body {
 
 /* TARJETA EXPANDIDA */
 .animalCard.expanded {
-    grid-column: span 1;
     border-color: #4caf50;
 }
 
@@ -228,16 +294,11 @@ body {
     cursor: pointer;
     font-weight: bold;
     font-size: 0.9rem;
-    transition: background 0.2s;
 }
 
 .favoriteBtn {
     color: #d81b60;
     border-color: #f8bbd0;
-}
-
-.favoriteBtn:hover {
-    background: #fce4ec;
 }
 
 .moreInfoBtn {
@@ -246,12 +307,8 @@ body {
     border-color: #c8e6c9;
 }
 
-.moreInfoBtn:hover {
-    background-color: #c8e6c9;
-}
-
 /* =========================================
-   ESTILOS DEL MODAL (MÁS INFORMACIÓN)
+   ESTILOS DEL MODAL
    ========================================= */
 .modal {
     position: fixed;
@@ -298,10 +355,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.closeModalBtn:hover {
-    background: #e0e0e0;
 }
 
 .modalDetails img {
