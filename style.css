@@ -1,5 +1,5 @@
 /* ==========================================================
-   FAUNO BELO - ESTILO LIMPIO Y ESTRUCTURADO (ORIGINAL)
+   FAUNO BELO - ESTILOS DEFINITIVOS Y COMPLETOS
    ========================================================== */
 
 .hidden {
@@ -33,6 +33,11 @@ html, body {
     color: #ffffff;
 }
 
+#home p {
+    color: #a3e4d7;
+    margin-bottom: 20px;
+}
+
 /* Contenedor principal de la sección de exploración */
 #categories {
     min-height: 100vh;
@@ -42,17 +47,6 @@ html, body {
     padding: 30px 20px;
     box-sizing: border-box;
     overflow-y: auto;
-}
-
-/* Barra superior de navegación dentro de categorías (Volver, Título) */
-#categories > div:first-child,
-.top-nav {
-    width: 100%;
-    max-width: 1200px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
 }
 
 /* Controles de búsqueda y filtros arriba */
@@ -80,7 +74,7 @@ html, body {
     min-width: 250px;
 }
 
-/* Botones principales de navegación y filtros (Tamaño correcto y estético) */
+/* Botones principales de navegación y filtros */
 #home button, 
 #categories button:not(.animalCard button), 
 .main-btn {
@@ -152,7 +146,7 @@ html, body {
     margin-bottom: 10px;
 }
 
-/* Botones pequeños dentro de las tarjetas (ej. categoría 'Anfibio') */
+/* Botones pequeños dentro de las tarjetas (etiquetas de categoría) */
 .animalCard button, .animalCategory {
     background-color: #285430 !important;
     color: white !important;
@@ -163,7 +157,7 @@ html, body {
     cursor: pointer;
 }
 
-/* Secciones de Perfil, Reportes y Auth centradas */
+/* Secciones secundarias (Perfil, Reportes, Auth, Juegos) */
 #authSection, #userProfileSection, #reportSection, #gameSection {
     min-height: 100vh;
     display: flex;
