@@ -1,5 +1,5 @@
 // ==================================================
-// FAUNO BELO - APP.JS COMPLETO (CON MINIJUEGO)
+// FAUNO BELO - APP.JS COMPLETO Y DEFINITIVO
 // ==================================================
 
 const home = document.getElementById("home");
@@ -306,7 +306,7 @@ function displayAnimals(prods) {
     }
 }
 
-// Carga unificada y correcta apuntando a initialcategories.json (con toda la data necesaria)
+// Carga unificada desde el JSON principal
 async function load() {
     try {
         const response = await fetch("./initialcategories.json");
@@ -377,41 +377,39 @@ function loadNextQuestion() {
         return;
     }
 
-    // Seleccionar especie correcta al azar
     const correctSpecie = allSpecies[Math.floor(Math.random() * allSpecies.length)];
-    gameImage.src = correctSpecie.img;
+    if (gameImage) gameImage.src = correctSpecie.img;
 
-    // Seleccionar 3 opciones incorrectas distintas
     let options = [correctSpecie];
     while (options.length < 4) {
         const randomSpecie = allSpecies[Math.floor(Math.random() * allSpecies.length)];
-        if (!options.includes(randomSpecie)) {
+        if (!options.some(opt => opt.id === randomSpecie.id)) {
             options.push(randomSpecie);
         }
     }
 
-    // Mezclar opciones
     options.sort(() => Math.random() - 0.5);
 
-    // Pintar opciones en HTML
-    gameOptions.innerHTML = "";
-    options.forEach(specie => {
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.classList.add("gameOptionBtn");
-        btn.textContent = specie.name;
-        btn.addEventListener("click", () => {
-            if (specie.id === correctSpecie.id) {
-                gameScore += 10;
-                alert("¡Correcto! +10 puntos 🌿");
-            } else {
-                alert(`¡Incorrecto! Era: ${correctSpecie.name}`);
-            }
-            if (currentScoreDisplay) currentScoreDisplay.textContent = gameScore;
-            loadNextQuestion();
+    if (gameOptions) {
+        gameOptions.innerHTML = "";
+        options.forEach(specie => {
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.classList.add("gameOptionBtn");
+            btn.textContent = specie.name;
+            btn.addEventListener("click", () => {
+                if (specie.id === correctSpecie.id) {
+                    gameScore += 10;
+                    alert("¡Correcto! +10 puntos 🌿");
+                } else {
+                    alert(`¡Incorrecto! La especie era: ${correctSpecie.name}`);
+                }
+                if (currentScoreDisplay) currentScoreDisplay.textContent = gameScore;
+                loadNextQuestion();
+            });
+            gameOptions.appendChild(btn);
         });
-        gameOptions.appendChild(btn);
-    });
+    }
 }
 
 // Manejo de expansión y modal
