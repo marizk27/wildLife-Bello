@@ -66,4 +66,161 @@
                 <button
                     id="report"
                     class="actionCard"
+                    type="button"
+                >
+
+                    <h3>
+                        Reportar avistamiento
+                    </h3>
+
+                </button>
+
+            </section>
+
+        </header>
+
+
+        <main>
+
+            <article
+                id="news"
+                class="news"
+            ></article>
+
+        </main>
+
+    </section>
+
+
+
+    <!-- =========================================
+         EXPLORAR
+         ========================================= -->
+
+    <section
+        id="exploreSection"
+        class="hidden sect"
+    >
+
+        <!-- PANEL SUPERIOR -->
+
+        <section class="upperPan">
+
+            <button
+                id="back"
+                class="dark-background"
+                type="button"
+            >
+                Volver
+            </button>
+
+
+            <h2 class="dark-background">
+                Explorar fauna
+            </h2>
+
+        </section>
+
+
+
+        <!-- =========================================
+             BUSCADOR
+             ========================================= -->
+
+        <header class="ExploreSearchPan">
+
+            <input
+                id="filter"
+                class="filter"
+                type="search"
+                placeholder="Buscar especie"
+                autocomplete="off"
+            >
+
+
+            <select
+                id="filterCat"
+                class="cat"
+                name="Categorias"
+            >
+
+                <option value="catego">
+                    Por categoría
+                </option>
+
+                <option value="name">
+                    Nombre cotidiano
+                </option>
+
+                <option value="sciNa">
+                    Nombre científico
+                </option>
+
+            </select>
+
+        </header>
+
+
+
+        <!-- =========================================
+             BOTONES
+             ========================================= -->
+
+        <div class="exploreButtons">
+
+            <button
+                id="all"
+                class="see"
+                type="button"
+            >
+                Todo
+            </button>
+
+
+            <button
+                id="categoriesBtn"
+                class="see"
+                type="button"
+            >
+                Categorías
+            </button>
+
+
+            <button
+                id="play"
+                class="see"
+                type="button"
+            >
+                ¡Juega!
+            </button>
+
+        </div>
+
+
+
+        <!-- =========================================
+             RESULTADOS
+             ========================================= -->
+
+        <main
+            id="exploreCategories"
+            class="anList"
+        ></main>
+
+    </section>
+
+
+
+    <!-- =========================================
+         JAVASCRIPT
+         ========================================= -->
+
+    <script
+        type="module"
+        src="./app.js"
+    ></script>
+
+</body>
+
+</html>
 ```
