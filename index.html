@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="es">
 
@@ -13,177 +13,57 @@
 
 <body>
 
-    <!-- ==================================================
-         PÁGINA PRINCIPAL
-         ================================================== -->
+    <!-- =========================================
+         INICIO
+         ========================================= -->
 
-    <section class="home" id="home">
+    <section id="home" class="home">
 
         <header class="homeHead">
 
-            <!-- PANEL SUPERIOR -->
             <section class="upperPan">
 
-                <div class="profile" id="profile">
+                <div
+                    id="profile"
+                    class="profile"
+                    role="button"
+                    tabindex="0"
+                >
                     <p>Perfil</p>
                 </div>
 
             </section>
 
 
-            <!-- PANEL DE ACCIONES -->
             <section class="actionsPan">
 
                 <div class="welcome">
+
                     <h1>Fauno Belo</h1>
-                    <p>Por la pasión de descubrir</p>
+
+                    <p>
+                        Por la pasión de descubrir
+                    </p>
+
                 </div>
 
 
-                <!-- BOTÓN EXPLORAR -->
-                <button id="explore" class="actionCard" type="button">
+                <!-- EXPLORAR -->
+
+                <button
+                    id="explore"
+                    class="actionCard"
+                    type="button"
+                >
+
                     <h3>Explorar</h3>
+
                 </button>
 
 
-                <!-- BOTÓN REPORTAR -->
-                <button id="report" class="actionCard" type="button">
-                    <h3>Reportar avistamiento</h3>
-                </button>
+                <!-- REPORTAR -->
 
-            </section>
-
-        </header>
-
-
-        <!-- NOTICIAS -->
-        <main>
-            <article id="news" class="news"></article>
-        </main>
-
-    </section>
-
-
-
-    <!-- ==================================================
-         SECCIÓN EXPLORAR
-         ================================================== -->
-
-    <section id="exploreSection" class="hidden sect">
-
-        <!-- PANEL SUPERIOR -->
-        <section class="upperPan">
-
-            <!-- BOTÓN VOLVER -->
-            <button id="back" class="dark-background" type="button">
-                Volver
-            </button>
-
-            <h2 class="dark-background">
-                Explorar fauna
-            </h2>
-
-        </section>
-
-
-        <!-- ==================================================
-             BUSCADOR
-             ================================================== -->
-
-        <header class="ExploreSearchPan">
-
-            <input
-                id="filter"
-                class="filter"
-                type="search"
-                placeholder="Buscar especie"
-                autocomplete="off"
-            >
-
-
-            <select
-                class="cat"
-                name="Categorías"
-                id="filterCat"
-            >
-
-                <option value="catego">
-                    Por categoría
-                </option>
-
-                <option value="name">
-                    Nombre cotidiano
-                </option>
-
-                <option value="sciNa">
-                    Nombre científico
-                </option>
-
-            </select>
-
-        </header>
-
-
-
-        <!-- ==================================================
-             BOTONES DE EXPLORACIÓN
-             ================================================== -->
-
-        <div class="exploreButtons">
-
-            <button
-                id="all"
-                class="see"
-                type="button"
-            >
-                Todo
-            </button>
-
-
-            <button
-                id="categoriesBtn"
-                class="see"
-                type="button"
-            >
-                Categorías
-            </button>
-
-
-            <button
-                id="play"
-                class="see"
-                type="button"
-            >
-                ¡Juega!
-            </button>
-
-        </div>
-
-
-
-        <!-- ==================================================
-             CONTENEDOR DE ANIMALES / CATEGORÍAS
-             ================================================== -->
-
-        <main
-            id="exploreCategories"
-            class="anList"
-        ></main>
-
-    </section>
-
-
-
-    <!-- ==================================================
-         JAVASCRIPT
-         ================================================== -->
-
-    <script
-        type="module"
-        src="./app.js"
-    ></script>
-
-</body>
-
-</html>
+                <button
+                    id="report"
+                    class="actionCard"
 ```
