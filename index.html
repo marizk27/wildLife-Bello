@@ -1,119 +1,70 @@
 ```html
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Fauno Belo</title>
-
     <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
 
-    <!-- =========================================
+    <!-- ==============================
          INICIO
-         ========================================= -->
-
-    <section id="home" class="home">
+         ============================== -->
+    <section class="home" id="home">
 
         <header class="homeHead">
 
             <section class="upperPan">
 
-                <div
-                    id="profile"
-                    class="profile"
-                    role="button"
-                    tabindex="0"
-                >
+                <div class="profile" id="profile">
                     <p>Perfil</p>
                 </div>
 
             </section>
 
-
             <section class="actionsPan">
 
                 <div class="welcome">
-
                     <h1>Fauno Belo</h1>
-
-                    <p>
-                        Por la pasión de descubrir
-                    </p>
-
+                    <p>Por la pasión de descubrir</p>
                 </div>
 
-
-                <!-- EXPLORAR -->
-
-                <button
-                    id="explore"
-                    class="actionCard"
-                    type="button"
-                >
-
+                <button type="button" id="explore" class="actionCard">
                     <h3>Explorar</h3>
-
                 </button>
 
-
-                <!-- REPORTAR -->
-
-                <button
-                    id="report"
-                    class="actionCard"
-                    type="button"
-                >
-
-                    <h3>
-                        Reportar avistamiento
-                    </h3>
-
+                <button type="button" id="report" class="actionCard">
+                    <h3>Reportar avistamiento</h3>
                 </button>
 
             </section>
 
         </header>
 
-
         <main>
-
-            <article
-                id="news"
-                class="news"
-            ></article>
-
+            <article id="news" class="news"></article>
         </main>
 
     </section>
 
 
-
-    <!-- =========================================
-         EXPLORAR
-         ========================================= -->
-
-    <section
-        id="exploreSection"
-        class="hidden sect"
-    >
-
-        <!-- PANEL SUPERIOR -->
+    <!-- ==============================
+         EXPLORAR FAUNA
+         ============================== -->
+    <section id="exploreSection" class="hidden sect">
 
         <section class="upperPan">
 
             <button
+                type="button"
                 id="back"
                 class="dark-background"
-                type="button"
             >
                 Volver
             </button>
-
 
             <h2 class="dark-background">
                 Explorar fauna
@@ -122,11 +73,9 @@
         </section>
 
 
-
-        <!-- =========================================
+        <!-- ==============================
              BUSCADOR
-             ========================================= -->
-
+             ============================== -->
         <header class="ExploreSearchPan">
 
             <input
@@ -137,11 +86,10 @@
                 autocomplete="off"
             >
 
-
             <select
-                id="filterCat"
                 class="cat"
-                name="Categorias"
+                name="Categorías"
+                id="filterCat"
             >
 
                 <option value="catego">
@@ -161,35 +109,31 @@
         </header>
 
 
-
-        <!-- =========================================
+        <!-- ==============================
              BOTONES
-             ========================================= -->
-
+             ============================== -->
         <div class="exploreButtons">
 
             <button
+                type="button"
                 id="all"
                 class="see"
-                type="button"
             >
                 Todo
             </button>
 
-
             <button
+                type="button"
                 id="categoriesBtn"
                 class="see"
-                type="button"
             >
                 Categorías
             </button>
 
-
             <button
+                type="button"
                 id="play"
                 class="see"
-                type="button"
             >
                 ¡Juega!
             </button>
@@ -197,11 +141,9 @@
         </div>
 
 
-
-        <!-- =========================================
-             RESULTADOS
-             ========================================= -->
-
+        <!-- ==============================
+             LISTA / CATEGORÍAS
+             ============================== -->
         <main
             id="exploreCategories"
             class="anList"
@@ -210,17 +152,11 @@
     </section>
 
 
-
-    <!-- =========================================
+    <!-- ==============================
          JAVASCRIPT
-         ========================================= -->
-
-    <script
-        type="module"
-        src="./app.js"
-    ></script>
+         ============================== -->
+    <script type="module" src="./app.js"></script>
 
 </body>
-
 </html>
 ```
