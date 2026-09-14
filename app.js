@@ -1,17 +1,12 @@
 // ==================================================
 // FAUNO BELO
-// APP.JS (FASE 2 - MODAL MÁS INFORMACIÓN)
+// APP.JS (FASE 2 - MODAL CON DESCRIPCIÓN Y DETALLES)
 // ==================================================
 
 console.log("================================");
 console.log("FAUNO BELO - APP.JS");
 console.log("SISTEMA INICIADO");
 console.log("================================");
-
-
-// ==================================================
-// ELEMENTOS
-// ==================================================
 
 const exploreCat = document.getElementById("explore");
 const home = document.getElementById("home");
@@ -26,118 +21,61 @@ const allButton = document.getElementById("all");
 const categoriesButton = document.getElementById("categoriesBtn");
 const playButton = document.getElementById("play");
 
-// Elementos del Modal
 const speciesModal = document.getElementById("speciesModal");
 const modalBody = document.getElementById("modalBody");
 const closeModalBtn = document.getElementById("closeModal");
-
-
-// ==================================================
-// VARIABLES
-// ==================================================
 
 let animals = [];
 let exploreState = "all";
 let cardArray = [];
 let favoriteAnimals = new Set();
 
-
-// ==================================================
-// BOTÓN EXPLORAR
-// ==================================================
-
 if (exploreCat) {
     exploreCat.addEventListener("click", () => {
-        console.log("Botón Explorar presionado");
         home.classList.add("hidden");
         exploreP.classList.remove("hidden");
         exploreState = "all";
-
-        if (filterCat) {
-            filterCat.classList.remove("hidden");
-        }
-
-        if (inp) {
-            inp.value = "";
-        }
-
+        if (filterCat) filterCat.classList.remove("hidden");
+        if (inp) inp.value = "";
         displayAnimals(animals);
     });
 }
 
-
-// ==================================================
-// VOLVER
-// ==================================================
-
 const backButton = document.getElementById("back");
-
 if (backButton) {
     backButton.addEventListener("click", () => {
-        console.log("Botón Volver presionado");
         exploreP.classList.add("hidden");
         home.classList.remove("hidden");
         exploreState = "all";
-
-        if (inp) {
-            inp.value = "";
-        }
+        if (inp) inp.value = "";
     });
 }
 
-
-// ==================================================
-// COLORES DE CATEGORÍAS
-// ==================================================
-
 function colorCategory(category) {
     switch (category) {
-        case "Anfibios":
-            return "#5fc463";
-        case "Aves":
-            return "#4a72e0";
-        case "Mamíferos":
-            return "#b47f2e";
-        case "Reptiles":
-            return "#e76958";
-        case "Insectos":
-            return "#85427c";
-        default:
-            return "#77a88d";
+        case "Anfibios": return "#5fc463";
+        case "Aves": return "#4a72e0";
+        case "Mamíferos": return "#b47f2e";
+        case "Reptiles": return "#e76958";
+        case "Insectos": return "#85427c";
+        default: return "#77a88d";
     }
 }
 
-
-// ==================================================
-// MOSTRAR ANIMALES
-// ==================================================
-
 function displayAnimals(prods) {
-    if (!mainDisplay) {
-        return;
-    }
+    if (!mainDisplay) return;
 
     mainDisplay.innerHTML = "";
     mainDisplay.style.display = "grid";
 
-    // SIN RESULTADOS
     if (!prods || prods.length === 0) {
-        mainDisplay.innerHTML = `
-            <div class="no-results">
-                <p>No se encontraron resultados.</p>
-            </div>
-        `;
-        mainDisplay.style.display = "flex";
-        mainDisplay.style.flexDirection = "column";
+        mainDisplay.innerHTML = `<div class="no-results"><p>No se encontraron resultados.</p></div>`;
         return;
     }
 
-    // MOSTRAR TODO
     if (exploreState === "all") {
         for (const category of prods) {
-            if (!category.especies) {
-                continue;
-            }
+            if (!category.especies) continue;
 
             for (const specie of category.especies) {
                 const div = document.createElement("div");
@@ -163,10 +101,7 @@ function displayAnimals(prods) {
                 mainDisplay.appendChild(div);
             }
         }
-    }
-
-    // MOSTRAR CATEGORÍAS
-    else if (exploreState === "categories") {
+    } else if (exploreState === "categories") {
         for (const category of prods) {
             const div = document.createElement("div");
             div.classList.add("animalCard");
@@ -175,51 +110,25 @@ function displayAnimals(prods) {
                 <h3>${category.category}</h3>
                 <img class="animalImg" src="${category.categoryImg}" alt="${category.category}">
             `;
-
             div.style.backgroundColor = colorCategory(category.category);
             mainDisplay.appendChild(div);
         }
     }
 }
 
-
-// ==================================================
-// CARGAR DATOS
-// ==================================================
-
 async function load() {
     try {
-        console.log("Cargando initialcategories.json...");
         const response = await fetch("./initialcategories.json");
-
-        if (!response.ok) {
-            throw new Error("No se pudo cargar initialcategories.json");
-        }
-
+        if (!response.ok) throw new Error("No se pudo cargar initialcategories.json");
         animals = await response.json();
-        console.log("Datos cargados correctamente:", animals.length, "categorías");
         displayAnimals(animals);
     } catch (error) {
         console.error("Error cargando los datos:", error);
-        if (mainDisplay) {
-            mainDisplay.innerHTML = `
-                <div class="no-results">
-                    <h3>No se pudo cargar la fauna.</h3>
-                    <p>Verifica que initialcategories.json esté en la misma carpeta.</p>
-                </div>
-            `;
-        }
     }
 }
 
-
-// ==================================================
-// BUSCADOR
-// ==================================================
-
 function filterAnimals() {
     const text = inp.value.trim().toLowerCase();
-
     if (text === "") {
         displayAnimals(animals);
         return;
@@ -227,74 +136,32 @@ function filterAnimals() {
 
     if (exploreState === "all") {
         let filteredAn = [];
-
         switch (filterCat.value) {
             case "catego":
-                filteredAn = animals.filter(function (category) {
-                    return category.category.toLowerCase().includes(text);
-                });
+                filteredAn = animals.filter(category => category.category.toLowerCase().includes(text));
                 break;
-
             case "name":
-                filteredAn = animals.map(function (category) {
-                    const filteredSpecies = (category.especies || []).filter(function (specie) {
-                        return specie.name.toLowerCase().includes(text);
-                    });
-                    return {
-                        ...category,
-                        especies: filteredSpecies
-                    };
-                }).filter(function (category) {
-                    return category.especies.length > 0;
-                });
+                filteredAn = animals.map(category => ({
+                    ...category,
+                    especies: (category.especies || []).filter(specie => specie.name.toLowerCase().includes(text))
+                })).filter(category => category.especies.length > 0);
                 break;
-
             case "sciNa":
-                filteredAn = animals.map(function (category) {
-                    const filteredSpecies = (category.especies || []).filter(function (specie) {
-                        return specie.scientificName.toLowerCase().includes(text);
-                    });
-                    return {
-                        ...category,
-                        especies: filteredSpecies
-                    };
-                }).filter(function (category) {
-                    return category.especies.length > 0;
-                });
+                filteredAn = animals.map(category => ({
+                    ...category,
+                    especies: (category.especies || []).filter(specie => specie.scientificName.toLowerCase().includes(text))
+                })).filter(category => category.especies.length > 0);
                 break;
         }
-
         displayAnimals(filteredAn);
-        return;
-    }
-
-    if (exploreState === "categories") {
-        const filteredCategories = animals.filter(function (category) {
-            return category.category.toLowerCase().includes(text);
-        });
-        displayAnimals(filteredCategories);
     }
 }
 
-
-// ==================================================
-// EVENTOS DE CONTROL
-// ==================================================
-
-if (inp) {
-    inp.addEventListener("input", filterAnimals);
-}
-
-if (filterCat) {
-    filterCat.addEventListener("change", function () {
-        inp.value = "";
-        displayAnimals(animals);
-    });
-}
+if (inp) inp.addEventListener("input", filterAnimals);
+if (filterCat) filterCat.addEventListener("change", () => { inp.value = ""; displayAnimals(animals); });
 
 if (allButton) {
-    allButton.addEventListener("click", function () {
-        console.log("Botón TODO presionado");
+    allButton.addEventListener("click", () => {
         exploreState = "all";
         filterCat.classList.remove("hidden");
         inp.value = "";
@@ -303,8 +170,7 @@ if (allButton) {
 }
 
 if (categoriesButton) {
-    categoriesButton.addEventListener("click", function () {
-        console.log("Botón CATEGORÍAS presionado");
+    categoriesButton.addEventListener("click", () => {
         exploreState = "categories";
         filterCat.classList.add("hidden");
         inp.value = "";
@@ -313,92 +179,46 @@ if (categoriesButton) {
 }
 
 if (playButton) {
-    playButton.addEventListener("click", function () {
-        console.log("Botón JUEGA presionado");
+    playButton.addEventListener("click", () => {
         alert("El juego estará disponible próximamente.");
     });
 }
 
-
-// ==================================================
-// CERRAR INFORMACIÓN ABIERTA (TARJETA)
-// ==================================================
-
 function removeExpandedInfo() {
-    if (cardArray.length === 0) {
-        return;
-    }
-
+    if (cardArray.length === 0) return;
     const card = cardArray.shift();
-    if (!card) {
-        return;
-    }
-
+    if (!card) return;
     card.classList.remove("expanded");
     const oldInfo = card.querySelector(".expandedInfo");
-
-    if (oldInfo) {
-        oldInfo.remove();
-    }
+    if (oldInfo) oldInfo.remove();
 }
-
-
-// ==================================================
-// CLICK EN TARJETA
-// ==================================================
 
 if (mainDisplay) {
     mainDisplay.addEventListener("click", function (e) {
-        if (e.target.closest(".favoriteBtn") || e.target.closest(".moreInfoBtn")) {
-            return;
-        }
+        if (e.target.closest(".favoriteBtn") || e.target.closest(".moreInfoBtn")) return;
 
         const card = e.target.closest(".animalCard");
-
-        if (!card || !card.dataset.id) {
-            return;
-        }
+        if (!card || !card.dataset.id) return;
 
         removeExpandedInfo();
 
-        const specie = animals
-            .flatMap(function (category) {
-                return category.especies || [];
-            })
-            .find(function (specie) {
-                return String(specie.id) === String(card.dataset.id);
-            });
-
-        if (!specie) {
-            console.error("No se encontró la especie.");
-            return;
-        }
+        const specie = animals.flatMap(c => c.especies || []).find(s => String(s.id) === String(card.dataset.id));
+        if (!specie) return;
 
         const animalInfo = card.querySelector(".animalInfo");
-        if (!animalInfo) {
-            return;
-        }
+        if (!animalInfo) return;
 
         const expandedInfo = document.createElement("div");
         expandedInfo.classList.add("expandedInfo");
 
-        card.dataset.status = specie.endangered;
         const isFavorite = favoriteAnimals.has(String(specie.id));
 
         expandedInfo.innerHTML = `
             <p class="conservation">${specie.endangered}</p>
-            <p>
-                <strong>Función ecológica:</strong>
-                <br>
-                ${specie.function}
-            </p>
+            <p><strong>Función ecológica:</strong><br>${specie.function}</p>
             <div class="expandedActions">
-                <button type="button" class="favoriteBtn">
-                    ${isFavorite ? "♥ Guardado" : "♡ Guardar"}
-                </button>
-                <button type="button" class="moreInfoBtn">
-                    Más información
-                </button>
+                <button type="button" class="favoriteBtn">${isFavorite ? "♥ Guardado" : "♡ Guardar"}</button>
+                <button type="button" class="moreInfoBtn">Más información</button>
             </div>
         `;
 
@@ -406,13 +226,11 @@ if (mainDisplay) {
         card.classList.add("expanded");
         cardArray.push(card);
 
-        // FAVORITO
         const favoriteBtn = expandedInfo.querySelector(".favoriteBtn");
         if (favoriteBtn) {
-            favoriteBtn.addEventListener("click", function (event) {
+            favoriteBtn.addEventListener("click", (event) => {
                 event.stopPropagation();
                 const animalId = String(specie.id);
-
                 if (favoriteAnimals.has(animalId)) {
                     favoriteAnimals.delete(animalId);
                     favoriteBtn.textContent = "♡ Guardar";
@@ -423,14 +241,12 @@ if (mainDisplay) {
             });
         }
 
-        // MÁS INFORMACIÓN -> APERTURA DEL MODAL
         const moreInfoBtn = expandedInfo.querySelector(".moreInfoBtn");
         if (moreInfoBtn) {
-            moreInfoBtn.addEventListener("click", function (event) {
+            moreInfoBtn.addEventListener("click", (event) => {
                 event.stopPropagation();
-                console.log("Abriendo más información para:", specie.name);
-
                 if (modalBody && speciesModal) {
+                    // Muestra la descripción completa, estado de conservación, función ecológica y datos adicionales del JSON
                     modalBody.innerHTML = `
                         <div class="modalDetails">
                             <img src="${specie.img}" alt="${specie.name}">
@@ -439,6 +255,7 @@ if (mainDisplay) {
                             <hr style="margin: 15px 0; border: 0; border-top: 1px solid #ddd;">
                             <p><strong>Estado de conservación:</strong> ${specie.endangered}</p>
                             <p><strong>Función ecológica:</strong> ${specie.function}</p>
+                            ${specie.description ? `<p><strong>Descripción:</strong> ${specie.description}</p>` : ""}
                         </div>
                     `;
                     speciesModal.classList.remove("hidden");
@@ -448,30 +265,16 @@ if (mainDisplay) {
     });
 }
 
-
-// ==================================================
-// CONTROLADORES DE CIERRE DEL MODAL
-// ==================================================
-
 if (closeModalBtn) {
-    closeModalBtn.addEventListener("click", function () {
-        if (speciesModal) {
-            speciesModal.classList.add("hidden");
-        }
+    closeModalBtn.addEventListener("click", () => {
+        if (speciesModal) speciesModal.classList.add("hidden");
     });
 }
 
 if (speciesModal) {
-    speciesModal.addEventListener("click", function (e) {
-        if (e.target === speciesModal) {
-            speciesModal.classList.add("hidden");
-        }
+    speciesModal.addEventListener("click", (e) => {
+        if (e.target === speciesModal) speciesModal.classList.add("hidden");
     });
 }
-
-
-// ==================================================
-// INICIAR SISTEMA
-// ==================================================
 
 load();
