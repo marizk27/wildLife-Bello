@@ -2,11 +2,12 @@
    FAUNO BELO - ESTILOS COMPLETOS
    ========================================================== */
 
-.hidden {
-    display: none !important;
+* {
+    box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -16,7 +17,18 @@ html, body {
     color: #ffffff;
 }
 
-/* Pantalla de inicio centrada */
+/* ==========================================================
+   OCULTAR SECCIONES
+   ========================================================== */
+
+.hidden {
+    display: none !important;
+}
+
+/* ==========================================================
+   PANTALLA PRINCIPAL
+   ========================================================== */
+
 #home {
     min-height: 100vh;
     display: flex;
@@ -38,44 +50,12 @@ html, body {
     margin-bottom: 20px;
 }
 
-/* Contenedor principal de la sección de exploración */
-#categories {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 30px 20px;
-    box-sizing: border-box;
-    overflow-y: auto;
-}
+/* ==========================================================
+   BOTONES GENERALES
+   ========================================================== */
 
-/* Controles de búsqueda y filtros arriba */
-.filters-bar, #categories input, #categories select {
-    width: 100%;
-    max-width: 1200px;
-    display: flex;
-    gap: 15px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-#categories input[type="text"],
-#categories select {
-    padding: 12px 20px;
-    border-radius: 25px;
-    border: 1px solid #ccc;
-    background-color: #ffffff;
-    color: #333;
-    font-size: 1rem;
-    outline: none;
-    flex: 1;
-    min-width: 250px;
-}
-
-/* Botones principales de navegación y filtros */
-#home button, 
-#categories button:not(.animalCard button), 
+#home button,
+#categories button:not(.animalCard button),
 .main-btn,
 #userProfileSection button,
 #reportSection button,
@@ -93,8 +73,8 @@ html, body {
     transition: background-color 0.2s, transform 0.2s;
 }
 
-#home button:hover, 
-#categories button:not(.animalCard button):hover, 
+#home button:hover,
+#categories button:not(.animalCard button):hover,
 .main-btn:hover,
 #userProfileSection button:hover,
 #reportSection button:hover,
@@ -103,83 +83,646 @@ html, body {
     transform: translateY(-2px);
 }
 
-/* --- CONTENEDOR DE TARJETAS DE ANIMALES --- */
-#exploreCategories {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 20px;
+/* ==========================================================
+   SECCIÓN EXPLORAR
+   ========================================================== */
+
+#categories {
+    min-height: 100vh;
     width: 100%;
-    max-width: 1200px;
-    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px 50px;
+    overflow-y: auto;
 }
 
-.animalCard {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    cursor: pointer;
+/* ==========================================================
+   CABECERA SUPERIOR
+   ========================================================== */
+
+.upperPan {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.upperPan h2 {
+    margin: 0;
+    color: white;
+}
+
+.upperPan button {
+    position: absolute;
+    left: 0;
+}
+
+/* ==========================================================
+   BUSCADOR Y FILTROS
+   ========================================================== */
+
+.ExploreSearchPan {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+#categories .filter {
+    width: 320px;
+    max-width: 100%;
+    padding: 12px 18px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    background-color: white;
     color: #333;
+    font-size: 1rem;
+    outline: none;
+}
+
+#categories .filter:focus {
+    border-color: #3b7a48;
+    box-shadow: 0 0 0 3px rgba(59, 122, 72, 0.25);
+}
+
+#categories .cat {
+    width: 230px;
+    max-width: 100%;
+    padding: 12px 18px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    background-color: white;
+    color: #333;
+    font-size: 1rem;
+    outline: none;
+}
+
+/* ==========================================================
+   BOTONES DE EXPLORACIÓN
+   ========================================================== */
+
+.exploreButtons {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.exploreButtons .see {
+    background-color: #1e462b;
+    color: white;
+    border: 1px solid #3b7a48;
+    padding: 10px 24px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.exploreButtons .see:hover {
+    background-color: #2e6b3f;
+    transform: translateY(-2px);
+}
+
+/* ==========================================================
+   CONTENEDOR DE TARJETAS
+   ========================================================== */
+
+#exploreCategories {
+    width: 100%;
+    max-width: 1200px;
+
+    display: grid;
+
+    grid-template-columns: repeat(
+        auto-fill,
+        minmax(240px, 1fr)
+    );
+
+    gap: 18px;
+
+    align-items: start;
+}
+
+/* ==========================================================
+   TARJETA DEL ANIMAL
+   ========================================================== */
+
+.animalCard {
+    width: 100%;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+
+    color: #333333;
+
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.25);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
     text-align: left;
-    transition: transform 0.2s;
 }
 
 .animalCard:hover {
     transform: translateY(-5px);
+
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.35);
 }
 
+/* ==========================================================
+   IMAGEN CUADRADA
+   ========================================================== */
+
+.animalImgContainer {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+
+    background-color: #edf2ed;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+.animalImg {
+    width: 100%;
+    height: 100%;
+
+    /*
+       CONTAIN permite ver la imagen completa
+       sin deformarla ni cortarla.
+    */
+    object-fit: contain;
+
+    display: block;
+}
+
+/* ==========================================================
+   INFORMACIÓN DEL ANIMAL
+   ========================================================== */
+
 .animalInfo {
-    padding: 15px;
+    padding: 14px;
 }
 
 .animalInfo h4 {
-    margin: 0 0 5px 0;
-    color: #1b382b;
+    margin: 0 0 6px 0;
+
+    color: #173b28;
+
+    font-size: 1.05rem;
 }
 
 .animalScientificName {
     font-style: italic;
-    color: #666;
-    font-size: 0.9rem;
-    margin-bottom: 10px;
+
+    color: #66756b;
+
+    font-size: 0.88rem;
+
+    margin: 0 0 10px 0;
 }
 
-/* Botones pequeños dentro de las tarjetas */
-.animalCard button, .animalCategory {
+/* ==========================================================
+   CATEGORÍA
+   ========================================================== */
+
+.animalCategory {
+    display: inline-block;
+
     background-color: #285430 !important;
+
     color: white !important;
+
     border: none !important;
-    padding: 6px 14px !important;
-    font-size: 0.8rem !important;
+
+    padding: 5px 12px !important;
+
+    font-size: 0.75rem !important;
+
     border-radius: 15px !important;
-    cursor: pointer;
+
+    margin: 0 0 12px 0 !important;
+
+    cursor: default !important;
+
+    box-shadow: none !important;
+
+    transform: none !important;
 }
 
-/* Secciones secundarias */
-#authSection, #userProfileSection, #reportSection, #gameSection {
-    min-height: 100vh;
+/* ==========================================================
+   BOTONES DE LA TARJETA
+   ========================================================== */
+
+.animalActions {
     display: flex;
-    flex-direction: column;
+
+    gap: 8px;
+
+    width: 100%;
+
+    margin-top: 8px;
+}
+
+.favoriteBtn,
+.infoBtn {
+    flex: 1;
+
+    border: none;
+
+    padding: 9px 8px;
+
+    border-radius: 8px;
+
+    font-size: 0.82rem;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        opacity 0.15s ease;
+}
+
+.favoriteBtn {
+    background-color: #e8f3e9;
+
+    color: #1b5e20;
+
+    border: 1px solid #a5d6a7;
+}
+
+.favoriteBtn:hover {
+    transform: translateY(-2px);
+
+    background-color: #d5ead7;
+}
+
+.favoriteBtn.isFavorite {
+    background-color: #285430;
+
+    color: white;
+}
+
+.infoBtn {
+    background-color: #eef2f4;
+
+    color: #24434d;
+
+    border: 1px solid #b7c5ca;
+}
+
+.infoBtn:hover {
+    transform: translateY(-2px);
+
+    background-color: #dce6e9;
+}
+
+/* ==========================================================
+   MODAL - INFORMACIÓN DE LA ESPECIE
+   ========================================================== */
+
+.modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    background: rgba(0, 0, 0, 0.72);
+
+    display: flex;
+
     justify-content: center;
+
     align-items: center;
-    text-align: center;
+
     padding: 20px;
 }
 
+.modalContent {
+    position: relative;
+
+    width: 100%;
+
+    max-width: 650px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: #ffffff;
+
+    color: #333333;
+
+    border-radius: 16px;
+
+    padding: 25px;
+
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.45);
+}
+
+.closeModalBtn {
+    position: absolute;
+
+    top: 12px;
+
+    right: 15px;
+
+    width: 38px;
+
+    height: 38px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    background: #285430;
+
+    color: white;
+
+    font-size: 25px;
+
+    line-height: 38px;
+
+    cursor: pointer;
+
+    z-index: 2;
+}
+
+.closeModalBtn:hover {
+    background: #1b3823;
+}
+
+.modalAnimalImage {
+    width: 100%;
+
+    max-height: 380px;
+
+    aspect-ratio: 1 / 1;
+
+    object-fit: contain;
+
+    background: #edf2ed;
+
+    border-radius: 12px;
+
+    margin-bottom: 18px;
+}
+
+.modalTitle {
+    margin: 0 45px 5px 0;
+
+    color: #173b28;
+
+    font-size: 1.6rem;
+}
+
+.modalScientific {
+    color: #66756b;
+
+    font-style: italic;
+
+    margin-bottom: 15px;
+}
+
+.modalCategory {
+    display: inline-block;
+
+    background: #285430;
+
+    color: white;
+
+    padding: 6px 12px;
+
+    border-radius: 15px;
+
+    font-size: 0.8rem;
+
+    margin-bottom: 18px;
+}
+
+.modalInfoBlock {
+    margin-top: 15px;
+
+    padding: 12px 14px;
+
+    background: #f3f7f3;
+
+    border-left: 4px solid #285430;
+
+    border-radius: 7px;
+}
+
+.modalInfoBlock strong {
+    display: block;
+
+    color: #1b5e20;
+
+    margin-bottom: 4px;
+}
+
+/* ==========================================================
+   MENSAJE CUANDO NO HAY RESULTADOS
+   ========================================================== */
+
+.noResults {
+    grid-column: 1 / -1;
+
+    text-align: center;
+
+    padding: 40px 20px;
+
+    color: #c5d5cc;
+
+    font-size: 1.1rem;
+}
+
+/* ==========================================================
+   OTRAS SECCIONES
+   ========================================================== */
+
+#authSection,
+#userProfileSection,
+#reportSection,
+#gameSection {
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 20px;
+}
+
+/* ==========================================================
+   FORMULARIOS
+   ========================================================== */
+
 form {
     display: flex;
+
     flex-direction: column;
+
     gap: 15px;
+
     width: 100%;
+
     max-width: 400px;
 }
 
-form input, form textarea, form select {
+form input,
+form textarea,
+form select {
     padding: 12px 15px;
+
     border-radius: 8px;
+
     border: 1px solid #2e5a44;
+
     background-color: #1b382b;
+
     color: white;
+
     font-size: 1rem;
+
     outline: none;
+}
+
+/* ==========================================================
+   PERFIL
+   ========================================================== */
+
+.profileCardContent {
+    width: 100%;
+
+    max-width: 500px;
+
+    background: white;
+
+    color: #333;
+
+    border-radius: 15px;
+
+    padding: 30px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+}
+
+.profileAvatarLarge {
+    font-size: 60px;
+}
+
+.profileStats {
+    display: flex;
+
+    gap: 15px;
+
+    justify-content: center;
+
+    margin-top: 20px;
+}
+
+.statBox {
+    flex: 1;
+
+    background: #edf5ef;
+
+    border-radius: 10px;
+
+    padding: 15px;
+}
+
+.statBox span {
+    display: block;
+
+    font-size: 1.5rem;
+
+    font-weight: bold;
+
+    color: #285430;
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+
+@media (max-width: 700px) {
+
+    #categories {
+        padding: 20px 12px 40px;
+    }
+
+    #exploreCategories {
+        grid-template-columns: repeat(
+            2,
+            minmax(0, 1fr)
+        );
+
+        gap: 12px;
+    }
+
+    .animalInfo {
+        padding: 11px;
+    }
+
+    .animalInfo h4 {
+        font-size: 0.95rem;
+    }
+
+    .animalScientificName {
+        font-size: 0.78rem;
+    }
+
+    .animalActions {
+        flex-direction: column;
+    }
+
+    .favoriteBtn,
+    .infoBtn {
+        width: 100%;
+    }
+
+    .upperPan {
+        padding-top: 45px;
+    }
+
+    .upperPan button {
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 430px) {
+
+    #exploreCategories {
+        grid-template-columns: 1fr;
+    }
 }
