@@ -1,185 +1,73 @@
-/* ==========================================================
-   FAUNO BELO - ESTILOS COMPLETOS
-   ========================================================== */
+/* ==========================================
+   FAUNO BELO - Hoja de Estilos Principal
+   ========================================== */
 
-.hidden {
-    display: none !important;
+/* Variables de Color Institucionales */
+:root {
+    --fauno-primary: #276749;     /* Verde bosque profundo */
+    --fauno-secondary: #38A169;   /* Verde natural / brillante */
+    --fauno-light: #F0FDF4;       /* Fondo suave ecológico */
+    --fauno-dark: #1C4532;        /* Texto oscuro / acentos */
+    --fauno-accent: #D69E2E;      /* Tono tierra / dorado sutil */
 }
 
-html, body {
+/* Estilos Generales y Tipografía */
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--fauno-light);
+    color: #2D3748;
     margin: 0;
     padding: 0;
-    width: 100%;
-    min-height: 100vh;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #12261e;
-    color: #ffffff;
 }
 
-/* Pantalla de inicio centrada */
-#home {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
+/* Transiciones Suaves para Tarjetas y Modales */
+.transition-all {
+    transition: all 0.3s ease-in-out;
 }
 
-#home h1 {
-    font-size: 3.2rem;
-    margin: 10px 0;
-    color: #ffffff;
+/* Efecto Hover para las Tarjetas de Especies */
+.species-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(39, 103, 73, 0.15);
 }
 
-#home p {
-    color: #a3e4d7;
-    margin-bottom: 20px;
+/* Personalización de la Barra de Desplazamiento (Scrollbar) */
+::-webkit-scrollbar {
+    width: 8px;
 }
 
-/* Contenedor principal de la sección de exploración */
-#categories {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 30px 20px;
-    box-sizing: border-box;
-    overflow-y: auto;
+::-webkit-scrollbar-track {
+    background: #EDF2F7;
 }
 
-/* Controles de búsqueda y filtros arriba */
-.filters-bar, #categories input, #categories select {
-    width: 100%;
-    max-width: 1200px;
-    display: flex;
-    gap: 15px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
+::-webkit-scrollbar-thumb {
+    background: var(--fauno-secondary);
+    border-radius: 4px;
 }
 
-#categories input[type="text"],
-#categories select {
-    padding: 12px 20px;
-    border-radius: 25px;
-    border: 1px solid #ccc;
-    background-color: #ffffff;
-    color: #333;
-    font-size: 1rem;
-    outline: none;
-    flex: 1;
-    min-width: 250px;
+::-webkit-scrollbar-thumb:hover {
+    background: var(--fauno-primary);
 }
 
-/* Botones principales de navegación y filtros */
-#home button, 
-#categories button:not(.animalCard button), 
-.main-btn,
-#userProfileSection button,
-#reportSection button,
-#gameSection button {
-    background-color: #1e462b;
-    color: white;
-    border: 1px solid #3b7a48;
-    padding: 12px 28px;
-    margin: 5px;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 25px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.2s, transform 0.2s;
+/* Animaciones para el Minijuego / Interfaz */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-#home button:hover, 
-#categories button:not(.animalCard button):hover, 
-.main-btn:hover,
-#userProfileSection button:hover,
-#reportSection button:hover,
-#gameSection button:hover {
-    background-color: #2e6b3f;
-    transform: translateY(-2px);
+.fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
 }
 
-/* --- CONTENEDOR DE TARJETAS DE ANIMALES --- */
-#exploreCategories {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 20px;
-    width: 100%;
-    max-width: 1200px;
-    box-sizing: border-box;
-}
-
-.animalCard {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    cursor: pointer;
-    color: #333;
-    text-align: left;
-    transition: transform 0.2s;
-}
-
-.animalCard:hover {
-    transform: translateY(-5px);
-}
-
-.animalInfo {
-    padding: 15px;
-}
-
-.animalInfo h4 {
-    margin: 0 0 5px 0;
-    color: #1b382b;
-}
-
-.animalScientificName {
-    font-style: italic;
-    color: #666;
-    font-size: 0.9rem;
-    margin-bottom: 10px;
-}
-
-/* Botones pequeños dentro de las tarjetas */
-.animalCard button, .animalCategory {
-    background-color: #285430 !important;
+/* Estilos personalizados para estados de la Trivia (Acierto/Error) */
+.btn-correct {
+    background-color: #38A169 !important;
     color: white !important;
-    border: none !important;
-    padding: 6px 14px !important;
-    font-size: 0.8rem !important;
-    border-radius: 15px !important;
-    cursor: pointer;
+    border-color: #276749 !important;
 }
 
-/* Secciones secundarias */
-#authSection, #userProfileSection, #reportSection, #gameSection {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
-    max-width: 400px;
-}
-
-form input, form textarea, form select {
-    padding: 12px 15px;
-    border-radius: 8px;
-    border: 1px solid #2e5a44;
-    background-color: #1b382b;
-    color: white;
-    font-size: 1rem;
-    outline: none;
+.btn-incorrect {
+    background-color: #E53E3E !important;
+    color: white !important;
+    border-color: #9B2C2C !important;
 }
