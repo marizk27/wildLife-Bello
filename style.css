@@ -1,5 +1,5 @@
 /* ==========================================================
-   FAUNO BELO - ESTILOS CSS COMPLETOS Y CENTRADOS
+   FAUNO BELO - ESTILOS DEFINITIVOS DE BOTONES Y VISTAS
    ========================================================== */
 
 /* REGLA OBLIGATORIA: Oculta las vistas inactivas */
@@ -18,7 +18,7 @@ html, body {
     color: #ffffff;
 }
 
-/* Hacemos que TODAS las secciones principales actúen como pantallas completas centradas */
+/* Hacemos que TODAS las secciones actúen como pantallas completas centradas */
 #home, 
 #categories, 
 #authSection, 
@@ -40,111 +40,99 @@ html, body {
     padding: 40px 20px;
 }
 
-/* Excepción: La sección de exploración necesita que el grid ocupe espacio hacia abajo si hay muchos animales */
+/* Excepción: La sección de exploración permite desplazamiento vertical */
 #categories {
     justify-content: flex-start;
     overflow-y: auto;
+    padding-top: 30px;
 }
 
-/* --- ESTILOS DE LA PANTALLA DE INICIO (#HOME) --- */
-#home h1 {
-    font-size: 3.5rem;
-    margin-bottom: 25px;
+/* ==========================================================
+   ESTILO GLOBAL Y UNIFICADO PARA *TODOS* LOS BOTONES
+   ========================================================== */
+button, 
+.section-btn, 
+.back-btn, 
+#home button, 
+#categories button, 
+#userProfileSection button, 
+#reportSection button, 
+#gameSection button {
+    background-color: #285430 !important;
+    color: white !important;
+    border: none !important;
+    padding: 12px 25px !important;
+    margin: 8px !important;
+    font-size: 1rem !important;
+    font-weight: bold !important;
+    border-radius: 30px !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
+    transition: background-color 0.2s, transform 0.2s !important;
+}
+
+button:hover, 
+.section-btn:hover, 
+.back-btn:hover {
+    background-color: #3b7a48 !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Contenedor superior en la sección de explorar (botones de categorías/filtros) */
+#categories > div:first-of-type, 
+.filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    max-width: 800px;
+}
+
+/* Barra de búsqueda estilizada */
+input[type="text"], 
+input[type="date"], 
+select, 
+textarea {
+    padding: 12px 18px !important;
+    border-radius: 25px !important;
+    border: 2px solid #285430 !important;
+    background-color: #1b382b !important;
+    color: white !important;
+    font-size: 1rem !important;
+    outline: none !important;
+    width: 100% !important;
+    max-width: 400px !important;
+    box-sizing: border-box !important;
+    margin-bottom: 15px !important;
+    text-align: center;
+}
+
+input::placeholder, textarea::placeholder {
+    color: #a3e4d7 !important;
+}
+
+/* Formularios */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 450px;
+}
+
+/* Títulos principales */
+h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
     color: #ffffff;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
 }
 
-/* Botones principales */
-#home button, 
-.section-btn {
-    background-color: #285430;
-    color: white;
-    border: none;
-    padding: 12px 30px;
-    margin: 10px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    border-radius: 30px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.2s, transform 0.2s;
-}
-
-#home button:hover {
-    background-color: #3b7a48;
-    transform: translateY(-2px);
-}
-
-/* --- ESTILOS PARA PERFIL Y REPORTES --- */
-#userProfileSection h2, 
-#reportSection h2,
-#authSection h2 {
+h2 {
     font-size: 2.2rem;
     margin-bottom: 15px;
     color: #a3e4d7;
-}
-
-#userProfileSection p, 
-#authSection p {
-    font-size: 1.1rem;
-    margin: 10px 0;
-    color: #d5dbdb;
-}
-
-/* Formularios estilizados y centrados */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
-    max-width: 400px;
-    margin-top: 20px;
-}
-
-input, textarea, select {
-    padding: 12px 15px;
-    border-radius: 8px;
-    border: 1px solid #2e5a44;
-    background-color: #1b382b;
-    color: white;
-    font-size: 1rem;
-    outline: none;
-}
-
-input::placeholder, textarea::placeholder {
-    color: #99a3a4;
-}
-
-form button {
-    background-color: #285430;
-    color: white;
-    border: none;
-    padding: 12px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-form button:hover {
-    background-color: #3b7a48;
-}
-
-/* Botones de "Volver" flotantes o alineados arriba */
-.back-btn, button[id*="Back"], button[id$="back"] {
-    background-color: #285430;
-    color: white;
-    border: none;
-    padding: 8px 20px;
-    font-size: 0.9rem;
-    border-radius: 20px;
-    cursor: pointer;
-    margin-bottom: 20px;
-}
-
-.back-btn:hover {
-    background-color: #3b7a48;
 }
 
 /* --- TARJETAS DE EXPLORACIÓN --- */
@@ -152,7 +140,7 @@ form button:hover {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 20px;
-    padding: 30px;
+    padding: 20px;
     width: 100%;
     max-width: 1200px;
     box-sizing: border-box;
@@ -191,20 +179,4 @@ form button:hover {
     margin-top: 20px;
     width: 100%;
     max-width: 450px;
-}
-
-.gameOptionBtn {
-    background-color: #1b382b;
-    border: 2px solid #285430;
-    color: white;
-    padding: 12px;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.gameOptionBtn:hover {
-    background-color: #285430;
 }
