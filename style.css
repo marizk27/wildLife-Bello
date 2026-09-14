@@ -1,62 +1,9 @@
-/* =========================================
-   ESTILOS AMPLIADOS PARA EL MINIJUEGO TRIVIA
-   ========================================= */
-#gameSection .authContainer {
-    padding: 10px 20px;
-    width: 100%;
-    box-sizing: border-box;
+/* Oculta de forma absoluta cualquier elemento con la clase hidden */
+.hidden {
+    display: none !important;
 }
 
-#gameSection .authBox {
-    width: 100% !important;
-    max-width: 800px !important; /* Caja mucho más ancha garantizada */
-    padding: 40px !important;
-    box-sizing: border-box;
-}
-
-#gameQuestionTitle {
-    font-size: 1.6rem !important;
-    margin-bottom: 20px !important;
-}
-
-#gameImage {
-    width: 100% !important;
-    height: 380px !important; 
-    object-fit: cover !important; 
-    border-radius: 14px;
-    margin-bottom: 25px !important;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-}
-
-#gameOptions {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important; /* Dos columnas simétricas */
-    gap: 15px !important;
-    width: 100% !important;
-}
-
-.gameOptionBtn {
-    background-color: #e8f5e9;
-    color: #1b5e20;
-    border: 2px solid #a5d6a7;
-    padding: 18px 15px !important;
-    border-radius: 12px;
-    font-size: 1.15rem !important;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    width: 100% !important;
-    box-sizing: border-box;
-}
-
-.gameOptionBtn:hover {
-    background-color: #c8e6c9;
-    border-color: #4caf50;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-#gameScoreBoard {
-    margin-top: 25px !important;
-    font-size: 1.3rem !important;
+/* Estilo base para las secciones principales para que ocupen su propio espacio cuando estén activas */
+section {
+    display: block;
 }
