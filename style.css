@@ -1,5 +1,5 @@
 /* ==========================================================
-   FAUNO BELO - ESTILOS DEFINITIVOS Y COMPLETOS
+   FAUNO BELO - ESTILOS COMPLETOS
    ========================================================== */
 
 .hidden {
@@ -60,7 +60,6 @@ html, body {
     justify-content: center;
 }
 
-/* Inputs de búsqueda y categoría */
 #categories input[type="text"],
 #categories select {
     padding: 12px 20px;
@@ -77,7 +76,10 @@ html, body {
 /* Botones principales de navegación y filtros */
 #home button, 
 #categories button:not(.animalCard button), 
-.main-btn {
+.main-btn,
+#userProfileSection button,
+#reportSection button,
+#gameSection button {
     background-color: #1e462b;
     color: white;
     border: 1px solid #3b7a48;
@@ -93,7 +95,10 @@ html, body {
 
 #home button:hover, 
 #categories button:not(.animalCard button):hover, 
-.main-btn:hover {
+.main-btn:hover,
+#userProfileSection button:hover,
+#reportSection button:hover,
+#gameSection button:hover {
     background-color: #2e6b3f;
     transform: translateY(-2px);
 }
@@ -108,7 +113,6 @@ html, body {
     box-sizing: border-box;
 }
 
-/* Tarjeta individual */
 .animalCard {
     background: white;
     border-radius: 12px;
@@ -122,12 +126,6 @@ html, body {
 
 .animalCard:hover {
     transform: translateY(-5px);
-}
-
-.animalImg {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
 }
 
 .animalInfo {
@@ -146,7 +144,7 @@ html, body {
     margin-bottom: 10px;
 }
 
-/* Botones pequeños dentro de las tarjetas (etiquetas de categoría) */
+/* Botones pequeños dentro de las tarjetas */
 .animalCard button, .animalCategory {
     background-color: #285430 !important;
     color: white !important;
@@ -157,7 +155,7 @@ html, body {
     cursor: pointer;
 }
 
-/* Secciones secundarias (Perfil, Reportes, Auth, Juegos) */
+/* Secciones secundarias */
 #authSection, #userProfileSection, #reportSection, #gameSection {
     min-height: 100vh;
     display: flex;
