@@ -1,6 +1,6 @@
 // ==================================================
 // FAUNO BELO
-// APP.JS (CORREGIDO)
+// APP.JS (FASE 2 - MODAL MÁS INFORMACIÓN)
 // ==================================================
 
 console.log("================================");
@@ -25,6 +25,11 @@ const inp = document.getElementById("filter");
 const allButton = document.getElementById("all");
 const categoriesButton = document.getElementById("categoriesBtn");
 const playButton = document.getElementById("play");
+
+// Elementos del Modal
+const speciesModal = document.getElementById("speciesModal");
+const modalBody = document.getElementById("modalBody");
+const closeModalBtn = document.getElementById("closeModal");
 
 
 // ==================================================
@@ -82,7 +87,7 @@ if (backButton) {
 
 
 // ==================================================
-// COLORES DE CATEGORÍAS (Corregido: Sin tilde en Anfibios)
+// COLORES DE CATEGORÍAS
 // ==================================================
 
 function colorCategory(category) {
@@ -316,7 +321,7 @@ if (playButton) {
 
 
 // ==================================================
-// CERRAR INFORMACIÓN ABIERTA
+// CERRAR INFORMACIÓN ABIERTA (TARJETA)
 // ==================================================
 
 function removeExpandedInfo() {
@@ -339,7 +344,7 @@ function removeExpandedInfo() {
 
 
 // ==================================================
-// CLICK EN TARJETA (Corregido: flatMap blindado)
+// CLICK EN TARJETA
 // ==================================================
 
 if (mainDisplay) {
@@ -358,7 +363,7 @@ if (mainDisplay) {
 
         const specie = animals
             .flatMap(function (category) {
-                return category.especies || []; // Blindaje para evitar errores si viene vacío
+                return category.especies || [];
             })
             .find(function (specie) {
                 return String(specie.id) === String(card.dataset.id);
@@ -418,13 +423,48 @@ if (mainDisplay) {
             });
         }
 
-        // MÁS INFORMACIÓN
+        // MÁS INFORMACIÓN -> APERTURA DEL MODAL
         const moreInfoBtn = expandedInfo.querySelector(".moreInfoBtn");
         if (moreInfoBtn) {
             moreInfoBtn.addEventListener("click", function (event) {
                 event.stopPropagation();
-                console.log("Más información:", specie.name);
+                console.log("Abriendo más información para:", specie.name);
+
+                if (modalBody && speciesModal) {
+                    modalBody.innerHTML = `
+                        <div class="modalDetails">
+                            <img src="${specie.img}" alt="${specie.name}">
+                            <h2>${specie.name}</h2>
+                            <p><em>${specie.scientificName}</em></p>
+                            <hr style="margin: 15px 0; border: 0; border-top: 1px solid #ddd;">
+                            <p><strong>Estado de conservación:</strong> ${specie.endangered}</p>
+                            <p><strong>Función ecológica:</strong> ${specie.function}</p>
+                        </div>
+                    `;
+                    speciesModal.classList.remove("hidden");
+                }
             });
+        }
+    });
+}
+
+
+// ==================================================
+// CONTROLADORES DE CIERRE DEL MODAL
+// ==================================================
+
+if (closeModalBtn) {
+    closeModalBtn.addEventListener("click", function () {
+        if (speciesModal) {
+            speciesModal.classList.add("hidden");
+        }
+    });
+}
+
+if (speciesModal) {
+    speciesModal.addEventListener("click", function (e) {
+        if (e.target === speciesModal) {
+            speciesModal.classList.add("hidden");
         }
     });
 }
