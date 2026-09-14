@@ -1,10 +1,13 @@
 ```html
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Fauno Belo</title>
+
     <link rel="stylesheet" href="./style.css">
 </head>
 
@@ -13,6 +16,7 @@
     <!-- ==============================
          INICIO
          ============================== -->
+
     <section class="home" id="home">
 
         <header class="homeHead">
@@ -25,18 +29,34 @@
 
             </section>
 
+
             <section class="actionsPan">
 
                 <div class="welcome">
+
                     <h1>Fauno Belo</h1>
-                    <p>Por la pasión de descubrir</p>
+
+                    <p>
+                        Por la pasión de descubrir
+                    </p>
+
                 </div>
 
-                <button type="button" id="explore" class="actionCard">
+
+                <button
+                    type="button"
+                    id="explore"
+                    class="actionCard"
+                >
                     <h3>Explorar</h3>
                 </button>
 
-                <button type="button" id="report" class="actionCard">
+
+                <button
+                    type="button"
+                    id="report"
+                    class="actionCard"
+                >
                     <h3>Reportar avistamiento</h3>
                 </button>
 
@@ -44,19 +64,32 @@
 
         </header>
 
+
         <main>
-            <article id="news" class="news"></article>
+
+            <article
+                id="news"
+                class="news"
+            ></article>
+
         </main>
 
     </section>
 
 
     <!-- ==============================
-         EXPLORAR FAUNA
+         EXPLORAR
          ============================== -->
-    <section id="exploreSection" class="hidden sect">
+
+    <section
+        id="categories"
+        class="hidden sect"
+    >
 
         <section class="upperPan">
+
+            <!-- IMPORTANTE:
+                 ahora "Volver" sí es un botón -->
 
             <button
                 type="button"
@@ -65,6 +98,7 @@
             >
                 Volver
             </button>
+
 
             <h2 class="dark-background">
                 Explorar fauna
@@ -76,6 +110,7 @@
         <!-- ==============================
              BUSCADOR
              ============================== -->
+
         <header class="ExploreSearchPan">
 
             <input
@@ -85,6 +120,7 @@
                 placeholder="Buscar especie"
                 autocomplete="off"
             >
+
 
             <select
                 class="cat"
@@ -110,8 +146,9 @@
 
 
         <!-- ==============================
-             BOTONES
+             BOTONES DE EXPLORACIÓN
              ============================== -->
+
         <div class="exploreButtons">
 
             <button
@@ -122,6 +159,11 @@
                 Todo
             </button>
 
+
+            <!-- NO usar id="categories"
+                 porque la sección principal
+                 ya tiene ese ID -->
+
             <button
                 type="button"
                 id="categoriesBtn"
@@ -129,6 +171,7 @@
             >
                 Categorías
             </button>
+
 
             <button
                 type="button"
@@ -142,8 +185,9 @@
 
 
         <!-- ==============================
-             LISTA / CATEGORÍAS
+             RESULTADOS
              ============================== -->
+
         <main
             id="exploreCategories"
             class="anList"
@@ -155,8 +199,13 @@
     <!-- ==============================
          JAVASCRIPT
          ============================== -->
-    <script type="module" src="./app.js"></script>
+
+    <script
+        type="module"
+        src="./app.js"
+    ></script>
 
 </body>
+
 </html>
 ```
