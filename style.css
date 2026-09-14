@@ -1,9 +1,68 @@
-/* Oculta de forma absoluta cualquier elemento con la clase hidden */
+/* ==========================================================
+   FAUNO BELO - ESTILOS CSS COMPLETOS
+   ========================================================== */
+
+/* REGLA OBLIGATORIA: Oculta las vistas que no están activas */
 .hidden {
     display: none !important;
 }
 
-/* Estilo base para las secciones principales para que ocupen su propio espacio cuando estén activas */
-section {
-    display: block;
+/* Estilos generales del cuerpo */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f4;
+}
+
+/* Pantalla de inicio (Home con tu diseño original de la selva) */
+#home {
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+/* Contenedor de las tarjetas de animales (Exploración) */
+#exploreCategories {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Estilo individual de las tarjetas de animales */
+.animalCard {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.animalCard:hover {
+    transform: translateY(-5px);
+}
+
+.animalImg {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.animalInfo {
+    padding: 15px;
+}
+
+/* Estilo para las opciones del Minijuego de Trivia */
+#gameOptions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 20px;
 }
