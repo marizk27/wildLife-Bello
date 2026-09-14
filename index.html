@@ -1,56 +1,287 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Fauno Belo</title>
+
+    <link
+        rel="stylesheet"
+        href="./style.css"
+    >
+
 </head>
+
 <body>
-    <section class="home" id="home">
-         <header class="homeHead">
+
+    <!--==================================================
+        PÁGINA PRINCIPAL
+    ==================================================-->
+
+    <section
+        class="home"
+        id="home"
+    >
+
+        <!--==================================================
+            ENCABEZADO PRINCIPAL
+        ==================================================-->
+
+        <header class="homeHead">
+
+            <!--==================================================
+                PERFIL
+            ==================================================-->
+
             <section class="upperPan">
-                <div class="profile">
-                    <p>Perfíl</p>
+
+                <div
+                    class="profile"
+                    id="profile"
+                >
+
+                    <p>Perfil</p>
+
                 </div>
+
             </section>
+
+
+            <!--==================================================
+                PANEL DE ACCIONES
+            ==================================================-->
+
             <section class="actionsPan">
+
+                <!--==================================================
+                    BIENVENIDA
+                ==================================================-->
+
                 <div class="welcome">
+
                     <h1>Fauno Belo</h1>
-                    <p>Por la pasión de descubrir</p>
+
+                    <p>
+                        Por la pasión de descubrir
+                    </p>
+
                 </div>
-                <button id="explore" class="actionCard">
+
+
+                <!--==================================================
+                    BOTÓN EXPLORAR
+                ==================================================-->
+
+                <button
+                    id="explore"
+                    class="actionCard"
+                    type="button"
+                >
+
                     <h3>Explorar</h3>
+
                 </button>
-                <button id="report" class="actionCard">
+
+
+                <!--==================================================
+                    BOTÓN REPORTAR AVISTAMIENTO
+                ==================================================-->
+
+                <button
+                    id="report"
+                    class="actionCard"
+                    type="button"
+                >
+
                     <h3>Reportar avistamiento</h3>
+
                 </button>
+
             </section>
+
         </header>
+
+
+        <!--==================================================
+            NOTICIAS
+        ==================================================-->
+
         <main>
-            <article id="news" class="news"></article>
+
+            <article
+                id="news"
+                class="news"
+            >
+            </article>
+
         </main>
+
     </section>
-    <section id="categories" class="hidden sect">
+
+
+    <!--==================================================
+        SECCIÓN EXPLORAR FAUNA
+    ==================================================-->
+
+    <section
+        id="categories"
+        class="hidden sect"
+    >
+
+        <!--==================================================
+            ENCABEZADO DE EXPLORACIÓN
+        ==================================================-->
+
         <section class="upperPan">
-            <h2 class="dark-background">Volver</h2>
-            <h2 class="dark-background">Explorar fauna</h2>
+
+            <!--
+                Botón/elemento de regreso.
+                La función de volver se implementará
+                posteriormente en app.js.
+            -->
+
+            <button
+                id="back"
+                class="dark-background backButton"
+                type="button"
+            >
+                Volver
+            </button>
+
+
+            <h2 class="dark-background">
+                Explorar fauna
+            </h2>
+
         </section>
+
+
+        <!--==================================================
+            BUSCADOR
+        ==================================================-->
+
         <header class="ExploreSearchPan">
-            <input id="filter" class="filter" type="search" placeholder="Buscar especie">
-            <select class="cat" name="Categorías" id="filterCat">
-                <option value="catego">Por categoría</option>
-                <option value="name">Nombre cotidiano</option>
-                <option value="sciNa">Nombre científico</option>
+
+            <!--==================================================
+                CAMPO DE BÚSQUEDA
+            ==================================================-->
+
+            <input
+                id="filter"
+                class="filter"
+                type="search"
+                placeholder="Buscar especie"
+                autocomplete="off"
+            >
+
+
+            <!--==================================================
+                CRITERIO DE BÚSQUEDA
+            ==================================================-->
+
+            <select
+                class="cat"
+                name="Categorías"
+                id="filterCat"
+            >
+
+                <option value="catego">
+                    Por categoría
+                </option>
+
+                <option value="name">
+                    Nombre cotidiano
+                </option>
+
+                <option value="sciNa">
+                    Nombre científico
+                </option>
+
             </select>
+
         </header>
-        <div class="exploreButtons">
-            <button id="all" class="see">Todo</button>
-            <button id="categories" class="see">Categorías</button>
-            <button id="play" class="see">¡Juega!</button>
+
+
+        <!--==================================================
+            BOTONES DE EXPLORACIÓN
+        ==================================================-->
+
+        <div
+            class="exploreButtons"
+            role="group"
+            aria-label="Opciones de exploración"
+        >
+
+            <!--==================================================
+                TODO
+            ==================================================-->
+
+            <button
+                id="all"
+                class="see"
+                type="button"
+            >
+                Todo
+            </button>
+
+
+            <!--==================================================
+                CATEGORÍAS
+            ==================================================-->
+
+            <button
+                id="categories"
+                class="see"
+                type="button"
+            >
+                Categorías
+            </button>
+
+
+            <!--==================================================
+                JUEGO
+            ==================================================-->
+
+            <button
+                id="play"
+                class="see"
+                type="button"
+            >
+                ¡Juega!
+            </button>
+
         </div>
-        <main id="exploreCategories" class="anList"></main>
+
+
+        <!--==================================================
+            LISTA / GRID DE ANIMALES
+        ==================================================-->
+
+        <main
+            id="exploreCategories"
+            class="anList"
+        >
+        </main>
+
     </section>
-    <script type="module" src="app.js"></script>
+
+
+    <!--==================================================
+        JAVASCRIPT PRINCIPAL
+    ==================================================-->
+
+    <script
+        type="module"
+        src="./app.js"
+    ></script>
+
 </body>
+
 </html>
