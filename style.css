@@ -1,5 +1,5 @@
 /* ==========================================================
-   FAUNO BELO - ESTILOS CSS COMPLETOS Y DEFINITIVOS
+   FAUNO BELO - ESTILOS CSS COMPLETOS Y CENTRADOS
    ========================================================== */
 
 /* REGLA OBLIGATORIA: Oculta las vistas inactivas */
@@ -8,39 +8,55 @@
 }
 
 /* Estilos generales de la página */
-body {
+html, body {
     margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #12261e;
-    color: #333;
+    color: #ffffff;
 }
 
-/* Pantalla de inicio con la estética natural de la selva */
-#home {
-    /* Si tienes una imagen de fondo, descomenta la línea de abajo y pon su nombre */
-    /* background-image: url('tu-imagen-de-fondo.jpg'); */
-    background-color: #1b382b; /* Color de respaldo por si no carga la imagen */
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
+/* Hacemos que TODAS las secciones principales actúen como pantallas completas centradas */
+#home, 
+#categories, 
+#authSection, 
+#userProfileSection, 
+#reportSection, 
+#gameSection {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #12261e;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: white;
     text-align: center;
-    padding: 20px;
+    padding: 40px 20px;
 }
 
+/* Excepción: La sección de exploración necesita que el grid ocupe espacio hacia abajo si hay muchos animales */
+#categories {
+    justify-content: flex-start;
+    overflow-y: auto;
+}
+
+/* --- ESTILOS DE LA PANTALLA DE INICIO (#HOME) --- */
 #home h1 {
     font-size: 3.5rem;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     color: #ffffff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
 }
 
-/* Estilo para los botones principales del Home (Estética redondeada verde) */
-#home button {
+/* Botones principales */
+#home button, 
+.section-btn {
     background-color: #285430;
     color: white;
     border: none;
@@ -59,29 +75,102 @@ body {
     transform: translateY(-2px);
 }
 
-/* Contenedor de las tarjetas de animales (Sección Exploración) */
+/* --- ESTILOS PARA PERFIL Y REPORTES --- */
+#userProfileSection h2, 
+#reportSection h2,
+#authSection h2 {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    color: #a3e4d7;
+}
+
+#userProfileSection p, 
+#authSection p {
+    font-size: 1.1rem;
+    margin: 10px 0;
+    color: #d5dbdb;
+}
+
+/* Formularios estilizados y centrados */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 20px;
+}
+
+input, textarea, select {
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #2e5a44;
+    background-color: #1b382b;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+}
+
+input::placeholder, textarea::placeholder {
+    color: #99a3a4;
+}
+
+form button {
+    background-color: #285430;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+form button:hover {
+    background-color: #3b7a48;
+}
+
+/* Botones de "Volver" flotantes o alineados arriba */
+.back-btn, button[id*="Back"], button[id$="back"] {
+    background-color: #285430;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.back-btn:hover {
+    background-color: #3b7a48;
+}
+
+/* --- TARJETAS DE EXPLORACIÓN --- */
 #exploreCategories {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 20px;
     padding: 30px;
-    background-color: #f4f6f4;
-    min-height: 100vh;
+    width: 100%;
+    max-width: 1200px;
+    box-sizing: border-box;
 }
 
-/* Estilo individual de las tarjetas de animales */
 .animalCard {
     background: white;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     overflow: hidden;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+    color: #333;
+    text-align: left;
+    transition: transform 0.2s;
 }
 
 .animalCard:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
 .animalImg {
@@ -94,52 +183,28 @@ body {
     padding: 15px;
 }
 
-.animalInfo h4 {
-    margin: 0 0 5px 0;
-    color: #1b382b;
-}
-
-.animalScientificName {
-    font-style: italic;
-    color: #666;
-    font-size: 0.9rem;
-    margin-bottom: 10px;
-}
-
-/* Botones de categoría dentro de las tarjetas */
-.animalCategory {
-    border: none;
-    padding: 5px 12px;
-    border-radius: 15px;
-    color: white;
-    font-size: 0.8rem;
-    font-weight: bold;
-}
-
-/* Estilo para las opciones del Minijuego de Trivia */
+/* --- MINIJUEGO TRIVIA --- */
 #gameOptions {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
     margin-top: 20px;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
+    max-width: 450px;
 }
 
 .gameOptionBtn {
-    background-color: #ffffff;
+    background-color: #1b382b;
     border: 2px solid #285430;
-    color: #285430;
+    color: white;
     padding: 12px;
     font-size: 1rem;
     font-weight: bold;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.2s, color 0.2s;
+    transition: background-color 0.2s;
 }
 
 .gameOptionBtn:hover {
     background-color: #285430;
-    color: white;
 }
