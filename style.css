@@ -1,4 +1,142 @@
 /* =========================================
+   ESTILOS GENERALES Y TEMA FAUNO BELO
+   ========================================= */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #0f2515;
+    color: #333;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* =========================================
+   ESTILO DE LA PÁGINA DE INICIO (BANNER HERO)
+   ========================================= */
+.home {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f2515 0%, #1b4d2e 50%, #0d1f11 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.homeHeaderTop {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.profileBtn {
+    background-color: #1e5631;
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: background 0.2s;
+}
+
+.profileBtn:hover {
+    background-color: #143d22;
+}
+
+/* CONTENEDOR CENTRAL */
+.heroContainer {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.brandBox {
+    margin-bottom: 40px;
+}
+
+.logoCircle {
+    width: 90px;
+    height: 90px;
+    background-color: #1e5631;
+    border-radius: 50%;
+    margin: 0 auto 15px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    border: 3px solid rgba(255,255,255,0.2);
+}
+
+.brandBox h1 {
+    font-size: 3.5rem;
+    color: #ffffff;
+    margin: 0 0 10px 0;
+    text-shadow: 0 3px 6px rgba(0,0,0,0.6);
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.brandBox p {
+    font-size: 1.2rem;
+    color: #e8f5e9;
+    margin: 0 0 15px 0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+    font-weight: 500;
+}
+
+.dividerLine {
+    color: #81c784;
+    font-size: 1.2rem;
+    letter-spacing: 5px;
+}
+
+/* BOTONES DE ACCIÓN PRINCIPALES */
+.heroActions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.actionBtn {
+    background-color: #1b4d2e;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    padding: 15px 35px;
+    border-radius: 35px;
+    font-size: 1.15rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    transition: all 0.3s ease;
+}
+
+.actionBtn:hover {
+    background-color: #143d22;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+}
+
+/* =========================================
    ESTILOS DE AUTENTICACIÓN Y PERFIL
    ========================================= */
 .authContainer {
@@ -84,4 +222,230 @@
     margin: 5px 0 0 0;
     color: #666;
     font-size: 0.9rem;
+}
+
+/* =========================================
+   SECCIÓN EXPLORAR Y TARJETAS
+   ========================================= */
+.sect {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #f0f4f1;
+    min-height: 100vh;
+}
+
+.upperPan {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.ExploreSearchPan {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.filter, .cat {
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #c8e6c9;
+    font-size: 1rem;
+    flex: 1;
+    min-width: 200px;
+    background: white;
+    outline: none;
+}
+
+.exploreButtons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.see {
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.see:hover {
+    background-color: #1b5e20;
+}
+
+.dark-background {
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* GRILLA DE ANIMALES */
+.anList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.animalCard {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e0e0e0;
+}
+
+.animalImg {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.animalInfo {
+    padding: 15px;
+    text-align: center;
+}
+
+.animalInfo h4 {
+    margin: 0 0 5px 0;
+    font-size: 1.25rem;
+    color: #2c3e50;
+}
+
+.animalScientificName {
+    font-style: italic;
+    color: #7f8c8d;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+}
+
+.animalCategory {
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+/* TARJETA EXPANDIDA */
+.animalCard.expanded {
+    border-color: #4caf50;
+}
+
+.expandedInfo {
+    padding: 15px;
+    background: #f4f9f4;
+    border-top: 1px solid #e0e0e0;
+    text-align: left;
+}
+
+.conservation {
+    display: inline-block;
+    background: #4caf50;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+}
+
+.expandedActions {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.favoriteBtn, .moreInfoBtn {
+    flex: 1;
+    padding: 9px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background: white;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.favoriteBtn {
+    color: #d81b60;
+    border-color: #f8bbd0;
+}
+
+.moreInfoBtn {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border-color: #c8e6c9;
+}
+
+/* =========================================
+   ESTILOS DEL MODAL
+   ========================================= */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modalContent {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 650px;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.closeModalBtn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #f0f0f0;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modalDetails img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 15px;
 }
