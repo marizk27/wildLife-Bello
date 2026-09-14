@@ -2,94 +2,96 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fauno Belo</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Pantalla de Inicio (Visible por defecto) -->
-    <main id="home">
+    <!-- 1. PANTALLA DE INICIO -->
+    <section id="home">
         <h1>Fauno Belo</h1>
-        <button id="explore">Explorar</button>
-        <button id="profile">Perfil</button>
-        <button id="report">Reportar Avistamiento</button>
-    </main>
+        <p>Por la vida, la naturaleza y nuestro futuro</p>
+        <button onclick="showSection('categories')">Explorar</button>
+        <button onclick="showSection('userProfileSection')">Perfil</button>
+        <button onclick="showSection('reportSection')">Reportar Avistamiento</button>
+    </section>
 
-    <!-- Sección de Categorías / Exploración (Oculta por defecto) -->
+    <!-- 2. SECCIÓN DE EXPLORACIÓN / CATEGORÍAS -->
     <section id="categories" class="hidden">
-        <button id="back">Volver al Inicio</button>
-        <button id="all">Todos</button>
-        <button id="categoriesBtn">Categorías</button>
-        <button id="play">Jugar Trivia</button>
-        <div id="filterCat">
-            <input type="text" id="filter" placeholder="Buscar especie...">
+        <div class="top-nav">
+            <button onclick="showSection('home')">Volver</button>
+            <button onclick="showSection('home')">Explorar fauna</button>
         </div>
-        <div id="exploreCategories"></div>
+
+        <div class="filters-bar">
+            <input type="text" placeholder="Buscar especie...">
+            <select>
+                <option value="">Por categoría</option>
+                <option value="anfibios">Anfibios</option>
+                <option value="aves">Aves</option>
+            </select>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <button>Todo</button>
+            <button>Categorías</button>
+            <button onclick="showSection('gameSection')">Jugar Trivia</button>
+        </div>
+
+        <!-- Contenedor de Tarjetas -->
+        <div id="exploreCategories">
+            <div class="animalCard">
+                <div class="animalInfo">
+                    <h4>Sapo común</h4>
+                    <p class="animalScientificName">Rhinella horribilis</p>
+                    <button class="animalCategory">Anfibios</button>
+                </div>
+            </div>
+            <div class="animalCard">
+                <div class="animalInfo">
+                    <h4>Azulejo</h4>
+                    <p class="animalScientificName">Thraupis episcopus</p>
+                    <button class="animalCategory">Aves</button>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Sección de Autenticación / Login / Registro (Oculta por defecto) -->
-    <section id="authSection" class="hidden">
-        <button id="authBack">Volver</button>
-        <div id="loginBox">
-            <h2>Iniciar Sesión</h2>
-            <form id="loginForm">
-                <input type="text" id="loginUser" placeholder="Usuario" required>
-                <input type="password" id="loginPass" placeholder="Contraseña" required>
-                <button type="submit">Entrar</button>
-            </form>
-            <p>¿No tienes cuenta? <a href="#" id="showRegister">Regístrate aquí</a></p>
-        </div>
-        <div id="registerBox" class="hidden">
-            <h2>Registro</h2>
-            <form id="registerForm">
-                <input type="text" id="regUser" placeholder="Nuevo Usuario" required>
-                <input type="password" id="regPass" placeholder="Nueva Contraseña" required>
-                <button type="submit">Registrarse</button>
-            </form>
-            <p>¿Ya tienes cuenta? <a href="#" id="showLogin">Inicia sesión</a></p>
-        </div>
-    </section>
-
-    <!-- Sección de Perfil de Usuario (Oculta por defecto) -->
+    <!-- 3. SECCIÓN DE PERFIL -->
     <section id="userProfileSection" class="hidden">
-        <button id="profileBack">Volver</button>
-        <h2>Perfil de <span id="userNameDisplay"></span></h2>
-        <p>Favoritos guardados: <span id="statFavorites">0</span></p>
-        <p>Reportes realizados: <span id="statReports">0</span></p>
-        <button id="logoutBtn">Cerrar Sesión</button>
+        <button onclick="showSection('home')">Volver</button>
+        <h2>Perfil de Usuario</h2>
+        <p>Favoritos guardados: 0</p>
+        <p>Reportes realizados: 0</p>
+        <button onclick="showSection('home')">Cerrar Sesión</button>
     </section>
 
-    <!-- Sección de Reportes (Oculta por defecto) -->
+    <!-- 4. SECCIÓN DE REPORTES -->
     <section id="reportSection" class="hidden">
-        <button id="reportBack">Volver</button>
+        <button onclick="showSection('home')">Volver</button>
         <h2>Reportar Avistamiento</h2>
-        <form id="reportForm">
-            <input type="text" id="reportSpecies" placeholder="Especie vista" required>
-            <input type="text" id="reportLocation" placeholder="Ubicación" required>
-            <input type="date" id="reportDate" required>
-            textarea id="reportNotes" placeholder="Notas adicionales"></textarea>
+        <form onsubmit="event.preventDefault(); alert('Reporte enviado');">
+            <input type="text" placeholder="Especie vista">
+            <input type="text" placeholder="Ubicación">
+            <input type="date">
+            <textarea placeholder="Notas adicionales"></textarea>
             <button type="submit">Enviar Reporte</button>
         </form>
     </section>
 
-    <!-- Sección del Minijuego (Oculta por defecto) -->
+    <!-- 5. SECCIÓN DE MINIJUEGO -->
     <section id="gameSection" class="hidden">
-        <button id="gameBack">Salir del Juego</button>
-        <h2>¿Qué animal es?</h2>
-        <p>Puntuación: <span id="currentScore">0</span></p>
-        <img id="gameImage" src="" alt="Adivina la especie" style="max-width: 300px; display: block; margin: 0 auto;">
-        <div id="gameOptions"></div>
+        <button onclick="showSection('categories')">Volver</button>
+        <h2>Minijuego Trivia</h2>
+        <p>¿A qué categoría pertenece esta especie?</p>
+        <div id="gameOptions">
+            <button class="gameOptionBtn">Anfibio</button>
+            <button class="gameOptionBtn">Ave</button>
+        </div>
     </section>
 
-    <!-- Modal de Información (Oculto por defecto) -->
-    <div id="speciesModal" class="hidden">
-        <div class="modalContent">
-            <button id="closeModal">X</button>
-            <div id="modalBody"></div>
-        </div>
-    </div>
-
-    <!-- Script principal -->
+    <!-- Enlace al archivo de JavaScript -->
     <script src="app.js"></script>
 </body>
 </html>
