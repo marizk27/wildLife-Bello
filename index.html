@@ -1,28 +1,98 @@
-<!-- Ejemplo de la tarjeta de la especie con el botón -->
-<div class="especie-card">
-    <h3>Carriquí vertiamarillo</h3>
-    <p>Cyanocorax yncas</p>
-    <button onclick="mostrarMasInformacion()">Más información</button>
-</div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Guía de Fauna - Bello</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            padding: 20px;
+        }
+        .especie-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            max-width: 650px;
+            margin: 20px auto;
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        .especie-img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .especie-info h2 {
+            margin: 0 0 5px 0;
+            color: #1b4332;
+        }
+        .especie-info h4 {
+            margin: 0 0 15px 0;
+            color: #52b788;
+            font-style: italic;
+        }
+        .btn-info {
+            background-color: #2d6a4f;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn-info:hover {
+            background-color: #1b4332;
+        }
+        .ficha-detallada {
+            display: none;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #dee2e6;
+            font-size: 14px;
+            color: #333;
+        }
+        .ficha-detallada p {
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
 
-<!-- Contenedor donde aparecerá la ficha detallada -->
-<div id="ficha-detallada" style="display: none;">
-    <h2>Carriquí vertiamarillo</h2>
-    <p><strong>Nombre científico:</strong> Cyanocorax yncas[cite: 2]</p>
-    <p><strong>Estado IUCN:</strong> Preocupación menor (LC)[cite: 2]</p>
-    <p><strong>Características físicas:</strong> Tiene la cabeza negra con una franja celeste brillante que forma una corona desde la frente hasta la nuca. Su espalda, alas y cola son de un verde intenso, mientras que el pecho y el vientre son amarillo claro. Presenta una máscara negra alrededor de los ojos y un pico robusto de color oscuro. Su colorido plumaje la hace fácilmente reconocible en los bosques donde habita[cite: 2].</p>
-    <p><strong>Función ecológica:</strong> Dispersión de semillas[cite: 2]</p>
-    <p><strong>Áreas de distribución:</strong> Área de recreación Piamonte y Páramo de las Baldías[cite: 2]</p>
-    <p><strong>Amenazas:</strong> Pérdida y fragmentación del hábitat[cite: 2]</p>
+<div class="especie-card">
+    <!-- Imagen de la especie -->
+    <img src="ruta_de_tu_imagen.jpg" alt="Carriquí vertiamarillo" class="especie-img">
+    
+    <div class="especie-info">
+        <h2>Carriquí vertiamarillo</h2>
+        <h4>Cyanocorax yncas</h4>
+        
+        <button class="btn-info" onclick="alternarInformacion()">Más información</button>
+
+        <!-- Contenido detallado que se despliega -->
+        <div id="ficha-detallada" class="ficha-detallada">
+            <p><strong>Estado IUCN:</strong> Preocupación menor (LC)</p>
+            <p><strong>Características físicas:</strong> Tiene la cabeza negra con una franja celeste brillante que forma una corona desde la frente hasta la nuca. Su espalda, alas y cola son de un verde intenso, mientras que el pecho y el vientre son amarillo claro. Presenta una máscara negra alrededor de los ojos y un pico robusto de color oscuro. Su colorido plumaje la hace fácilmente reconocible en los bosques donde habita.</p>
+            <p><strong>Función ecológica:</strong> Dispersión de semillas</p>
+            <p><strong>Áreas de distribución:</strong> Área de recreación Piamonte y Páramo de las Baldías</p>
+            <p><strong>Amenazas:</strong> Pérdida y fragmentación del hábitat</p>
+        </div>
+    </div>
 </div>
 
 <script>
-function mostrarMasInformacion() {
+function alternarInformacion() {
     var ficha = document.getElementById("ficha-detallada");
-    if (ficha.style.display === "none") {
-        ficha.style.display = "block"; // Muestra la ficha detallada
+    if (ficha.style.display === "none" || ficha.style.display === "") {
+        ficha.style.display = "block";
     } else {
-        ficha.style.display = "none"; // La oculta si se vuelve a hacer clic
+        ficha.style.display = "none";
     }
 }
 </script>
+
+</body>
+</html>
