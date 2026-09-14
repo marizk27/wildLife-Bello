@@ -1,6 +1,6 @@
 // ==================================================
 // FAUNO BELO
-// APP.JS
+// APP.JS (CORREGIDO)
 // ==================================================
 
 console.log("================================");
@@ -32,28 +32,20 @@ const playButton = document.getElementById("play");
 // ==================================================
 
 let animals = [];
-
 let exploreState = "all";
-
 let cardArray = [];
-
 let favoriteAnimals = new Set();
 
 
 // ==================================================
-// BOTÓN EXPLORAR (CORREGIDO)
+// BOTÓN EXPLORAR
 // ==================================================
 
 if (exploreCat) {
-
     exploreCat.addEventListener("click", () => {
-
         console.log("Botón Explorar presionado");
-
         home.classList.add("hidden");
-
         exploreP.classList.remove("hidden");
-
         exploreState = "all";
 
         if (filterCat) {
@@ -65,66 +57,49 @@ if (exploreCat) {
         }
 
         displayAnimals(animals);
-
     });
-
 }
 
 
 // ==================================================
-// VOLVER (CORREGIDO)
+// VOLVER
 // ==================================================
 
 const backButton = document.getElementById("back");
 
 if (backButton) {
-
     backButton.addEventListener("click", () => {
-
         console.log("Botón Volver presionado");
-
         exploreP.classList.add("hidden");
-
         home.classList.remove("hidden");
-
         exploreState = "all";
 
         if (inp) {
             inp.value = "";
         }
-
     });
-
 }
 
 
 // ==================================================
-// COLORES DE CATEGORÍAS
+// COLORES DE CATEGORÍAS (Corregido: Sin tilde en Anfibios)
 // ==================================================
 
 function colorCategory(category) {
-
     switch (category) {
-
-        case "Anfíbios":
+        case "Anfibios":
             return "#5fc463";
-
         case "Aves":
             return "#4a72e0";
-
         case "Mamíferos":
             return "#b47f2e";
-
         case "Reptiles":
             return "#e76958";
-
         case "Insectos":
             return "#85427c";
-
         default:
             return "#77a88d";
     }
-
 }
 
 
@@ -133,126 +108,73 @@ function colorCategory(category) {
 // ==================================================
 
 function displayAnimals(prods) {
-
     if (!mainDisplay) {
         return;
     }
 
     mainDisplay.innerHTML = "";
-
     mainDisplay.style.display = "grid";
 
-
-    // ==================================================
     // SIN RESULTADOS
-    // ==================================================
-
     if (!prods || prods.length === 0) {
-
         mainDisplay.innerHTML = `
             <div class="no-results">
                 <p>No se encontraron resultados.</p>
             </div>
         `;
-
         mainDisplay.style.display = "flex";
         mainDisplay.style.flexDirection = "column";
-
         return;
     }
 
-
-    // ==================================================
     // MOSTRAR TODO
-    // ==================================================
-
     if (exploreState === "all") {
-
         for (const category of prods) {
-
             if (!category.especies) {
                 continue;
             }
 
             for (const specie of category.especies) {
-
                 const div = document.createElement("div");
-
                 div.dataset.id = specie.id;
-
                 div.classList.add("animalCard");
 
                 div.innerHTML = `
-                    <img
-                        class="animalImg"
-                        src="${specie.img}"
-                        alt="${specie.name}"
-                    >
-
+                    <img class="animalImg" src="${specie.img}" alt="${specie.name}">
                     <div class="animalInfo">
-
                         <h4>${specie.name}</h4>
-
-                        <p class="animalScientificName">
-                            ${specie.scientificName}
-                        </p>
-
-                        <button
-                            type="button"
-                            class="animalCategory"
-                        >
+                        <p class="animalScientificName">${specie.scientificName}</p>
+                        <button type="button" class="animalCategory">
                             ${category.category}
                         </button>
-
                     </div>
                 `;
 
                 const categoryButton = div.querySelector(".animalCategory");
-
                 if (categoryButton) {
-                    categoryButton.style.backgroundColor =
-                        colorCategory(category.category);
+                    categoryButton.style.backgroundColor = colorCategory(category.category);
                 }
 
                 mainDisplay.appendChild(div);
-
             }
-
         }
-
     }
 
-
-    // ==================================================
     // MOSTRAR CATEGORÍAS
-    // ==================================================
-
     else if (exploreState === "categories") {
-
         for (const category of prods) {
-
             const div = document.createElement("div");
-
             div.classList.add("animalCard");
 
             div.innerHTML = `
                 <h3>${category.category}</h3>
-                <img
-                    class="animalImg"
-                    src="${category.categoryImg}"
-                    alt="${category.category}"
-                >
+                <img class="animalImg" src="${category.categoryImg}" alt="${category.category}">
             `;
 
-            div.style.backgroundColor =
-                colorCategory(category.category);
-
+            div.style.backgroundColor = colorCategory(category.category);
             mainDisplay.appendChild(div);
-
         }
-
     }
-
 }
 
 
@@ -261,11 +183,8 @@ function displayAnimals(prods) {
 // ==================================================
 
 async function load() {
-
     try {
-
         console.log("Cargando initialcategories.json...");
-
         const response = await fetch("./initialcategories.json");
 
         if (!response.ok) {
@@ -273,17 +192,10 @@ async function load() {
         }
 
         animals = await response.json();
-
         console.log("Datos cargados correctamente:", animals.length, "categorías");
-
         displayAnimals(animals);
-
-    }
-
-    catch (error) {
-
+    } catch (error) {
         console.error("Error cargando los datos:", error);
-
         if (mainDisplay) {
             mainDisplay.innerHTML = `
                 <div class="no-results">
@@ -292,9 +204,7 @@ async function load() {
                 </div>
             `;
         }
-
     }
-
 }
 
 
@@ -303,7 +213,6 @@ async function load() {
 // ==================================================
 
 function filterAnimals() {
-
     const text = inp.value.trim().toLowerCase();
 
     if (text === "") {
@@ -312,11 +221,9 @@ function filterAnimals() {
     }
 
     if (exploreState === "all") {
-
         let filteredAn = [];
 
         switch (filterCat.value) {
-
             case "catego":
                 filteredAn = animals.filter(function (category) {
                     return category.category.toLowerCase().includes(text);
@@ -325,7 +232,7 @@ function filterAnimals() {
 
             case "name":
                 filteredAn = animals.map(function (category) {
-                    const filteredSpecies = category.especies.filter(function (specie) {
+                    const filteredSpecies = (category.especies || []).filter(function (specie) {
                         return specie.name.toLowerCase().includes(text);
                     });
                     return {
@@ -339,7 +246,7 @@ function filterAnimals() {
 
             case "sciNa":
                 filteredAn = animals.map(function (category) {
-                    const filteredSpecies = category.especies.filter(function (specie) {
+                    const filteredSpecies = (category.especies || []).filter(function (specie) {
                         return specie.scientificName.toLowerCase().includes(text);
                     });
                     return {
@@ -354,34 +261,24 @@ function filterAnimals() {
 
         displayAnimals(filteredAn);
         return;
-
     }
 
     if (exploreState === "categories") {
-
         const filteredCategories = animals.filter(function (category) {
             return category.category.toLowerCase().includes(text);
         });
-
         displayAnimals(filteredCategories);
-
     }
-
 }
 
 
 // ==================================================
-// EVENTO BUSCADOR
+// EVENTOS DE CONTROL
 // ==================================================
 
 if (inp) {
     inp.addEventListener("input", filterAnimals);
 }
-
-
-// ==================================================
-// CAMBIO DE TIPO DE BÚSQUEDA
-// ==================================================
 
 if (filterCat) {
     filterCat.addEventListener("change", function () {
@@ -389,11 +286,6 @@ if (filterCat) {
         displayAnimals(animals);
     });
 }
-
-
-// ==================================================
-// BOTÓN TODO
-// ==================================================
 
 if (allButton) {
     allButton.addEventListener("click", function () {
@@ -405,11 +297,6 @@ if (allButton) {
     });
 }
 
-
-// ==================================================
-// BOTÓN CATEGORÍAS
-// ==================================================
-
 if (categoriesButton) {
     categoriesButton.addEventListener("click", function () {
         console.log("Botón CATEGORÍAS presionado");
@@ -419,11 +306,6 @@ if (categoriesButton) {
         displayAnimals(animals);
     });
 }
-
-
-// ==================================================
-// BOTÓN JUEGA
-// ==================================================
 
 if (playButton) {
     playButton.addEventListener("click", function () {
@@ -438,51 +320,37 @@ if (playButton) {
 // ==================================================
 
 function removeExpandedInfo() {
-
     if (cardArray.length === 0) {
         return;
     }
 
     const card = cardArray.shift();
-
     if (!card) {
         return;
     }
 
     card.classList.remove("expanded");
-
     const oldInfo = card.querySelector(".expandedInfo");
 
     if (oldInfo) {
         oldInfo.remove();
     }
-
 }
 
 
 // ==================================================
-// CLICK EN TARJETA
+// CLICK EN TARJETA (Corregido: flatMap blindado)
 // ==================================================
 
 if (mainDisplay) {
-
     mainDisplay.addEventListener("click", function (e) {
-
-        if (e.target.closest(".favoriteBtn")) {
-            return;
-        }
-
-        if (e.target.closest(".moreInfoBtn")) {
+        if (e.target.closest(".favoriteBtn") || e.target.closest(".moreInfoBtn")) {
             return;
         }
 
         const card = e.target.closest(".animalCard");
 
-        if (!card) {
-            return;
-        }
-
-        if (!card.dataset.id) {
+        if (!card || !card.dataset.id) {
             return;
         }
 
@@ -490,7 +358,7 @@ if (mainDisplay) {
 
         const specie = animals
             .flatMap(function (category) {
-                return category.especies;
+                return category.especies || []; // Blindaje para evitar errores si viene vacío
             })
             .find(function (specie) {
                 return String(specie.id) === String(card.dataset.id);
@@ -502,7 +370,6 @@ if (mainDisplay) {
         }
 
         const animalInfo = card.querySelector(".animalInfo");
-
         if (!animalInfo) {
             return;
         }
@@ -511,7 +378,6 @@ if (mainDisplay) {
         expandedInfo.classList.add("expandedInfo");
 
         card.dataset.status = specie.endangered;
-
         const isFavorite = favoriteAnimals.has(String(specie.id));
 
         expandedInfo.innerHTML = `
@@ -537,7 +403,6 @@ if (mainDisplay) {
 
         // FAVORITO
         const favoriteBtn = expandedInfo.querySelector(".favoriteBtn");
-
         if (favoriteBtn) {
             favoriteBtn.addEventListener("click", function (event) {
                 event.stopPropagation();
@@ -555,16 +420,13 @@ if (mainDisplay) {
 
         // MÁS INFORMACIÓN
         const moreInfoBtn = expandedInfo.querySelector(".moreInfoBtn");
-
         if (moreInfoBtn) {
             moreInfoBtn.addEventListener("click", function (event) {
                 event.stopPropagation();
                 console.log("Más información:", specie.name);
             });
         }
-
     });
-
 }
 
 
