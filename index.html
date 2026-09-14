@@ -1,205 +1,25 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Fauno Belo</title>
-
-    <link rel="stylesheet" href="./style.css">
-</head>
-
-<body>
-
-    <!-- =========================================
-         PÁGINA PRINCIPAL
-         ========================================= -->
-
-    <section class="home" id="home">
-
-        <header class="homeHead">
-
-            <section class="upperPan">
-
-                <div class="profile" id="profile">
-                    <p>Perfíl</p>
-                </div>
-
-            </section>
-
-
-            <section class="actionsPan">
-
-                <div class="welcome">
-
-                    <h1>Fauno Belo</h1>
-
-                    <p>
-                        Por la pasión de descubrir
-                    </p>
-
-                </div>
-
-
-                <button
-                    type="button"
-                    id="explore"
-                    class="actionCard"
-                >
-                    <h3>Explorar</h3>
-                </button>
-
-
-                <button
-                    type="button"
-                    id="report"
-                    class="actionCard"
-                >
-                    <h3>Reportar avistamiento</h3>
-                </button>
-
-            </section>
-
-        </header>
-
-
-        <main>
-
-            <article
-                id="news"
-                class="news"
-            ></article>
-
-        </main>
-
-    </section>
-
-
-    <!-- =========================================
-         SECCIÓN EXPLORAR FAUNA
-         ========================================= -->
-
-    <section
-        id="categories"
-        class="hidden sect"
-    >
-
-        <!-- =====================================
-             PARTE SUPERIOR
-             ===================================== -->
-
-        <section class="upperPan">
-
-            <button
-                type="button"
-                id="back"
-                class="dark-background"
-            >
-                Volver
-            </button>
-
-
-            <h2 class="dark-background">
-                Explorar fauna
-            </h2>
-
-        </section>
-
-
-        <!-- =====================================
-             BUSCADOR
-             ===================================== -->
-
-        <header class="ExploreSearchPan">
-
-            <input
-                id="filter"
-                class="filter"
-                type="search"
-                placeholder="Buscar especie"
-            >
-
-
-            <select
-                class="cat"
-                name="Categorías"
-                id="filterCat"
-            >
-
-                <option value="catego">
-                    Por categoría
-                </option>
-
-                <option value="name">
-                    Nombre cotidiano
-                </option>
-
-                <option value="sciNa">
-                    Nombre científico
-                </option>
-
-            </select>
-
-        </header>
-
-
-        <!-- =====================================
-             BOTONES DE EXPLORACIÓN
-             ===================================== -->
-
-        <div class="exploreButtons">
-
-            <button
-                type="button"
-                id="all"
-                class="see"
-            >
-                Todo
-            </button>
-
-
-            <button
-                type="button"
-                id="categoriesBtn"
-                class="see"
-            >
-                Categorías
-            </button>
-
-
-            <button
-                type="button"
-                id="play"
-                class="see"
-            >
-                ¡Juega!
-            </button>
-
+<!-- Sección de Favoritos dentro del Panel de Perfil -->
+<div id="user-profile-section" class="bg-white rounded-xl shadow-md p-6 max-w-4xl mx-auto my-8">
+    <h2 class="text-2xl font-bold text-green-800 mb-4">Mi Perfil - Fauno Belo</h2>
+    
+    <!-- Estadísticas -->
+    <div class="grid grid-cols-2 gap-4 mb-6">
+        <div class="bg-green-50 p-4 rounded-lg text-center">
+            <span class="block text-3xl font-bold text-green-600" id="fav-counter">0</span>
+            <span class="text-gray-600 text-sm">Especies Favoritas (♡)</span>
         </div>
+        <div class="bg-green-50 p-4 rounded-lg text-center">
+            <span class="block text-3xl font-bold text-green-600" id="sightings-counter">0</span>
+            <span class="text-gray-600 text-sm">Avistamientos Reportados</span>
+        </div>
+    </div>
 
-
-        <!-- =====================================
-             LISTADO DE ANIMALES / CATEGORÍAS
-             ===================================== -->
-
-        <main
-            id="exploreCategories"
-            class="anList"
-        ></main>
-
-    </section>
-
-
-    <!-- =========================================
-         JAVASCRIPT PRINCIPAL
-         ========================================= -->
-
-    <script
-        type="module"
-        src="./app.js"
-    ></script>
-
-</body>
-
-</html>
+    <!-- Contenedor de la Lista de Favoritos Interactiva -->
+    <div class="mt-6">
+        <h3 class="text-xl font-semibold text-gray-700 mb-3">Tus Especies Guardadas</h3>
+        <div id="favorites-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <!-- Las tarjetas de favoritos se inyectarán dinámicamente aquí -->
+            <p class="text-gray-500 italic col-span-full" id="no-favorites-msg">Aún no tienes especies guardadas como favoritas.</p>
+        </div>
+    </div>
+</div>
