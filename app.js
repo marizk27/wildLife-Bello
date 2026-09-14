@@ -2,6 +2,12 @@
 // FAUNO BELO - LÓGICA DE NAVEGACIÓN Y VISTAS
 // ==========================================================
 
+async function load() {
+    const response = await fetch("./initialcategories.json");
+    let animals = await response.json();
+}
+load();
+
 function showSection(sectionId) {
     // Lista con los IDs de todas las secciones principales
     const sections = ['home', 'categories', 'authSection', 'userProfileSection', 'reportSection', 'gameSection'];
@@ -42,6 +48,22 @@ document.addEventListener('DOMContentLoaded', () => {
     if (exploreBtn) {
         exploreBtn.addEventListener('click', () => {
             showSection('categories');
+            for (let category of animals) {
+                for (let specie of category.especies) {
+                    let div = document.createElement("div");
+                    div.dataset.id = specie.id;
+                    div.classList.add("animalCard")
+                    div.innerHTML = `
+                    <img class = "animalImg" src="${specie.img}" alt="">
+                    <div class = "animalInfo">
+                        <h4>${specie.name}</h4>
+                        <p class="animalScientificName">${specie.scientificName}</p>
+                        <button class="animalCategory"> ${prod.category}</button>
+                    </div>
+                `;
+                }
+            }
+                
         });
     }
 
