@@ -272,6 +272,11 @@ body {
     outline: none;
 }
 
+textarea.filter {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 12px;
+}
+
 .exploreButtons {
     display: flex;
     gap: 10px;
