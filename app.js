@@ -1,19 +1,36 @@
 // ==================================================
-// FAUNO BELO
-// APP.JS (FASE 2 - ESTÉTICA Y MODAL COMPLETO)
+// FAUNO BELO - APP.JS (CON GESTIÓN DE USUARIOS)
 // ==================================================
 
 console.log("================================");
-console.log("FAUNO BELO - APP.JS");
-console.log("SISTEMA INICIADO");
+console.log("FAUNO BELO - SISTEMA DE USUARIOS");
 console.log("================================");
 
-const exploreCat = document.getElementById("explore");
 const home = document.getElementById("home");
 const exploreP = document.getElementById("categories");
+const authSection = document.getElementById("authSection");
+const userProfileSection = document.getElementById("userProfileSection");
+
+const exploreCat = document.getElementById("explore");
+const profileBtn = document.getElementById("profile");
+const profileBtnText = document.getElementById("profileBtnText");
+
+const backButton = document.getElementById("back");
+const authBack = document.getElementById("authBack");
+const profileBack = document.getElementById("profileBack");
+
+const loginBox = document.getElementById("loginBox");
+const registerBox = document.getElementById("registerBox");
+const showRegister = document.getElementById("showRegister");
+const showLogin = document.getElementById("showLogin");
+
+const loginForm = document.getElementById("loginForm");
+const registerForm = document.getElementById("registerForm");
+const logoutBtn = document.getElementById("logoutBtn");
+const userNameDisplay = document.getElementById("userNameDisplay");
+const statFavorites = document.getElementById("statFavorites");
 
 const mainDisplay = document.getElementById("exploreCategories");
-
 const filterCat = document.getElementById("filterCat");
 const inp = document.getElementById("filter");
 
@@ -30,6 +47,130 @@ let exploreState = "all";
 let cardArray = [];
 let favoriteAnimals = new Set();
 
+// Manejo de Sesión Activa
+let currentUser = localStorage.getItem("faunoBelo_activeUser") || null;
+
+function updateProfileButton() {
+    if (currentUser) {
+        profileBtnText.textContent = currentUser;
+    } else {
+        profileBtnText.textContent = "Perfil";
+    }
+}
+updateProfileButton();
+
+// Botón de Perfil en la pantalla principal
+if (profileBtn) {
+    profileBtn.addEventListener("click", () => {
+        home.classList.add("hidden");
+        if (currentUser) {
+            // Mostrar panel de usuario logueado
+            userNameDisplay.textContent = currentUser;
+            statFavorites.textContent = favoriteAnimals.size;
+            userProfileSection.classList.remove("hidden");
+        } else {
+            // Mostrar ventana de login/registro
+            authSection.classList.remove("hidden");
+        }
+    });
+}
+
+// Botones Volver
+if (authBack) {
+    authBack.addEventListener("click", () => {
+        authSection.classList.add("hidden");
+        home.classList.remove("hidden");
+    });
+}
+
+if (profileBack) {
+    profileBack.addEventListener("click", () => {
+        userProfileSection.classList.add("hidden");
+        home.classList.remove("hidden");
+    });
+}
+
+// Alternar entre login y registro
+if (showRegister) {
+    showRegister.addEventListener("click", (e) => {
+        e.preventDefault();
+        loginBox.classList.add("hidden");
+        registerBox.classList.remove("hidden");
+    });
+}
+
+if (showLogin) {
+    showLogin.addEventListener("click", (e) => {
+        e.preventDefault();
+        registerBox.classList.add("hidden");
+        loginBox.classList.remove("hidden");
+    });
+}
+
+// REGISTRO DE USUARIO (Guardar en localStorage)
+if (registerForm) {
+    registerForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const user = document.getElementById("regUser").value.trim();
+        const pass = document.getElementById("regPass").value.trim();
+
+        let usersDB = JSON.parse(localStorage.getItem("faunoBelo_usersDB")) || {};
+
+        if (usersDB[user]) {
+            alert("Este nombre de usuario ya existe. Elige otro o inicia sesión.");
+            return;
+        }
+
+        usersDB[user] = pass;
+        localStorage.setItem("faunoBelo_usersDB", JSON.stringify(usersDB));
+        
+        alert("¡Cuenta creada con éxito! Ahora puedes iniciar sesión.");
+        document.getElementById("regUser").value = "";
+        document.getElementById("regPass").value = "";
+        registerBox.classList.add("hidden");
+        loginBox.classList.remove("hidden");
+    });
+}
+
+// INICIO DE SESIÓN
+if (loginForm) {
+    loginForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const user = document.getElementById("loginUser").value.trim();
+        const pass = document.getElementById("loginPass").value.trim();
+
+        let usersDB = JSON.parse(localStorage.getItem("faunoBelo_usersDB")) || {};
+
+        if (usersDB[user] && usersDB[user] === pass) {
+            currentUser = user;
+            localStorage.setItem("faunoBelo_activeUser", currentUser);
+            updateProfileButton();
+            
+            alert(`¡Bienvenido de nuevo, ${currentUser}!`);
+            document.getElementById("loginUser").value = "";
+            document.getElementById("loginPass").value = "";
+            
+            authSection.classList.add("hidden");
+            home.classList.remove("hidden");
+        } else {
+            alert("Usuario o contraseña incorrectos.");
+        }
+    });
+}
+
+// CERRAR SESIÓN
+if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+        currentUser = null;
+        localStorage.removeItem("faunoBelo_activeUser");
+        updateProfileButton();
+        userProfileSection.classList.add("hidden");
+        home.classList.remove("hidden");
+        alert("Has cerrado sesión correctamente.");
+    });
+}
+
+// Transición a Explorar
 if (exploreCat) {
     exploreCat.addEventListener("click", () => {
         home.classList.add("hidden");
@@ -41,7 +182,6 @@ if (exploreCat) {
     });
 }
 
-const backButton = document.getElementById("back");
 if (backButton) {
     backButton.addEventListener("click", () => {
         exploreP.classList.add("hidden");
@@ -230,6 +370,10 @@ if (mainDisplay) {
         if (favoriteBtn) {
             favoriteBtn.addEventListener("click", (event) => {
                 event.stopPropagation();
+                if (!currentUser) {
+                    alert("Debes iniciar sesión para guardar especies en favoritos.");
+                    return;
+                }
                 const animalId = String(specie.id);
                 if (favoriteAnimals.has(animalId)) {
                     favoriteAnimals.delete(animalId);
@@ -246,7 +390,6 @@ if (mainDisplay) {
             moreInfoBtn.addEventListener("click", (event) => {
                 event.stopPropagation();
                 if (modalBody && speciesModal) {
-                    // Muestra la información completa y descripción si existe en el JSON
                     modalBody.innerHTML = `
                         <div class="modalDetails">
                             <img src="${specie.img}" alt="${specie.name}">
@@ -255,7 +398,7 @@ if (mainDisplay) {
                             <hr style="margin: 15px 0; border: 0; border-top: 1px solid #ddd;">
                             <p><strong>Estado de conservación:</strong> ${specie.endangered}</p>
                             <p><strong>Función ecológica:</strong> ${specie.function}</p>
-                            <p><strong>Descripción / Detalles:</strong> ${specie.description || specie.function || "Información ecológica detallada de la especie en la plataforma Fauno Belo."}</p>
+                            <p><strong>Descripción:</strong> ${specie.description || specie.function || "Información ecológica detallada de la especie."}</p>
                         </div>
                     `;
                     speciesModal.classList.remove("hidden");
