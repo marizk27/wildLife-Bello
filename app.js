@@ -1,6 +1,6 @@
 // ==================================================
 // FAUNO BELO
-// APP.JS (FASE 2 - MODAL CON DESCRIPCIÓN Y DETALLES)
+// APP.JS (FASE 2 - ESTÉTICA Y MODAL COMPLETO)
 // ==================================================
 
 console.log("================================");
@@ -246,7 +246,7 @@ if (mainDisplay) {
             moreInfoBtn.addEventListener("click", (event) => {
                 event.stopPropagation();
                 if (modalBody && speciesModal) {
-                    // Muestra la descripción completa, estado de conservación, función ecológica y datos adicionales del JSON
+                    // Muestra la información completa y descripción si existe en el JSON
                     modalBody.innerHTML = `
                         <div class="modalDetails">
                             <img src="${specie.img}" alt="${specie.name}">
@@ -255,7 +255,7 @@ if (mainDisplay) {
                             <hr style="margin: 15px 0; border: 0; border-top: 1px solid #ddd;">
                             <p><strong>Estado de conservación:</strong> ${specie.endangered}</p>
                             <p><strong>Función ecológica:</strong> ${specie.function}</p>
-                            ${specie.description ? `<p><strong>Descripción:</strong> ${specie.description}</p>` : ""}
+                            <p><strong>Descripción / Detalles:</strong> ${specie.description || specie.function || "Información ecológica detallada de la especie en la plataforma Fauno Belo."}</p>
                         </div>
                     `;
                     speciesModal.classList.remove("hidden");
