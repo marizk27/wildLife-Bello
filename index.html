@@ -1,107 +1,54 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Fauno Belo</title>
 
-    <link
-        rel="stylesheet"
-        href="./style.css"
-    >
-
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
 
-    <!--==================================================
-        PÁGINA PRINCIPAL
-    ==================================================-->
+    <!-- ==================================================
+         PÁGINA PRINCIPAL
+         ================================================== -->
 
-    <section
-        class="home"
-        id="home"
-    >
-
-        <!--==================================================
-            ENCABEZADO PRINCIPAL
-        ==================================================-->
+    <section class="home" id="home">
 
         <header class="homeHead">
 
-            <!--==================================================
-                PERFIL
-            ==================================================-->
-
+            <!-- PANEL SUPERIOR -->
             <section class="upperPan">
 
-                <div
-                    class="profile"
-                    id="profile"
-                >
-
+                <div class="profile" id="profile">
                     <p>Perfil</p>
-
                 </div>
 
             </section>
 
 
-            <!--==================================================
-                PANEL DE ACCIONES
-            ==================================================-->
-
+            <!-- PANEL DE ACCIONES -->
             <section class="actionsPan">
 
-                <!--==================================================
-                    BIENVENIDA
-                ==================================================-->
-
                 <div class="welcome">
-
                     <h1>Fauno Belo</h1>
-
-                    <p>
-                        Por la pasión de descubrir
-                    </p>
-
+                    <p>Por la pasión de descubrir</p>
                 </div>
 
 
-                <!--==================================================
-                    BOTÓN EXPLORAR
-                ==================================================-->
-
-                <button
-                    id="explore"
-                    class="actionCard"
-                    type="button"
-                >
-
+                <!-- BOTÓN EXPLORAR -->
+                <button id="explore" class="actionCard" type="button">
                     <h3>Explorar</h3>
-
                 </button>
 
 
-                <!--==================================================
-                    BOTÓN REPORTAR AVISTAMIENTO
-                ==================================================-->
-
-                <button
-                    id="report"
-                    class="actionCard"
-                    type="button"
-                >
-
+                <!-- BOTÓN REPORTAR -->
+                <button id="report" class="actionCard" type="button">
                     <h3>Reportar avistamiento</h3>
-
                 </button>
 
             </section>
@@ -109,52 +56,28 @@
         </header>
 
 
-        <!--==================================================
-            NOTICIAS
-        ==================================================-->
-
+        <!-- NOTICIAS -->
         <main>
-
-            <article
-                id="news"
-                class="news"
-            >
-            </article>
-
+            <article id="news" class="news"></article>
         </main>
 
     </section>
 
 
-    <!--==================================================
-        SECCIÓN EXPLORAR FAUNA
-    ==================================================-->
 
-    <section
-        id="categories"
-        class="hidden sect"
-    >
+    <!-- ==================================================
+         SECCIÓN EXPLORAR
+         ================================================== -->
 
-        <!--==================================================
-            ENCABEZADO DE EXPLORACIÓN
-        ==================================================-->
+    <section id="exploreSection" class="hidden sect">
 
+        <!-- PANEL SUPERIOR -->
         <section class="upperPan">
 
-            <!--
-                Botón/elemento de regreso.
-                La función de volver se implementará
-                posteriormente en app.js.
-            -->
-
-            <button
-                id="back"
-                class="dark-background backButton"
-                type="button"
-            >
+            <!-- BOTÓN VOLVER -->
+            <button id="back" class="dark-background" type="button">
                 Volver
             </button>
-
 
             <h2 class="dark-background">
                 Explorar fauna
@@ -163,15 +86,11 @@
         </section>
 
 
-        <!--==================================================
-            BUSCADOR
-        ==================================================-->
+        <!-- ==================================================
+             BUSCADOR
+             ================================================== -->
 
         <header class="ExploreSearchPan">
-
-            <!--==================================================
-                CAMPO DE BÚSQUEDA
-            ==================================================-->
 
             <input
                 id="filter"
@@ -181,10 +100,6 @@
                 autocomplete="off"
             >
 
-
-            <!--==================================================
-                CRITERIO DE BÚSQUEDA
-            ==================================================-->
 
             <select
                 class="cat"
@@ -209,19 +124,12 @@
         </header>
 
 
-        <!--==================================================
-            BOTONES DE EXPLORACIÓN
-        ==================================================-->
 
-        <div
-            class="exploreButtons"
-            role="group"
-            aria-label="Opciones de exploración"
-        >
+        <!-- ==================================================
+             BOTONES DE EXPLORACIÓN
+             ================================================== -->
 
-            <!--==================================================
-                TODO
-            ==================================================-->
+        <div class="exploreButtons">
 
             <button
                 id="all"
@@ -232,22 +140,14 @@
             </button>
 
 
-            <!--==================================================
-                CATEGORÍAS
-            ==================================================-->
-
             <button
-                id="categories"
+                id="categoriesBtn"
                 class="see"
                 type="button"
             >
                 Categorías
             </button>
 
-
-            <!--==================================================
-                JUEGO
-            ==================================================-->
 
             <button
                 id="play"
@@ -260,22 +160,23 @@
         </div>
 
 
-        <!--==================================================
-            LISTA / GRID DE ANIMALES
-        ==================================================-->
+
+        <!-- ==================================================
+             CONTENEDOR DE ANIMALES / CATEGORÍAS
+             ================================================== -->
 
         <main
             id="exploreCategories"
             class="anList"
-        >
-        </main>
+        ></main>
 
     </section>
 
 
-    <!--==================================================
-        JAVASCRIPT PRINCIPAL
-    ==================================================-->
+
+    <!-- ==================================================
+         JAVASCRIPT
+         ================================================== -->
 
     <script
         type="module"
@@ -285,3 +186,4 @@
 </body>
 
 </html>
+```
