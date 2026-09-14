@@ -1,43 +1,58 @@
 ```javascript
-// ==================================================
+// ============================================================
 // FAUNO BELO
-// APP.JS PRINCIPAL
-// ==================================================
+// APP.JS
+// ============================================================
 
-// ==================================================
-// ELEMENTOS DEL DOM
-// ==================================================
+console.log("=================================");
+console.log("FAUNO BELO");
+console.log("APP.JS CARGANDO");
+console.log("=================================");
+
+
+// ============================================================
+// ELEMENTOS
+// ============================================================
 
 const home = document.getElementById("home");
 
-const exploreButton = document.getElementById("explore");
+const exploreButton =
+    document.getElementById("explore");
 
-const exploreSection = document.getElementById("exploreSection");
+const reportButton =
+    document.getElementById("report");
 
-const backButton = document.getElementById("back");
+const profileButton =
+    document.getElementById("profile");
 
-const mainDisplay = document.getElementById("exploreCategories");
+const exploreSection =
+    document.getElementById("exploreSection");
 
-const filterInput = document.getElementById("filter");
+const backButton =
+    document.getElementById("back");
 
-const filterCategory = document.getElementById("filterCat");
+const filterInput =
+    document.getElementById("filter");
 
-const exploreButtons = document.querySelector(".exploreButtons");
+const filterCategory =
+    document.getElementById("filterCat");
 
-const allButton = document.getElementById("all");
+const allButton =
+    document.getElementById("all");
 
-const categoriesButton = document.getElementById("categoriesBtn");
+const categoriesButton =
+    document.getElementById("categoriesBtn");
 
-const playButton = document.getElementById("play");
+const playButton =
+    document.getElementById("play");
 
-const reportButton = document.getElementById("report");
+const mainDisplay =
+    document.getElementById("exploreCategories");
 
-const profileButton = document.getElementById("profile");
 
-
-// ==================================================
-// VARIABLES PRINCIPALES
-// ==================================================
+// ============================================================
+// VARIABLES
+// ============================================================
 
 let animals = [];
 
@@ -48,107 +63,59 @@ let favoriteAnimals = new Set();
 let openedCard = null;
 
 
-// ==================================================
-// COMPROBACIÓN DE ELEMENTOS
-// ==================================================
+// ============================================================
+// COMPROBAR ELEMENTOS
+// ============================================================
 
-console.log("================================");
-console.log("FAUNO BELO");
-console.log("APP.JS INICIADO");
-console.log("================================");
+console.log("home:", home);
+console.log("explore:", exploreButton);
+console.log("exploreSection:", exploreSection);
+console.log("back:", backButton);
+console.log("all:", allButton);
+console.log("categories:", categoriesButton);
+console.log("play:", playButton);
+console.log("display:", mainDisplay);
 
 
-// ==================================================
-// LOCAL STORAGE - FAVORITOS
-// ==================================================
+// ============================================================
+// FUNCIÓN PARA NORMALIZAR TEXTO
+// ============================================================
 
-function loadFavorites() {
+function normalizeText(text) {
 
-    try {
-
-        const savedFavorites = localStorage.getItem("faunoBeloFavorites");
-
-        if (!savedFavorites) {
-            favoriteAnimals = new Set();
-            return;
-        }
-
-        const parsedFavorites = JSON.parse(savedFavorites);
-
-        if (Array.isArray(parsedFavorites)) {
-
-            favoriteAnimals = new Set(
-                parsedFavorites.map(String)
-            );
-
-        } else {
-
-            favoriteAnimals = new Set();
-
-        }
-
-    } catch (error) {
-
-        console.error(
-            "Error cargando favoritos:",
-            error
-        );
-
-        favoriteAnimals = new Set();
-
-    }
+    return String(text || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
 
 }
 
 
-// ==================================================
-// GUARDAR FAVORITOS
-// ==================================================
-
-function saveFavorites() {
-
-    try {
-
-        localStorage.setItem(
-            "faunoBeloFavorites",
-            JSON.stringify(
-                Array.from(favoriteAnimals)
-            )
-        );
-
-    } catch (error) {
-
-        console.error(
-            "Error guardando favoritos:",
-            error
-        );
-
-    }
-
-}
-
-
-// ==================================================
-// COLOR DE CATEGORÍAS
-// ==================================================
+// ============================================================
+// COLORES DE CATEGORÍA
+// ============================================================
 
 function colorCategory(category) {
 
-    switch (category) {
+    const normalized =
+        normalizeText(category);
 
-        case "Anfíbios":
+
+    switch (normalized) {
+
+        case "anfibios":
             return "#5fc463";
 
-        case "Aves":
+        case "aves":
             return "#4a72e0";
 
-        case "Mamíferos":
+        case "mamiferos":
             return "#b47f2e";
 
-        case "Reptiles":
+        case "reptiles":
             return "#e76958";
 
-        case "Insectos":
+        case "insectos":
             return "#85427c";
 
         default:
@@ -159,785 +126,41 @@ function colorCategory(category) {
 }
 
 
-// ==================================================
-// NORMALIZAR TEXTO
-// Sirve para búsquedas sin problemas de mayúsculas
-// ==================================================
-
-function normalizeText(text) {
-
-    return String(text ?? "")
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "");
-
-}
-
-
-// ==================================================
+// ============================================================
 // ABRIR EXPLORAR
-// ==================================================
+// ============================================================
 
 function openExplore() {
 
-    if (home) {
-        home.classList.add("hidden");
-    }
-
-    if (exploreSection) {
-        exploreSection.classList.remove("hidden");
-    }
-
-    exploreState = "all";
-
-    if (filterCategory) {
-        filterCategory.classList.remove("hidden");
-    }
-
-    if (filterInput) {
-        filterInput.value = "";
-    }
-
-    displayAnimals(animals);
-
-}
+    console.log("BOTÓN EXPLORAR PRESIONADO");
 
 
-// ==================================================
-// VOLVER AL INICIO
-// ==================================================
+    if (!home) {
 
-function goHome() {
-
-    if (exploreSection) {
-        exploreSection.classList.add("hidden");
-    }
-
-    if (home) {
-        home.classList.remove("hidden");
-    }
-
-    closeOpenedCard();
-
-}
-
-
-// ==================================================
-// CERRAR TARJETA ABIERTA
-// ==================================================
-
-function closeOpenedCard() {
-
-    if (!openedCard) {
-        return;
-    }
-
-    openedCard.classList.remove("expanded");
-
-    const expandedInfo =
-        openedCard.querySelector(".expandedInfo");
-
-    if (expandedInfo) {
-        expandedInfo.remove();
-    }
-
-    openedCard = null;
-
-}
-
-
-// ==================================================
-// ENCONTRAR ESPECIE POR ID
-// ==================================================
-
-function findSpeciesById(id) {
-
-    const numericId = Number(id);
-
-    for (const category of animals) {
-
-        if (!Array.isArray(category.especies)) {
-            continue;
-        }
-
-        const found = category.especies.find(
-            specie => Number(specie.id) === numericId
+        console.error(
+            "No existe #home"
         );
 
-        if (found) {
-
-            return {
-                specie: found,
-                category: category
-            };
-
-        }
-
-    }
-
-    return null;
-
-}
-
-
-// ==================================================
-// MOSTRAR MENSAJE SIN RESULTADOS
-// ==================================================
-
-function showNoResults() {
-
-    mainDisplay.innerHTML = "";
-
-    const noResults = document.createElement("div");
-
-    noResults.classList.add("no-results");
-
-    noResults.innerHTML = `
-        <h3>No encontramos resultados</h3>
-        <p>
-            Intenta buscar otra especie o utiliza
-            otro filtro.
-        </p>
-    `;
-
-    mainDisplay.appendChild(noResults);
-
-}
-
-
-// ==================================================
-// CREAR TARJETA DE ANIMAL
-// ==================================================
-
-function createAnimalCard(specie, category) {
-
-    const card = document.createElement("div");
-
-    card.classList.add("animalCard");
-
-    card.dataset.id = String(specie.id);
-
-    card.dataset.category =
-        category.category || "";
-
-
-    // --------------------------------------------------
-    // IMAGEN
-    // --------------------------------------------------
-
-    const image = document.createElement("img");
-
-    image.classList.add("animalImg");
-
-    image.src = specie.img || "";
-
-    image.alt =
-        specie.name || "Animal";
-
-
-    // --------------------------------------------------
-    // INFORMACIÓN
-    // --------------------------------------------------
-
-    const info = document.createElement("div");
-
-    info.classList.add("animalInfo");
-
-
-    // --------------------------------------------------
-    // NOMBRE
-    // --------------------------------------------------
-
-    const name = document.createElement("h4");
-
-    name.textContent =
-        specie.name || "Sin nombre";
-
-
-    // --------------------------------------------------
-    // NOMBRE CIENTÍFICO
-    // --------------------------------------------------
-
-    const scientificName =
-        document.createElement("p");
-
-    scientificName.classList.add(
-        "animalScientificName"
-    );
-
-    scientificName.textContent =
-        specie.scientificName || "";
-
-
-    // --------------------------------------------------
-    // CATEGORÍA
-    // --------------------------------------------------
-
-    const categoryButton =
-        document.createElement("button");
-
-    categoryButton.type = "button";
-
-    categoryButton.classList.add(
-        "animalCategory"
-    );
-
-    categoryButton.textContent =
-        category.category || "Sin categoría";
-
-    categoryButton.style.backgroundColor =
-        colorCategory(category.category);
-
-
-    // --------------------------------------------------
-    // ARMAR TARJETA
-    // --------------------------------------------------
-
-    info.appendChild(name);
-
-    info.appendChild(scientificName);
-
-    info.appendChild(categoryButton);
-
-    card.appendChild(image);
-
-    card.appendChild(info);
-
-
-    return card;
-
-}
-
-
-// ==================================================
-// MOSTRAR CATEGORÍAS
-// ==================================================
-
-function createCategoryCard(category) {
-
-    const card = document.createElement("div");
-
-    card.classList.add("animalCard");
-
-    card.dataset.category =
-        category.category || "";
-
-
-    const title =
-        document.createElement("h3");
-
-    title.textContent =
-        category.category || "Categoría";
-
-
-    const image =
-        document.createElement("img");
-
-    image.classList.add("animalImg");
-
-    image.src =
-        category.categoryImg || "";
-
-    image.alt =
-        category.category || "Categoría";
-
-
-    card.style.backgroundColor =
-        colorCategory(category.category);
-
-
-    card.appendChild(title);
-
-    card.appendChild(image);
-
-
-    return card;
-
-}
-
-
-// ==================================================
-// MOSTRAR ANIMALES / CATEGORÍAS
-// ==================================================
-
-function displayAnimals(products) {
-
-    if (!mainDisplay) {
-        return;
-    }
-
-    closeOpenedCard();
-
-    mainDisplay.innerHTML = "";
-
-    mainDisplay.style.display = "grid";
-
-
-    // --------------------------------------------------
-    // NO HAY RESULTADOS
-    // --------------------------------------------------
-
-    if (!Array.isArray(products) ||
-        products.length === 0) {
-
-        showNoResults();
-
         return;
 
     }
 
 
-    // ==================================================
-    // MODO TODO
-    // ==================================================
+    if (!exploreSection) {
 
-    if (exploreState === "all") {
-
-        let cardsCreated = 0;
-
-        for (const category of products) {
-
-            if (!category) {
-                continue;
-            }
-
-            if (!Array.isArray(category.especies)) {
-                continue;
-            }
-
-
-            for (const specie of category.especies) {
-
-                const card =
-                    createAnimalCard(
-                        specie,
-                        category
-                    );
-
-                mainDisplay.appendChild(card);
-
-                cardsCreated++;
-
-            }
-
-        }
-
-
-        if (cardsCreated === 0) {
-
-            showNoResults();
-
-        }
-
-        return;
-
-    }
-
-
-    // ==================================================
-    // MODO CATEGORÍAS
-    // ==================================================
-
-    if (exploreState === "categories") {
-
-        let cardsCreated = 0;
-
-        for (const category of products) {
-
-            const card =
-                createCategoryCard(category);
-
-            mainDisplay.appendChild(card);
-
-            cardsCreated++;
-
-        }
-
-
-        if (cardsCreated === 0) {
-
-            showNoResults();
-
-        }
-
-        return;
-
-    }
-
-}
-
-
-// ==================================================
-// CREAR INFORMACIÓN EXPANDIDA
-// ==================================================
-
-function openAnimalCard(card, specie) {
-
-    closeOpenedCard();
-
-
-    const animalInfo =
-        card.querySelector(".animalInfo");
-
-    if (!animalInfo) {
-        return;
-    }
-
-
-    const expandedInfo =
-        document.createElement("div");
-
-    expandedInfo.classList.add(
-        "expandedInfo"
-    );
-
-
-    // --------------------------------------------------
-    // ESTADO DE CONSERVACIÓN
-    // --------------------------------------------------
-
-    const conservation =
-        document.createElement("p");
-
-    conservation.classList.add(
-        "conservation"
-    );
-
-    conservation.textContent =
-        specie.endangered ||
-        "Estado de conservación no disponible";
-
-
-    // --------------------------------------------------
-    // FUNCIÓN ECOLÓGICA
-    // --------------------------------------------------
-
-    const functionText =
-        document.createElement("p");
-
-    functionText.innerHTML = `
-        <strong>Función ecológica:</strong><br>
-    `;
-
-    const functionDescription =
-        document.createElement("span");
-
-    functionDescription.textContent =
-        specie.function ||
-        "Información no disponible.";
-
-    functionText.appendChild(
-        functionDescription
-    );
-
-
-    // --------------------------------------------------
-    // CONTENEDOR DE BOTONES
-    // --------------------------------------------------
-
-    const actions =
-        document.createElement("div");
-
-    actions.classList.add(
-        "expandedActions"
-    );
-
-
-    // --------------------------------------------------
-    // BOTÓN FAVORITO
-    // --------------------------------------------------
-
-    const favoriteButton =
-        document.createElement("button");
-
-    favoriteButton.type = "button";
-
-    favoriteButton.classList.add(
-        "favoriteBtn"
-    );
-
-
-    const animalId =
-        String(specie.id);
-
-
-    function updateFavoriteButton() {
-
-        if (favoriteAnimals.has(animalId)) {
-
-            favoriteButton.textContent =
-                "♥ Guardado";
-
-        } else {
-
-            favoriteButton.textContent =
-                "♡ Guardar";
-
-        }
-
-    }
-
-
-    updateFavoriteButton();
-
-
-    favoriteButton.addEventListener(
-        "click",
-        function(event) {
-
-            event.stopPropagation();
-
-            if (favoriteAnimals.has(animalId)) {
-
-                favoriteAnimals.delete(
-                    animalId
-                );
-
-            } else {
-
-                favoriteAnimals.add(
-                    animalId
-                );
-
-            }
-
-            saveFavorites();
-
-            updateFavoriteButton();
-
-        }
-    );
-
-
-    // --------------------------------------------------
-    // BOTÓN MÁS INFORMACIÓN
-    // --------------------------------------------------
-
-    const moreInfoButton =
-        document.createElement("button");
-
-    moreInfoButton.type = "button";
-
-    moreInfoButton.classList.add(
-        "moreInfoBtn"
-    );
-
-    moreInfoButton.textContent =
-        "Más información";
-
-
-    moreInfoButton.addEventListener(
-        "click",
-        function(event) {
-
-            event.stopPropagation();
-
-            console.log(
-                "Más información:",
-                specie
-            );
-
-            // Esta función la desarrollaremos
-            // en la siguiente etapa.
-
-        }
-    );
-
-
-    // --------------------------------------------------
-    // ARMAR INFORMACIÓN
-    // --------------------------------------------------
-
-    actions.appendChild(
-        favoriteButton
-    );
-
-    actions.appendChild(
-        moreInfoButton
-    );
-
-
-    expandedInfo.appendChild(
-        conservation
-    );
-
-    expandedInfo.appendChild(
-        functionText
-    );
-
-    expandedInfo.appendChild(
-        actions
-    );
-
-
-    animalInfo.appendChild(
-        expandedInfo
-    );
-
-
-    card.classList.add("expanded");
-
-    openedCard = card;
-
-}
-
-
-// ==================================================
-// FILTRAR ANIMALES
-// ==================================================
-
-function filterAnimals() {
-
-    if (!Array.isArray(animals)) {
-        return;
-    }
-
-
-    const text =
-        normalizeText(
-            filterInput
-                ? filterInput.value.trim()
-                : ""
+        console.error(
+            "No existe #exploreSection"
         );
 
-
-    // --------------------------------------------------
-    // SI EL BUSCADOR ESTÁ VACÍO
-    // --------------------------------------------------
-
-    if (text === "") {
-
-        displayAnimals(animals);
-
         return;
 
     }
 
 
-    // ==================================================
-    // MODO TODO
-    // ==================================================
+    home.classList.add("hidden");
 
-    if (exploreState === "all") {
+    exploreSection.classList.remove("hidden");
 
-        const filterType =
-            filterCategory
-                ? filterCategory.value
-                : "name";
-
-
-        // --------------------------------------------------
-        // POR CATEGORÍA
-        // --------------------------------------------------
-
-        if (filterType === "catego") {
-
-            const filtered =
-                animals.filter(
-                    category =>
-                        normalizeText(
-                            category.category
-                        ).includes(text)
-                );
-
-
-            displayAnimals(filtered);
-
-            return;
-
-        }
-
-
-        // --------------------------------------------------
-        // POR NOMBRE O CIENTÍFICO
-        // --------------------------------------------------
-
-        const filtered =
-            animals
-                .map(category => {
-
-                    const species =
-                        Array.isArray(
-                            category.especies
-                        )
-                            ? category.especies
-                            : [];
-
-
-                    let filteredSpecies;
-
-
-                    if (filterType === "sciNa") {
-
-                        filteredSpecies =
-                            species.filter(
-                                specie =>
-                                    normalizeText(
-                                        specie.scientificName
-                                    ).includes(text)
-                            );
-
-                    } else {
-
-                        filteredSpecies =
-                            species.filter(
-                                specie =>
-                                    normalizeText(
-                                        specie.name
-                                    ).includes(text)
-                            );
-
-                    }
-
-
-                    return {
-                        ...category,
-                        especies: filteredSpecies
-                    };
-
-                })
-                .filter(
-                    category =>
-                        category.especies.length > 0
-                );
-
-
-        displayAnimals(filtered);
-
-        return;
-
-    }
-
-
-    // ==================================================
-    // MODO CATEGORÍAS
-    // ==================================================
-
-    if (exploreState === "categories") {
-
-        const filtered =
-            animals.filter(
-                category =>
-                    normalizeText(
-                        category.category
-                    ).includes(text)
-            );
-
-
-        displayAnimals(filtered);
-
-        return;
-
-    }
-
-}
-
-
-// ==================================================
-// CAMBIAR MODO A "TODO"
-// ==================================================
-
-function showAllAnimals() {
 
     exploreState = "all";
 
@@ -963,13 +186,970 @@ function showAllAnimals() {
 }
 
 
-// ==================================================
-// CAMBIAR MODO A "CATEGORÍAS"
-// ==================================================
+// ============================================================
+// VOLVER
+// ============================================================
+
+function goBack() {
+
+    console.log("BOTÓN VOLVER PRESIONADO");
+
+
+    if (exploreSection) {
+
+        exploreSection.classList.add(
+            "hidden"
+        );
+
+    }
+
+
+    if (home) {
+
+        home.classList.remove(
+            "hidden"
+        );
+
+    }
+
+
+    closeOpenedCard();
+
+}
+
+
+// ============================================================
+// CERRAR TARJETA ABIERTA
+// ============================================================
+
+function closeOpenedCard() {
+
+    if (!openedCard) {
+
+        return;
+
+    }
+
+
+    openedCard.classList.remove(
+        "expanded"
+    );
+
+
+    const expandedInfo =
+        openedCard.querySelector(
+            ".expandedInfo"
+        );
+
+
+    if (expandedInfo) {
+
+        expandedInfo.remove();
+
+    }
+
+
+    openedCard = null;
+
+}
+
+
+// ============================================================
+// CREAR TARJETA DE ANIMAL
+// ============================================================
+
+function createAnimalCard(
+    specie,
+    category
+) {
+
+    const card =
+        document.createElement("div");
+
+
+    card.classList.add(
+        "animalCard"
+    );
+
+
+    card.dataset.id =
+        String(specie.id);
+
+
+    card.dataset.category =
+        category.category || "";
+
+
+    // IMAGEN
+
+    const image =
+        document.createElement("img");
+
+
+    image.classList.add(
+        "animalImg"
+    );
+
+
+    image.src =
+        specie.img || "";
+
+
+    image.alt =
+        specie.name || "Animal";
+
+
+    // INFORMACIÓN
+
+    const info =
+        document.createElement("div");
+
+
+    info.classList.add(
+        "animalInfo"
+    );
+
+
+    // NOMBRE
+
+    const name =
+        document.createElement("h4");
+
+
+    name.textContent =
+        specie.name || "Sin nombre";
+
+
+    // NOMBRE CIENTÍFICO
+
+    const scientificName =
+        document.createElement("p");
+
+
+    scientificName.classList.add(
+        "animalScientificName"
+    );
+
+
+    scientificName.textContent =
+        specie.scientificName || "";
+
+
+    // CATEGORÍA
+
+    const categoryButton =
+        document.createElement("button");
+
+
+    categoryButton.type =
+        "button";
+
+
+    categoryButton.classList.add(
+        "animalCategory"
+    );
+
+
+    categoryButton.textContent =
+        category.category ||
+        "Sin categoría";
+
+
+    categoryButton.style.backgroundColor =
+        colorCategory(
+            category.category
+        );
+
+
+    // ARMAR
+
+    info.appendChild(name);
+
+    info.appendChild(
+        scientificName
+    );
+
+    info.appendChild(
+        categoryButton
+    );
+
+    card.appendChild(image);
+
+    card.appendChild(info);
+
+
+    return card;
+
+}
+
+
+// ============================================================
+// CREAR TARJETA DE CATEGORÍA
+// ============================================================
+
+function createCategoryCard(
+    category
+) {
+
+    const card =
+        document.createElement("div");
+
+
+    card.classList.add(
+        "animalCard"
+    );
+
+
+    card.dataset.category =
+        category.category || "";
+
+
+    const title =
+        document.createElement("h3");
+
+
+    title.textContent =
+        category.category ||
+        "Categoría";
+
+
+    const image =
+        document.createElement("img");
+
+
+    image.classList.add(
+        "animalImg"
+    );
+
+
+    image.src =
+        category.categoryImg || "";
+
+
+    image.alt =
+        category.category ||
+        "Categoría";
+
+
+    card.style.backgroundColor =
+        colorCategory(
+            category.category
+        );
+
+
+    card.appendChild(title);
+
+    card.appendChild(image);
+
+
+    return card;
+
+}
+
+
+// ============================================================
+// MOSTRAR ANIMALES
+// ============================================================
+
+function displayAnimals(data) {
+
+    if (!mainDisplay) {
+
+        console.error(
+            "No existe #exploreCategories"
+        );
+
+        return;
+
+    }
+
+
+    closeOpenedCard();
+
+
+    mainDisplay.innerHTML = "";
+
+
+    mainDisplay.style.display =
+        "grid";
+
+
+    if (
+        !Array.isArray(data) ||
+        data.length === 0
+    ) {
+
+        showNoResults();
+
+        return;
+
+    }
+
+
+    // ========================================================
+    // TODO
+    // ========================================================
+
+    if (
+        exploreState === "all"
+    ) {
+
+        let total =
+            0;
+
+
+        for (
+            const category
+            of data
+        ) {
+
+            if (
+                !category ||
+                !Array.isArray(
+                    category.especies
+                )
+            ) {
+
+                continue;
+
+            }
+
+
+            for (
+                const specie
+                of category.especies
+            ) {
+
+                const card =
+                    createAnimalCard(
+                        specie,
+                        category
+                    );
+
+
+                mainDisplay.appendChild(
+                    card
+                );
+
+
+                total++;
+
+            }
+
+        }
+
+
+        if (total === 0) {
+
+            showNoResults();
+
+        }
+
+
+        return;
+
+    }
+
+
+    // ========================================================
+    // CATEGORÍAS
+    // ========================================================
+
+    if (
+        exploreState ===
+        "categories"
+    ) {
+
+        for (
+            const category
+            of data
+        ) {
+
+            const card =
+                createCategoryCard(
+                    category
+                );
+
+
+            mainDisplay.appendChild(
+                card
+            );
+
+        }
+
+
+        return;
+
+    }
+
+}
+
+
+// ============================================================
+// NO HAY RESULTADOS
+// ============================================================
+
+function showNoResults() {
+
+    mainDisplay.innerHTML = "";
+
+
+    const message =
+        document.createElement("div");
+
+
+    message.classList.add(
+        "no-results"
+    );
+
+
+    message.innerHTML = `
+        <h3>No encontramos resultados</h3>
+
+        <p>
+            Intenta con otro nombre
+            o cambia el filtro.
+        </p>
+    `;
+
+
+    mainDisplay.appendChild(
+        message
+    );
+
+}
+
+
+// ============================================================
+// ENCONTRAR ANIMAL
+// ============================================================
+
+function findAnimal(id) {
+
+    const numericId =
+        Number(id);
+
+
+    for (
+        const category
+        of animals
+    ) {
+
+        if (
+            !Array.isArray(
+                category.especies
+            )
+        ) {
+
+            continue;
+
+        }
+
+
+        const specie =
+            category.especies.find(
+                item =>
+                    Number(item.id) ===
+                    numericId
+            );
+
+
+        if (specie) {
+
+            return {
+                specie: specie,
+                category: category
+            };
+
+        }
+
+    }
+
+
+    return null;
+
+}
+
+
+// ============================================================
+// ABRIR INFORMACIÓN DEL ANIMAL
+// ============================================================
+
+function openAnimalCard(
+    card,
+    specie
+) {
+
+    closeOpenedCard();
+
+
+    const info =
+        card.querySelector(
+            ".animalInfo"
+        );
+
+
+    if (!info) {
+
+        return;
+
+    }
+
+
+    const expanded =
+        document.createElement(
+            "div"
+        );
+
+
+    expanded.classList.add(
+        "expandedInfo"
+    );
+
+
+    const conservation =
+        document.createElement(
+            "p"
+        );
+
+
+    conservation.classList.add(
+        "conservation"
+    );
+
+
+    conservation.textContent =
+        specie.endangered ||
+        "Estado de conservación no disponible";
+
+
+    const ecologicalFunction =
+        document.createElement(
+            "p"
+        );
+
+
+    ecologicalFunction.innerHTML =
+        "<strong>Función ecológica:</strong><br>";
+
+
+    const functionText =
+        document.createElement(
+            "span"
+        );
+
+
+    functionText.textContent =
+        specie.function ||
+        "Información no disponible.";
+
+
+    ecologicalFunction.appendChild(
+        functionText
+    );
+
+
+    // ========================================================
+    // ACCIONES
+    // ========================================================
+
+    const actions =
+        document.createElement(
+            "div"
+        );
+
+
+    actions.classList.add(
+        "expandedActions"
+    );
+
+
+    // FAVORITO
+
+    const favoriteButton =
+        document.createElement(
+            "button"
+        );
+
+
+    favoriteButton.type =
+        "button";
+
+
+    favoriteButton.classList.add(
+        "favoriteBtn"
+    );
+
+
+    const id =
+        String(specie.id);
+
+
+    function updateFavorite() {
+
+        if (
+            favoriteAnimals.has(id)
+        ) {
+
+            favoriteButton.textContent =
+                "♥ Guardado";
+
+        } else {
+
+            favoriteButton.textContent =
+                "♡ Guardar";
+
+        }
+
+    }
+
+
+    updateFavorite();
+
+
+    favoriteButton.addEventListener(
+        "click",
+        function(event) {
+
+            event.stopPropagation();
+
+
+            if (
+                favoriteAnimals.has(id)
+            ) {
+
+                favoriteAnimals.delete(
+                    id
+                );
+
+            } else {
+
+                favoriteAnimals.add(
+                    id
+                );
+
+            }
+
+
+            localStorage.setItem(
+                "faunoBeloFavorites",
+                JSON.stringify(
+                    Array.from(
+                        favoriteAnimals
+                    )
+                )
+            );
+
+
+            updateFavorite();
+
+        }
+    );
+
+
+    // MÁS INFORMACIÓN
+
+    const moreInfoButton =
+        document.createElement(
+            "button"
+        );
+
+
+    moreInfoButton.type =
+        "button";
+
+
+    moreInfoButton.classList.add(
+        "moreInfoBtn"
+    );
+
+
+    moreInfoButton.textContent =
+        "Más información";
+
+
+    moreInfoButton.addEventListener(
+        "click",
+        function(event) {
+
+            event.stopPropagation();
+
+
+            console.log(
+                "Más información:",
+                specie
+            );
+
+        }
+    );
+
+
+    actions.appendChild(
+        favoriteButton
+    );
+
+
+    actions.appendChild(
+        moreInfoButton
+    );
+
+
+    expanded.appendChild(
+        conservation
+    );
+
+
+    expanded.appendChild(
+        ecologicalFunction
+    );
+
+
+    expanded.appendChild(
+        actions
+    );
+
+
+    info.appendChild(
+        expanded
+    );
+
+
+    card.classList.add(
+        "expanded"
+    );
+
+
+    openedCard =
+        card;
+
+}
+
+
+// ============================================================
+// FILTRAR
+// ============================================================
+
+function filterAnimals() {
+
+    if (
+        !filterInput
+    ) {
+
+        return;
+
+    }
+
+
+    const text =
+        normalizeText(
+            filterInput.value.trim()
+        );
+
+
+    // SIN TEXTO
+
+    if (text === "") {
+
+        displayAnimals(
+            animals
+        );
+
+        return;
+
+    }
+
+
+    // ========================================================
+    // TODO
+    // ========================================================
+
+    if (
+        exploreState === "all"
+    ) {
+
+        const type =
+            filterCategory
+                ? filterCategory.value
+                : "name";
+
+
+        // CATEGORÍA
+
+        if (
+            type === "catego"
+        ) {
+
+            const result =
+                animals.filter(
+                    category =>
+                        normalizeText(
+                            category.category
+                        ).includes(text)
+                );
+
+
+            displayAnimals(
+                result
+            );
+
+
+            return;
+
+        }
+
+
+        // ESPECIE
+
+        const result =
+            animals
+                .map(
+                    category => {
+
+                        const species =
+                            Array.isArray(
+                                category.especies
+                            )
+                                ? category.especies
+                                : [];
+
+
+                        let filtered;
+
+
+                        if (
+                            type ===
+                            "sciNa"
+                        ) {
+
+                            filtered =
+                                species.filter(
+                                    specie =>
+                                        normalizeText(
+                                            specie.scientificName
+                                        ).includes(
+                                            text
+                                        )
+                                );
+
+                        } else {
+
+                            filtered =
+                                species.filter(
+                                    specie =>
+                                        normalizeText(
+                                            specie.name
+                                        ).includes(
+                                            text
+                                        )
+                                );
+
+                        }
+
+
+                        return {
+                            ...category,
+                            especies:
+                                filtered
+                        };
+
+                    }
+                )
+                .filter(
+                    category =>
+                        category
+                            .especies
+                            .length > 0
+                );
+
+
+        displayAnimals(
+            result
+        );
+
+
+        return;
+
+    }
+
+
+    // ========================================================
+    // CATEGORÍAS
+    // ========================================================
+
+    if (
+        exploreState ===
+        "categories"
+    ) {
+
+        const result =
+            animals.filter(
+                category =>
+                    normalizeText(
+                        category.category
+                    ).includes(text)
+            );
+
+
+        displayAnimals(
+            result
+        );
+
+    }
+
+}
+
+
+// ============================================================
+// BOTÓN TODO
+// ============================================================
+
+function showAll() {
+
+    console.log(
+        "BOTÓN TODO PRESIONADO"
+    );
+
+
+    exploreState =
+        "all";
+
+
+    if (filterCategory) {
+
+        filterCategory.classList.remove(
+            "hidden"
+        );
+
+    }
+
+
+    if (filterInput) {
+
+        filterInput.value = "";
+
+    }
+
+
+    displayAnimals(
+        animals
+    );
+
+}
+
+
+// ============================================================
+// BOTÓN CATEGORÍAS
+// ============================================================
 
 function showCategories() {
 
-    exploreState = "categories";
+    console.log(
+        "BOTÓN CATEGORÍAS PRESIONADO"
+    );
+
+
+    exploreState =
+        "categories";
 
 
     if (filterCategory) {
@@ -988,14 +1168,16 @@ function showCategories() {
     }
 
 
-    displayAnimals(animals);
+    displayAnimals(
+        animals
+    );
 
 }
 
 
-// ==================================================
-// EVENTO BOTÓN EXPLORAR
-// ==================================================
+// ============================================================
+// BOTÓN EXPLORAR
+// ============================================================
 
 if (exploreButton) {
 
@@ -1008,12 +1190,18 @@ if (exploreButton) {
         }
     );
 
+} else {
+
+    console.error(
+        "ERROR: botón #explore no encontrado"
+    );
+
 }
 
 
-// ==================================================
-// EVENTO BOTÓN VOLVER
-// ==================================================
+// ============================================================
+// BOTÓN VOLVER
+// ============================================================
 
 if (backButton) {
 
@@ -1021,58 +1209,85 @@ if (backButton) {
         "click",
         function() {
 
-            goHome();
+            goBack();
 
         }
+    );
+
+} else {
+
+    console.error(
+        "ERROR: botón #back no encontrado"
     );
 
 }
 
 
-// ==================================================
-// BOTONES DE EXPLORACIÓN
-// ==================================================
+// ============================================================
+// BOTÓN TODO
+// ============================================================
 
-if (exploreButtons) {
+if (allButton) {
 
-    exploreButtons.addEventListener(
+    allButton.addEventListener(
         "click",
-        function(event) {
+        function() {
 
-            const button =
-                event.target.closest("button");
+            showAll();
 
+        }
+    );
 
-            if (!button) {
-                return;
-            }
+} else {
 
+    console.error(
+        "ERROR: botón #all no encontrado"
+    );
 
-            switch (button.id) {
-
-                case "all":
-
-                    showAllAnimals();
-
-                    break;
+}
 
 
-                case "categoriesBtn":
+// ============================================================
+// BOTÓN CATEGORÍAS
+// ============================================================
 
-                    showCategories();
+if (categoriesButton) {
 
-                    break;
+    categoriesButton.addEventListener(
+        "click",
+        function() {
+
+            showCategories();
+
+        }
+    );
+
+} else {
+
+    console.error(
+        "ERROR: botón #categoriesBtn no encontrado"
+    );
+
+}
 
 
-                case "play":
+// ============================================================
+// BOTÓN JUEGA
+// ============================================================
 
-                    console.log(
-                        "Juegos próximamente"
-                    );
+if (playButton) {
 
-                    break;
+    playButton.addEventListener(
+        "click",
+        function() {
 
-            }
+            console.log(
+                "BOTÓN JUEGA PRESIONADO"
+            );
+
+            alert(
+                "Los juegos de Fauno Belo estarán disponibles próximamente."
+            );
 
         }
     );
@@ -1080,9 +1295,9 @@ if (exploreButtons) {
 }
 
 
-// ==================================================
+// ============================================================
 // BUSCADOR
-// ==================================================
+// ============================================================
 
 if (filterInput) {
 
@@ -1098,9 +1313,9 @@ if (filterInput) {
 }
 
 
-// ==================================================
-// CAMBIO DEL TIPO DE FILTRO
-// ==================================================
+// ============================================================
+// SELECT DEL FILTRO
+// ============================================================
 
 if (filterCategory) {
 
@@ -1114,7 +1329,10 @@ if (filterCategory) {
 
             }
 
-            displayAnimals(animals);
+
+            displayAnimals(
+                animals
+            );
 
         }
     );
@@ -1122,9 +1340,9 @@ if (filterCategory) {
 }
 
 
-// ==================================================
-// CLIC EN LAS TARJETAS
-// ==================================================
+// ============================================================
+// CLIC EN TARJETAS
+// ============================================================
 
 if (mainDisplay) {
 
@@ -1132,80 +1350,70 @@ if (mainDisplay) {
         "click",
         function(event) {
 
-            const target =
-                event.target;
-
-
-            // --------------------------------------------------
-            // SI SE PRESIONÓ UN BOTÓN
-            // --------------------------------------------------
-
-            if (
-                target.closest(
+            const clickedButton =
+                event.target.closest(
                     "button"
-                )
-            ) {
+                );
+
+
+            if (clickedButton) {
 
                 return;
 
             }
 
 
-            // --------------------------------------------------
-            // BUSCAR TARJETA
-            // --------------------------------------------------
-
             const card =
-                target.closest(
+                event.target.closest(
                     ".animalCard"
                 );
 
 
             if (!card) {
+
                 return;
+
             }
 
 
-            // --------------------------------------------------
-            // SI ESTAMOS EN CATEGORÍAS
-            // --------------------------------------------------
+            // =================================================
+            // CATEGORÍAS
+            // =================================================
 
             if (
                 exploreState ===
                 "categories"
             ) {
 
-                const categoryName =
+                const category =
                     card.dataset.category;
+
 
                 console.log(
                     "Categoría seleccionada:",
-                    categoryName
+                    category
                 );
 
-                // Más adelante aquí
-                // mostraremos los animales
-                // de la categoría seleccionada.
 
                 return;
 
             }
 
 
-            // --------------------------------------------------
-            // BUSCAR ESPECIE
-            // --------------------------------------------------
+            // =================================================
+            // ANIMAL
+            // =================================================
 
             const result =
-                findSpeciesById(
+                findAnimal(
                     card.dataset.id
                 );
 
 
             if (!result) {
 
-                console.warn(
-                    "No se encontró la especie:",
+                console.error(
+                    "No se encontró el animal:",
                     card.dataset.id
                 );
 
@@ -1225,9 +1433,9 @@ if (mainDisplay) {
 }
 
 
-// ==================================================
-// BOTÓN REPORTAR
-// ==================================================
+// ============================================================
+// REPORTAR
+// ============================================================
 
 if (reportButton) {
 
@@ -1236,11 +1444,13 @@ if (reportButton) {
         function() {
 
             console.log(
-                "Reportar avistamiento"
+                "BOTÓN REPORTAR PRESIONADO"
             );
 
-            // Esta sección se desarrollará
-            // posteriormente.
+
+            alert(
+                "La función de reportar avistamientos estará disponible próximamente."
+            );
 
         }
     );
@@ -1248,9 +1458,9 @@ if (reportButton) {
 }
 
 
-// ==================================================
+// ============================================================
 // PERFIL
-// ==================================================
+// ============================================================
 
 if (profileButton) {
 
@@ -1259,11 +1469,13 @@ if (profileButton) {
         function() {
 
             console.log(
-                "Perfil"
+                "PERFIL PRESIONADO"
             );
 
-            // Esta sección se desarrollará
-            // posteriormente.
+
+            alert(
+                "El perfil estará disponible próximamente."
+            );
 
         }
     );
@@ -1271,18 +1483,74 @@ if (profileButton) {
 }
 
 
-// ==================================================
-// CARGAR DATOS
-// ==================================================
+// ============================================================
+// CARGAR FAVORITOS
+// ============================================================
 
-async function loadAnimals() {
+function loadFavorites() {
 
     try {
 
-        console.log(
-            "Cargando initialcategories.json..."
+        const saved =
+            localStorage.getItem(
+                "faunoBeloFavorites"
+            );
+
+
+        if (!saved) {
+
+            favoriteAnimals =
+                new Set();
+
+            return;
+
+        }
+
+
+        const parsed =
+            JSON.parse(saved);
+
+
+        if (
+            Array.isArray(parsed)
+        ) {
+
+            favoriteAnimals =
+                new Set(
+                    parsed.map(
+                        String
+                    )
+                );
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Error cargando favoritos:",
+            error
         );
 
+        favoriteAnimals =
+            new Set();
+
+    }
+
+}
+
+
+// ============================================================
+// CARGAR JSON
+// ============================================================
+
+async function loadAnimals() {
+
+    console.log(
+        "Cargando initialcategories.json..."
+    );
+
+
+    try {
 
         const response =
             await fetch(
@@ -1293,7 +1561,8 @@ async function loadAnimals() {
         if (!response.ok) {
 
             throw new Error(
-                `Error HTTP ${response.status}`
+                "HTTP " +
+                response.status
             );
 
         }
@@ -1303,21 +1572,25 @@ async function loadAnimals() {
             await response.json();
 
 
-        if (!Array.isArray(data)) {
+        if (
+            !Array.isArray(data)
+        ) {
 
             throw new Error(
-                "initialcategories.json no contiene un array."
+                "El JSON no contiene un array."
             );
 
         }
 
 
-        animals = data;
+        animals =
+            data;
 
 
         console.log(
-            "Datos cargados correctamente."
+            "JSON cargado correctamente."
         );
+
 
         console.log(
             "Categorías:",
@@ -1325,7 +1598,8 @@ async function loadAnimals() {
         );
 
 
-        let totalSpecies = 0;
+        let total =
+            0;
 
 
         for (
@@ -1339,7 +1613,7 @@ async function loadAnimals() {
                 )
             ) {
 
-                totalSpecies +=
+                total +=
                     category.especies.length;
 
             }
@@ -1349,7 +1623,7 @@ async function loadAnimals() {
 
         console.log(
             "Especies:",
-            totalSpecies
+            total
         );
 
 
@@ -1357,10 +1631,11 @@ async function loadAnimals() {
             animals
         );
 
+
     } catch (error) {
 
         console.error(
-            "No se pudieron cargar los animales:",
+            "ERROR CARGANDO JSON:",
             error
         );
 
@@ -1369,11 +1644,19 @@ async function loadAnimals() {
 
             mainDisplay.innerHTML = `
                 <div class="no-results">
-                    <h3>Error al cargar Fauno Belo</h3>
+
+                    <h3>
+                        No se pudieron cargar
+                        los animales
+                    </h3>
+
                     <p>
-                        No se pudo cargar
-                        initialcategories.json.
+                        Revisa que
+                        initialcategories.json
+                        esté en la misma carpeta
+                        que index.html.
                     </p>
+
                 </div>
             `;
 
@@ -1384,20 +1667,24 @@ async function loadAnimals() {
 }
 
 
-// ==================================================
-// INICIALIZACIÓN
-// ==================================================
+// ============================================================
+// INICIO DEL SISTEMA
+// ============================================================
 
 loadFavorites();
 
 loadAnimals();
 
 
-// ==================================================
-// FIN
-// ==================================================
+console.log(
+    "================================="
+);
 
 console.log(
-    "FAUNO BELO - SISTEMA LISTO"
+    "FAUNO BELO - APP.JS LISTO"
+);
+
+console.log(
+    "================================="
 );
 ```
