@@ -11,21 +11,19 @@
 <body>
 
     <!-- =========================================
-         PÁGINA PRINCIPAL (DISEÑO SELVÁTICO)
+         PÁGINA PRINCIPAL (BANNER TIPO HERO)
          ========================================= -->
     <section class="home" id="home">
         
         <!-- BARRA SUPERIOR CON PERFIL -->
         <header class="homeHeaderTop">
             <button type="button" class="profileBtn" id="profile">
-                <span class="profileIcon">👤</span> Perfil
+                <span class="profileIcon">👤</span> <span id="profileBtnText">Perfil</span>
             </button>
         </header>
 
-        <!-- CONTENIDO CENTRAL DEL HERO / BANNER -->
+        <!-- CONTENIDO CENTRAL DEL HERO -->
         <div class="heroContainer">
-            
-            <!-- LOGOTIPO Y TÍTULO -->
             <div class="brandBox">
                 <div class="logoCircle">
                     <span class="deerIcon">🦌</span>
@@ -35,7 +33,6 @@
                 <div class="dividerLine">🍃</div>
             </div>
 
-            <!-- BOTONES DE ACCIÓN PRINCIPALES -->
             <div class="heroActions">
                 <button type="button" id="explore" class="actionBtn">
                     <span class="btnIcon">🧭</span> Explorar
@@ -44,20 +41,76 @@
                     <span class="btnIcon">🔭</span> Reportar avistamiento
                 </button>
             </div>
-
         </div>
-
     </section>
 
 
     <!-- =========================================
-         SECCIÓN EXPLORAR FAUNA (SECCIÓN SECUNDARIA)
+         SECCIÓN AUTENTICACIÓN (LOGIN / REGISTRO)
+         ========================================= -->
+    <section id="authSection" class="hidden sect">
+        <section class="upperPan">
+            <button type="button" id="authBack" class="dark-background">Volver</button>
+            <h2 class="dark-background">Mi Cuenta Fauno Belo</h2>
+        </section>
+
+        <div class="authContainer">
+            <div class="authBox" id="loginBox">
+                <h3>Iniciar Sesión</h3>
+                <form id="loginForm">
+                    <input type="text" id="loginUser" placeholder="Nombre de usuario" required class="filter">
+                    <input type="password" id="loginPass" placeholder="Contraseña" required class="filter">
+                    <button type="submit" class="see" style="width:100%; margin-top:10px;">Entrar</button>
+                </form>
+                <p class="authSwitchText">¿No tienes cuenta? <a href="#" id="showRegister">Regístrate aquí</a></p>
+            </div>
+
+            <div class="authBox hidden" id="registerBox">
+                <h3>Crear Nueva Cuenta</h3>
+                <form id="registerForm">
+                    <input type="text" id="regUser" placeholder="Elige un nombre de usuario" required class="filter">
+                    <input type="password" id="regPass" placeholder="Elige una contraseña" required class="filter">
+                    <button type="submit" class="see" style="width:100%; margin-top:10px;">Registrarse</button>
+                </form>
+                <p class="authSwitchText">¿Ya tienes cuenta? <a href="#" id="showLogin">Inicia sesión</a></p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =========================================
+         SECCIÓN PERFIL DE USUARIO (LOGUEADO)
+         ========================================= -->
+    <section id="userProfileSection" class="hidden sect">
+        <section class="upperPan">
+            <button type="button" id="profileBack" class="dark-background">Volver</button>
+            <h2 class="dark-background">Panel de Usuario</h2>
+        </section>
+        <div class="profileCardContent">
+            <div class="profileAvatarLarge">👤</div>
+            <h2 id="userNameDisplay">Usuario</h2>
+            <p>¡Bienvenido de nuevo a la comunidad de exploradores de Fauno Belo!</p>
+            <div class="profileStats">
+                <div class="statBox">
+                    <span id="statFavorites">0</span>
+                    <p>Favoritos</p>
+                </div>
+                <div class="statBox">
+                    <span id="statReports">0</span>
+                    <p>Avistamientos</p>
+                </div>
+            </div>
+            <button type="button" id="logoutBtn" class="actionCard" style="background:#d81b60; color:white; margin-top:20px;">Cerrar Sesión</button>
+        </div>
+    </section>
+
+
+    <!-- =========================================
+         SECCIÓN EXPLORAR FAUNA
          ========================================= -->
     <section id="categories" class="hidden sect">
         <section class="upperPan">
-            <button type="button" id="back" class="dark-background">
-                Volver
-            </button>
+            <button type="button" id="back" class="dark-background">Volver</button>
             <h2 class="dark-background">Explorar fauna</h2>
         </section>
 
