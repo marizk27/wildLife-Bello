@@ -1,5 +1,5 @@
 // ==================================================
-// FAUNO BELO - APP.JS COMPLETO
+// FAUNO BELO - APP.JS COMPLETO (CON MINIJUEGO)
 // ==================================================
 
 const home = document.getElementById("home");
@@ -7,6 +7,7 @@ const exploreP = document.getElementById("categories");
 const authSection = document.getElementById("authSection");
 const userProfileSection = document.getElementById("userProfileSection");
 const reportSection = document.getElementById("reportSection");
+const gameSection = document.getElementById("gameSection");
 
 const exploreCat = document.getElementById("explore");
 const reportBtn = document.getElementById("report");
@@ -17,6 +18,7 @@ const backButton = document.getElementById("back");
 const authBack = document.getElementById("authBack");
 const profileBack = document.getElementById("profileBack");
 const reportBack = document.getElementById("reportBack");
+const gameBack = document.getElementById("gameBack");
 
 const loginBox = document.getElementById("loginBox");
 const registerBox = document.getElementById("registerBox");
@@ -43,12 +45,17 @@ const speciesModal = document.getElementById("speciesModal");
 const modalBody = document.getElementById("modalBody");
 const closeModalBtn = document.getElementById("closeModal");
 
+// Elementos del Minijuego
+const gameImage = document.getElementById("gameImage");
+const gameOptions = document.getElementById("gameOptions");
+const currentScoreDisplay = document.getElementById("currentScore");
+
 let animals = [];
 let exploreState = "all";
 let cardArray = [];
 let favoriteAnimals = new Set();
+let gameScore = 0;
 
-// Manejo de Sesión Activa y Datos de Reportes
 let currentUser = localStorage.getItem("faunoBelo_activeUser") || null;
 let userReports = JSON.parse(localStorage.getItem("faunoBelo_userReports")) || {};
 
@@ -69,7 +76,7 @@ function updateUserStats() {
 
 updateProfileButton();
 
-// Evento de clic en botón de Perfil
+// Evento de clic en perfil
 if (profileBtn) {
     profileBtn.addEventListener("click", () => {
         home.classList.add("hidden");
@@ -105,7 +112,14 @@ if (reportBack) {
     });
 }
 
-// Alternar entre login y registro
+if (gameBack) {
+    gameBack.addEventListener("click", () => {
+        gameSection.classList.add("hidden");
+        exploreP.classList.remove("hidden");
+    });
+}
+
+// Alternar login / registro
 if (showRegister) {
     showRegister.addEventListener("click", (e) => {
         e.preventDefault();
@@ -122,7 +136,7 @@ if (showLogin) {
     });
 }
 
-// REGISTRO DE USUARIO
+// REGISTRO
 if (registerForm) {
     registerForm.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -130,24 +144,21 @@ if (registerForm) {
         const pass = document.getElementById("regPass").value.trim();
 
         let usersDB = JSON.parse(localStorage.getItem("faunoBelo_usersDB")) || {};
-
         if (usersDB[user]) {
-            alert("Este nombre de usuario ya existe. Elige otro o inicia sesión.");
+            alert("Este usuario ya existe.");
             return;
         }
 
         usersDB[user] = pass;
         localStorage.setItem("faunoBelo_usersDB", JSON.stringify(usersDB));
-        
-        alert("¡Cuenta creada con éxito! Ahora puedes iniciar sesión.");
-        document.getElementById("regUser").value = "";
-        document.getElementById("regPass").value = "";
+        alert("¡Cuenta creada con éxito!");
+        registerForm.reset();
         registerBox.classList.add("hidden");
         loginBox.classList.remove("hidden");
     });
 }
 
-// INICIO DE SESIÓN
+// LOGIN
 if (loginForm) {
     loginForm.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -155,17 +166,13 @@ if (loginForm) {
         const pass = document.getElementById("loginPass").value.trim();
 
         let usersDB = JSON.parse(localStorage.getItem("faunoBelo_usersDB")) || {};
-
         if (usersDB[user] && usersDB[user] === pass) {
             currentUser = user;
             localStorage.setItem("faunoBelo_activeUser", currentUser);
             updateProfileButton();
             updateUserStats();
-            
-            alert(`¡Bienvenido de nuevo, ${currentUser}!`);
-            document.getElementById("loginUser").value = "";
-            document.getElementById("loginPass").value = "";
-            
+            alert(`¡Bienvenido, ${currentUser}!`);
+            loginForm.reset();
             authSection.classList.add("hidden");
             home.classList.remove("hidden");
         } else {
@@ -174,7 +181,7 @@ if (loginForm) {
     });
 }
 
-// CERRAR SESIÓN
+// LOGOUT
 if (logoutBtn) {
     logoutBtn.addEventListener("click", () => {
         currentUser = null;
@@ -182,11 +189,11 @@ if (logoutBtn) {
         updateProfileButton();
         userProfileSection.classList.add("hidden");
         home.classList.remove("hidden");
-        alert("Has cerrado sesión correctamente.");
+        alert("Has cerrado sesión.");
     });
 }
 
-// Transición a Reportar Avistamiento
+// Reportes
 if (reportBtn) {
     reportBtn.addEventListener("click", () => {
         if (!currentUser) {
@@ -200,38 +207,29 @@ if (reportBtn) {
     });
 }
 
-// Envío del Formulario de Reporte
 if (reportForm) {
     reportForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        if (!currentUser) {
-            alert("Sesión expirada.");
-            return;
-        }
+        if (!currentUser) return;
 
         const species = document.getElementById("reportSpecies").value.trim();
         const location = document.getElementById("reportLocation").value.trim();
         const date = document.getElementById("reportDate").value;
         const notes = document.getElementById("reportNotes").value.trim();
 
-        if (!userReports[currentUser]) {
-            userReports[currentUser] = [];
-        }
-
+        if (!userReports[currentUser]) userReports[currentUser] = [];
         userReports[currentUser].push({ species, location, date, notes });
         localStorage.setItem("faunoBelo_userReports", JSON.stringify(userReports));
 
         updateUserStats();
-
-        alert("¡Avistamiento reportado con éxito! Gracias por contribuir a la conservación.");
-        
+        alert("¡Reporte guardado con éxito!");
         reportForm.reset();
         reportSection.classList.add("hidden");
         home.classList.remove("hidden");
     });
 }
 
-// Transición a Explorar
+// Exploración
 if (exploreCat) {
     exploreCat.addEventListener("click", () => {
         home.classList.add("hidden");
@@ -265,19 +263,17 @@ function colorCategory(category) {
 
 function displayAnimals(prods) {
     if (!mainDisplay) return;
-
     mainDisplay.innerHTML = "";
     mainDisplay.style.display = "grid";
 
     if (!prods || prods.length === 0) {
-        mainDisplay.innerHTML = `<div class="no-results"><p>No se encontraron resultados.</p></div>`;
+        mainDisplay.innerHTML = `<p>No se encontraron resultados.</p>`;
         return;
     }
 
     if (exploreState === "all") {
         for (const category of prods) {
             if (!category.especies) continue;
-
             for (const specie of category.especies) {
                 const div = document.createElement("div");
                 div.dataset.id = specie.id;
@@ -288,17 +284,11 @@ function displayAnimals(prods) {
                     <div class="animalInfo">
                         <h4>${specie.name}</h4>
                         <p class="animalScientificName">${specie.scientificName}</p>
-                        <button type="button" class="animalCategory">
-                            ${category.category}
-                        </button>
+                        <button type="button" class="animalCategory">${category.category}</button>
                     </div>
                 `;
-
-                const categoryButton = div.querySelector(".animalCategory");
-                if (categoryButton) {
-                    categoryButton.style.backgroundColor = colorCategory(category.category);
-                }
-
+                const catBtn = div.querySelector(".animalCategory");
+                if (catBtn) catBtn.style.backgroundColor = colorCategory(category.category);
                 mainDisplay.appendChild(div);
             }
         }
@@ -306,7 +296,6 @@ function displayAnimals(prods) {
         for (const category of prods) {
             const div = document.createElement("div");
             div.classList.add("animalCard");
-
             div.innerHTML = `
                 <h3>${category.category}</h3>
                 <img class="animalImg" src="${category.categoryImg}" alt="${category.category}">
@@ -320,11 +309,11 @@ function displayAnimals(prods) {
 async function load() {
     try {
         const response = await fetch("./initialcategories.json");
-        if (!response.ok) throw new Error("No se pudo cargar initialcategories.json");
+        if (!response.ok) throw new Error("Error cargando JSON");
         animals = await response.json();
         displayAnimals(animals);
     } catch (error) {
-        console.error("Error cargando los datos:", error);
+        console.error("Error:", error);
     }
 }
 
@@ -336,24 +325,12 @@ function filterAnimals() {
     }
 
     if (exploreState === "all") {
-        let filteredAn = [];
-        switch (filterCat.value) {
-            case "catego":
-                filteredAn = animals.filter(category => category.category.toLowerCase().includes(text));
-                break;
-            case "name":
-                filteredAn = animals.map(category => ({
-                    ...category,
-                    especies: (category.especies || []).filter(specie => specie.name.toLowerCase().includes(text))
-                })).filter(category => category.especies.length > 0);
-                break;
-            case "sciNa":
-                filteredAn = animals.map(category => ({
-                    ...category,
-                    especies: (category.especies || []).filter(specie => specie.scientificName.toLowerCase().includes(text))
-                })).filter(category => category.especies.length > 0);
-                break;
-        }
+        let filteredAn = animals.map(category => ({
+            ...category,
+            especies: (category.especies || []).filter(specie => 
+                specie.name.toLowerCase().includes(text) || specie.scientificName.toLowerCase().includes(text)
+            )
+        })).filter(category => category.especies.length > 0);
         displayAnimals(filteredAn);
     }
 }
@@ -379,12 +356,64 @@ if (categoriesButton) {
     });
 }
 
+// LÓGICA DEL MINIJUEGO TRIVIA
 if (playButton) {
     playButton.addEventListener("click", () => {
-        alert("El juego estará disponible próximamente.");
+        exploreP.classList.add("hidden");
+        gameSection.classList.remove("hidden");
+        gameScore = 0;
+        if (currentScoreDisplay) currentScoreDisplay.textContent = gameScore;
+        loadNextQuestion();
     });
 }
 
+function loadNextQuestion() {
+    const allSpecies = animals.flatMap(c => c.especies || []);
+    if (allSpecies.length < 4) {
+        alert("No hay suficientes especies cargadas para jugar.");
+        gameSection.classList.add("hidden");
+        exploreP.classList.remove("hidden");
+        return;
+    }
+
+    // Seleccionar especie correcta al azar
+    const correctSpecie = allSpecies[Math.floor(Math.random() * allSpecies.length)];
+    gameImage.src = correctSpecie.img;
+
+    // Seleccionar 3 opciones incorrectas distintas
+    let options = [correctSpecie];
+    while (options.length < 4) {
+        const randomSpecie = allSpecies[Math.floor(Math.random() * allSpecies.length)];
+        if (!options.includes(randomSpecie)) {
+            options.push(randomSpecie);
+        }
+    }
+
+    // Mezclar opciones
+    options.sort(() => Math.random() - 0.5);
+
+    // Pintar opciones en HTML
+    gameOptions.innerHTML = "";
+    options.forEach(specie => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.classList.add("gameOptionBtn");
+        btn.textContent = specie.name;
+        btn.addEventListener("click", () => {
+            if (specie.id === correctSpecie.id) {
+                gameScore += 10;
+                alert("¡Correcto! +10 puntos 🌿");
+            } else {
+                alert(`¡Incorrecto! Era: ${correctSpecie.name}`);
+            }
+            if (currentScoreDisplay) currentScoreDisplay.textContent = gameScore;
+            loadNextQuestion();
+        });
+        gameOptions.appendChild(btn);
+    });
+}
+
+// Manejo de expansión y modal
 function removeExpandedInfo() {
     if (cardArray.length === 0) return;
     const card = cardArray.shift();
@@ -432,7 +461,7 @@ if (mainDisplay) {
             favoriteBtn.addEventListener("click", (event) => {
                 event.stopPropagation();
                 if (!currentUser) {
-                    alert("Debes iniciar sesión para guardar especies en favoritos.");
+                    alert("Debes iniciar sesión para guardar favoritos.");
                     return;
                 }
                 const animalId = String(specie.id);
@@ -460,7 +489,7 @@ if (mainDisplay) {
                             <hr style="margin: 15px 0; border: 0; border-top: 1px solid #ddd;">
                             <p><strong>Estado de conservación:</strong> ${specie.endangered}</p>
                             <p><strong>Función ecológica:</strong> ${specie.function}</p>
-                            <p><strong>Descripción:</strong> ${specie.description || specie.function || "Información ecológica detallada de la especie."}</p>
+                            <p><strong>Descripción:</strong> ${specie.description || specie.function || "Información ecológica detallada."}</p>
                         </div>
                     `;
                     speciesModal.classList.remove("hidden");
