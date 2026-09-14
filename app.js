@@ -46,7 +46,7 @@ let favoriteAnimals = new Set();
 
 if (exploreCat) {
 
-    exploreCat.addEventListener("click", function () {
+    exploreCat.addEventListener("click", () {
 
         console.log("Botón Explorar presionado");
 
@@ -79,7 +79,7 @@ const backButton = document.getElementById("back");
 
 if (backButton) {
 
-    backButton.addEventListener("click", function () {
+    backButton.addEventListener("click", () {
 
         console.log("Botón Volver presionado");
 
