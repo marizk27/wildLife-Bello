@@ -4,189 +4,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Fauno Belo</title>
+
     <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
 
     <!-- =========================================
-         PÁGINA PRINCIPAL (BANNER TIPO HERO)
+         PÁGINA PRINCIPAL
          ========================================= -->
+
     <section class="home" id="home">
-        <!-- BARRA SUPERIOR CON PERFIL -->
-        <header class="homeHeaderTop">
-            <button type="button" class="profileBtn" id="profile">
-                <span class="profileIcon">👤</span> <span id="profileBtnText">Perfil</span>
-            </button>
+
+        <header class="homeHead">
+
+            <section class="upperPan">
+
+                <div class="profile" id="profile">
+                    <p>Perfíl</p>
+                </div>
+
+            </section>
+
+
+            <section class="actionsPan">
+
+                <div class="welcome">
+
+                    <h1>Fauno Belo</h1>
+
+                    <p>
+                        Por la pasión de descubrir
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="explore"
+                    class="actionCard"
+                >
+                    <h3>Explorar</h3>
+                </button>
+
+
+                <button
+                    type="button"
+                    id="report"
+                    class="actionCard"
+                >
+                    <h3>Reportar avistamiento</h3>
+                </button>
+
+            </section>
+
         </header>
 
-        <!-- CONTENIDO CENTRAL DEL HERO -->
-        <div class="heroContainer">
-            <div class="brandBox">
-                <div class="logoCircle">
-                    <span class="deerIcon">🦌</span>
-                </div>
-                <h1>Fauno Belo</h1>
-                <p>Por la vida, la naturaleza y nuestro futuro</p>
-                <div class="dividerLine">🍃</div>
-            </div>
 
-            <div class="heroActions">
-                <button type="button" id="explore" class="actionBtn">
-                    <span class="btnIcon">🧭</span> Explorar
-                </button>
-                <button type="button" id="report" class="actionBtn">
-                    <span class="btnIcon">🔭</span> Reportar avistamiento
-                </button>
-            </div>
-        </div>
+        <main>
+
+            <article
+                id="news"
+                class="news"
+            ></article>
+
+        </main>
+
     </section>
 
-    <!-- =========================================
-         SECCIÓN AUTENTICACIÓN (LOGIN / REGISTRO)
-         ========================================= -->
-    <section id="authSection" class="hidden sect">
-        <section class="upperPan">
-            <button type="button" id="authBack" class="dark-background">Volver</button>
-            <h2 class="dark-background">Mi Cuenta Fauno Belo</h2>
-        </section>
-
-        <div class="authContainer">
-            <div class="authBox" id="loginBox">
-                <h3>Iniciar Sesión</h3>
-                <form id="loginForm">
-                    <input type="text" id="loginUser" placeholder="Nombre de usuario" required class="filter">
-                    <input type="password" id="loginPass" placeholder="Contraseña" required class="filter">
-                    <button type="submit" class="see" style="width:100%; margin-top:10px;">Entrar</button>
-                </form>
-                <p class="authSwitchText">¿No tienes cuenta? <a href="#" id="showRegister">Regístrate aquí</a></p>
-            </div>
-
-            <div class="authBox hidden" id="registerBox">
-                <h3>Crear Nueva Cuenta</h3>
-                <form id="registerForm">
-                    <input type="text" id="regUser" placeholder="Elige un nombre de usuario" required class="filter">
-                    <input type="password" id="regPass" placeholder="Elige una contraseña" required class="filter">
-                    <button type="submit" class="see" style="width:100%; margin-top:10px;">Registrarse</button>
-                </form>
-                <p class="authSwitchText">¿Ya tienes cuenta? <a href="#" id="showLogin">Inicia sesión</a></p>
-            </div>
-        </div>
-    </section>
-
-    <!-- =========================================
-         SECCIÓN PERFIL DE USUARIO (LOGUEADO)
-         ========================================= -->
-    <section id="userProfileSection" class="hidden sect">
-        <section class="upperPan">
-            <button type="button" id="profileBack" class="dark-background">Volver</button>
-            <h2 class="dark-background">Panel de Usuario</h2>
-        </section>
-        <div class="profileCardContent">
-            <div class="profileAvatarLarge">👤</div>
-            <h2 id="userNameDisplay">Usuario</h2>
-            <p>¡Bienvenido de nuevo a la comunidad de exploradores de Fauno Belo!</p>
-            <div class="profileStats">
-                <div class="statBox">
-                    <span id="statFavorites">0</span>
-                    <p>Favoritos</p>
-                </div>
-                <div class="statBox">
-                    <span id="statReports">0</span>
-                    <p>Avistamientos</p>
-                </div>
-            </div>
-            <button type="button" id="logoutBtn" style="background:#d81b60; color:white; border:none; padding:10px; border-radius:10px; cursor:pointer; font-weight:bold; margin-top:20px; width:100%;">Cerrar Sesión</button>
-        </div>
-    </section>
-
-    <!-- =========================================
-         SECCIÓN REPORTAR AVISTAMIENTO
-         ========================================= -->
-    <section id="reportSection" class="hidden sect">
-        <section class="upperPan">
-            <button type="button" id="reportBack" class="dark-background">Volver</button>
-            <h2 class="dark-background">Reportar Avistamiento</h2>
-        </section>
-
-        <div class="authContainer">
-            <div class="authBox" style="max-width: 550px;">
-                <h3>Registrar un nuevo hallazgo</h3>
-                <form id="reportForm">
-                    <input type="text" id="reportSpecies" placeholder="Nombre de la especie avistada" required class="filter" style="width:100%; box-sizing:border-box;">
-                    <input type="text" id="reportLocation" placeholder="Ubicación (ej: Vereda, Parque, etc.)" required class="filter" style="width:100%; box-sizing:border-box;">
-                    <input type="date" id="reportDate" required class="filter" style="width:100%; box-sizing:border-box;">
-                    <textarea id="reportNotes" placeholder="Notas adicionales sobre el avistamiento..." class="filter" style="width:100%; height:80px; resize:none; box-sizing:border-box;"></textarea>
-                    <button type="submit" class="see" style="width:100%; margin-top:10px;">Enviar Reporte</button>
-                </form>
-            </div>
-        </div>
-    </section>
 
     <!-- =========================================
          SECCIÓN EXPLORAR FAUNA
          ========================================= -->
-    <section id="categories" class="hidden sect">
+
+    <section
+        id="categories"
+        class="hidden sect"
+    >
+
+        <!-- =====================================
+             PARTE SUPERIOR
+             ===================================== -->
+
         <section class="upperPan">
-            <button type="button" id="back" class="dark-background">Volver</button>
-            <h2 class="dark-background">Explorar fauna</h2>
+
+            <button
+                type="button"
+                id="back"
+                class="dark-background"
+            >
+                Volver
+            </button>
+
+
+            <h2 class="dark-background">
+                Explorar fauna
+            </h2>
+
         </section>
+
+
+        <!-- =====================================
+             BUSCADOR
+             ===================================== -->
 
         <header class="ExploreSearchPan">
-            <input id="filter" class="filter" type="search" placeholder="Buscar especie">
-            <select class="cat" name="Categorías" id="filterCat">
-                <option value="catego">Por categoría</option>
-                <option value="name">Nombre cotidiano</option>
-                <option value="sciNa">Nombre científico</option>
+
+            <input
+                id="filter"
+                class="filter"
+                type="search"
+                placeholder="Buscar especie"
+            >
+
+
+            <select
+                class="cat"
+                name="Categorías"
+                id="filterCat"
+            >
+
+                <option value="catego">
+                    Por categoría
+                </option>
+
+                <option value="name">
+                    Nombre cotidiano
+                </option>
+
+                <option value="sciNa">
+                    Nombre científico
+                </option>
+
             </select>
+
         </header>
 
+
+        <!-- =====================================
+             BOTONES DE EXPLORACIÓN
+             ===================================== -->
+
         <div class="exploreButtons">
-            <button type="button" id="all" class="see">Todo</button>
-            <button type="button" id="categoriesBtn" class="see">Categorías</button>
-            <button type="button" id="play" class="see">¡Juega!</button>
+
+            <button
+                type="button"
+                id="all"
+                class="see"
+            >
+                Todo
+            </button>
+
+
+            <button
+                type="button"
+                id="categoriesBtn"
+                class="see"
+            >
+                Categorías
+            </button>
+
+
+            <button
+                type="button"
+                id="play"
+                class="see"
+            >
+                ¡Juega!
+            </button>
+
         </div>
 
-        <main id="exploreCategories" class="anList"></main>
+
+        <!-- =====================================
+             LISTADO DE ANIMALES / CATEGORÍAS
+             ===================================== -->
+
+        <main
+            id="exploreCategories"
+            class="anList"
+        ></main>
+
     </section>
 
-    <!-- =========================================
-         SECCIÓN MINIJUEGO: ADIVINA LA ESPECIE
-         ========================================= -->
-    <section id="gameSection" class="hidden sect">
-        <section class="upperPan">
-            <button type="button" id="gameBack" class="dark-background">Volver a Explorar</button>
-            <h2 class="dark-background">Trivia Fauno Belo</h2>
-        </section>
-
-        <div class="authContainer">
-            <div class="authBox" style="max-width: 600px; text-align: center;">
-                <h3 id="gameQuestionTitle" style="color: #1b5e20; margin-bottom: 15px;">¿A qué especie corresponde esta imagen?</h3>
-                <div id="gameContent">
-                    <img id="gameImage" src="" alt="Especie misteriosa" style="width: 100%; height: 240px; object-fit: cover; border-radius: 12px; margin-bottom: 20px; border: 2px solid #c8e6c9;">
-                    <div id="gameOptions" style="display: flex; flex-direction: column; gap: 10px;">
-                        <!-- Opciones dinámicas -->
-                    </div>
-                </div>
-                <div id="gameScoreBoard" style="margin-top: 20px; font-weight: bold; color: #2e7d32; font-size: 1.1rem;">
-                    Puntuación: <span id="currentScore">0</span>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- =========================================
-         MODAL / VENTANA DE MÁS INFORMACIÓN
+         JAVASCRIPT PRINCIPAL
          ========================================= -->
-    <div id="speciesModal" class="modal hidden">
-        <div class="modalContent">
-            <button type="button" id="closeModal" class="closeModalBtn">×</button>
-            <div id="modalBody"></div>
-        </div>
-    </div>
 
-    <script type="module" src="./app.js"></script>
+    <script
+        type="module"
+        src="./app.js"
+    ></script>
+
 </body>
 
 </html>
