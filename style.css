@@ -103,7 +103,6 @@ body {
 
 .upperPan {
     width: 100%;
-    max-width: 1200px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -127,7 +126,6 @@ body {
 
 .ExploreSearchPan {
     width: 100%;
-    max-width: 1200px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -171,7 +169,6 @@ body {
 
 .exploreButtons {
     width: 100%;
-    max-width: 1200px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -201,7 +198,6 @@ body {
 
 #exploreCategories {
     width: 100%;
-    max-width: 1200px;
 
     display: grid;
 
