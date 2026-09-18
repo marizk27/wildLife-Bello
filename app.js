@@ -879,6 +879,29 @@ function escapeHTML(value) {
 }
 
 // ==========================================================
+// LEER UNA FOTO SELECCIONADA COMO BASE64
+// (usada en el formulario de "Reportar avistamiento")
+// ==========================================================
+
+function readFileAsDataURL(file) {
+
+    return new Promise((resolve, reject) => {
+
+        const reader = new FileReader();
+
+        reader.onload = () => {
+            resolve(reader.result);
+        };
+
+        reader.onerror = () => {
+            reject(reader.error);
+        };
+
+        reader.readAsDataURL(file);
+    });
+}
+
+// ==========================================================
 // SABER SI UNA ESPECIE ESTÁ EN FAVORITOS
 // ==========================================================
 
@@ -2150,6 +2173,50 @@ document.addEventListener(
             );
         }
 
+        const reportPhotoInput =
+            document.getElementById(
+                "reportPhoto"
+            );
+
+        const reportPhotoPreview =
+            document.getElementById(
+                "reportPhotoPreview"
+            );
+
+        if (reportPhotoInput && reportPhotoPreview) {
+            reportPhotoInput.addEventListener(
+                "change",
+                () => {
+                    const file =
+                        reportPhotoInput.files[0];
+
+                    if (!file) {
+                        reportPhotoPreview.src = "";
+                        reportPhotoPreview.classList.add(
+                            "hidden"
+                        );
+                        return;
+                    }
+
+                    readFileAsDataURL(file)
+                        .then(dataUrl => {
+                            reportPhotoPreview.src =
+                                dataUrl;
+
+                            reportPhotoPreview.classList.remove(
+                                "hidden"
+                            );
+                        })
+                        .catch(() => {
+                            reportPhotoPreview.src = "";
+                            reportPhotoPreview.classList.add(
+                                "hidden"
+                            );
+                        });
+                }
+            );
+        }
+
         const reportForm =
             document.getElementById(
                 "reportForm"
@@ -2158,8 +2225,29 @@ document.addEventListener(
         if (reportForm) {
             reportForm.addEventListener(
                 "submit",
-                event => {
+                async event => {
                     event.preventDefault();
+
+                    let photoData = "";
+
+                    const photoFile =
+                        reportPhotoInput &&
+                        reportPhotoInput.files &&
+                        reportPhotoInput.files[0];
+
+                    if (photoFile) {
+                        try {
+                            photoData =
+                                await readFileAsDataURL(
+                                    photoFile
+                                );
+                        } catch (error) {
+                            console.error(
+                                "No se pudo leer la foto del avistamiento:",
+                                error
+                            );
+                        }
+                    }
 
                     const report = {
                         species:
@@ -2181,6 +2269,8 @@ document.addEventListener(
                             document.getElementById(
                                 "reportNotes"
                             ).value,
+
+                        photo: photoData,
 
                         user:
                             currentUser || "Visitante",
@@ -2210,6 +2300,13 @@ document.addEventListener(
                     );
 
                     reportForm.reset();
+
+                    if (reportPhotoPreview) {
+                        reportPhotoPreview.src = "";
+                        reportPhotoPreview.classList.add(
+                            "hidden"
+                        );
+                    }
 
                     showSection(
                         "home"
