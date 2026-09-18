@@ -12,6 +12,100 @@ let favorites = JSON.parse(
 );
 
 // ==========================================================
+// DICCIONARIO DE DESCRIPCIONES DE LA GUÍA DE FAUNA
+// ==========================================================
+const speciesDescriptions = {
+    // Anfibios
+    "Sapo común": "Grande (10-17 cm), piel verrugosa, marrón/gris. Control de insectos[cite: 1].",
+    "Rana común": "Pequeña/mediana (2.5-5 cm), verde, café u oliva. Control de invertebrados[cite: 1].",
+    "Rana arboricola": "Pequeña (2-3.5 cm), dorso amarillo/café claro. Control de insectos[cite: 1].",
+    "Rana paisa": "Pequeña (2-3.5 cm), color variable. Control de insectos[cite: 1].",
+    "Rana arboricola ruidosa": "Mediana/grande (5-8 cm), café/gris/oliva. Polinizador y controlador[cite: 1].",
+
+    // Aves
+    "Azulejo": "Gris azulado claro con dorso azul oscuro. Dispersión de semillas[cite: 1].",
+    "Batará carcajada": "Líneas en blanco y negro. Dispersión de semillas[cite: 1].",
+    "Bichofue": "Cabeza negra, franja blanca, pecho amarillo. Dispersión de semillas[cite: 1].",
+    "Canario": "Amarillo brillante en cabeza y vientre. Dispersión de semillas[cite: 1].",
+    "Carpintero listado": "Cabeza negra con cresta roja. Dispersión de semillas[cite: 1].",
+    "Carriquí pechiblanco": "Azul intenso, cabeza negra, pecho blanco. Dispersión de semillas[cite: 1].",
+    "Carriqui vertiamarillo": "Cabeza negra, verde intenso, vientre amarillo. Dispersión de semillas[cite: 1].",
+    "Fiofio ventriamarillo": "Café claro, garganta y pecho grisáceos. Dispersión de semillas[cite: 1].",
+    "Mirla o mayo": "Marrón oscuro, garganta blancuzca. Dispersión de semillas[cite: 1].",
+    "Mosquero cardenal": "Copete rojo carmesí, antifaz negro. Dispersión de semillas[cite: 1].",
+    "Pepitero listado": "Macho cabeza negra, hembra marrón. Dispersión de semillas[cite: 1].",
+    "Sirirí": "Abdomen amarillo brillante, cabeza gris. Dispersión de semillas[cite: 1].",
+    "Tangara cabeciazul": "Cabeza azul brillante, dorso negro. Dispersión de semillas[cite: 1].",
+    "Torcaza": "Coloración parda, manchas en el cuello. Dispersión de semillas[cite: 1].",
+    "Picogrueso pechirrosa": "Pecho rosado intenso (macho). Dispersión de semillas[cite: 1].",
+    "Guacharaca común": "Parda con cuello grisáceo. Dispersión de semillas[cite: 1].",
+    "Tangara rastrojera": "Cabeza naranja intenso, dorso negro azulado. Dispersión de semillas[cite: 1].",
+    "Cucarachero": "Pardo, garganta beige claro. Dispersión de semillas[cite: 1].",
+    "Atlapetes pechiamarillo": "Garganta y abdomen amarillo brillante. Dispersión de semillas[cite: 1].",
+    "Colarraqueta de botas blancas": "Pico recto corto, polinizador[cite: 1].",
+    "Tangara lacrimosa": "Vientre amarillo brillante, negro azulado[cite: 1].",
+    "Mirla patinaranja": "Negra-parduzca, pico y patas anaranjadas. Dispersión de semillas[cite: 1].",
+    "Barranquero andino": "Dorso azul intenso. Controlador de insectos[cite: 1].",
+    "Carpintero bellotero": "Cabeza negra, corona roja. Controlador de insectos[cite: 1].",
+    "Trepatroncos montano": "Pardo rojizo, pico largo y curvado. Control de insectos[cite: 1].",
+    "Cernícalo americano": "Macho con cabeza blanca y nuca rojiza. Control de plagas[cite: 1].",
+    "Mosquero negro": "Plumaje oscuro con abdomen blanco. Controlador de insectos[cite: 1].",
+    "Reinita gorjinaranja": "Garganta anaranjada intensa (macho). Dispersión de semillas[cite: 1].",
+    "Jilguero aliblanco": "Cabeza y dorso negros, vientre amarillo. Dispersión de semillas[cite: 1].",
+    "Gallinazo": "Negro, cabeza sin plumas. Carroñero[cite: 1].",
+    "Martin pescador": "Azul grisáceo con franja rojiza. Control de peces[cite: 1].",
+    "Tangara flamigera": "Negro brillante con rabadilla roja. Dispersión de semillas[cite: 1].",
+    "Sinsonte": "Gris claro, pecho y vientre blanco. Dispersión de semillas[cite: 1].",
+    "Tortolita rojiza": "Marrón rojizo. Dispersión de semillas[cite: 1].",
+    "Bienteveo rayado": "Ceja blanca, pecho amarillo con rayas. Dispersión de semillas[cite: 1].",
+    "Colibrí coliazul": "Verde brillante, cola azul intenso. Polinización[cite: 1].",
+    "Cacique candela": "Negro con vientre rojo brillante (Vulnerable)[cite: 1].",
+    "Gavilán pollero": "Gris parduzco, pecho canela. Control de plagas[cite: 1].",
+    "Coquito - ibis negro": "Negro metalizado, pico rojo curvado[cite: 1].",
+    "Tangara coroninegra": "Cabeza gris claro, dorso azul intenso. Dispersión de semillas[cite: 1].",
+    "Gorrión copetón": "Cabeza gris, copete y líneas negras. Dispersión de semillas[cite: 1].",
+    "Cuco ardilla común": "Castaño rojizo, cola larga. Controlador de insectos[cite: 1].",
+    "Turpial amarillo": "Negro con amarillo dorado. Dispersión de semillas[cite: 1].",
+    "Reinita cabecidorada": "Amarillo brillante y gris azulado. Control de insectos[cite: 1].",
+    "Garcilla bueyera": "Blanco con tonos anaranjados. Controlador de plagas[cite: 1].",
+    "Tordo llanero": "Negro brillante con reflejos púrpuras. Control de insectos[cite: 1].",
+    "Polla azul": "Azul purpúreo, placa frontal azul celeste[cite: 1].",
+    "Guaco": "Cabeza y dorso negro azulado, ojos rojos[cite: 1].",
+    "Garrapatero aní": "Negro con reflejos, pico grueso y curvo. Control de insectos[cite: 1].",
+    "Pepitero oliváceo": "Oliva grisáceo, garganta blanca. Dispersión de semillas[cite: 1].",
+    "Semillero ventriamarillo": "Macho negro y gris, vientre blanco. Dispersión de semillas[cite: 1].",
+    "Pigua": "Cabeza blanca, dorso negro o pardo. Carroñero[cite: 1].",
+    "Garcita verdosa": "Corona verde negruzco, cuello castaño[cite: 1].",
+
+    // Insectos
+    "Abeja europea": "Bandas amarillas y negras. Polinizador clave[cite: 1].",
+    "Mariposa monarca": "Naranja intenso con venas negras. Polinizador[cite: 1].",
+    "Mariposa alas de cebra": "Alas negras con franja roja. Polinizador[cite: 1].",
+    "Mariposa malaquita": "Verde brillante con bordes marrones[cite: 1].",
+    "Mariquita": "Rojo/anaranjado con manchas negras. Control biológico[cite: 1].",
+    "Mariposa Morpho azul": "Azul metálico brillante. Polinizador[cite: 1].",
+    "Mariposa Rhetus": "Azul metálico intenso y bordes negros[cite: 1].",
+    "Mariposa Actinote": "Anaranjado intenso con bordes negros[cite: 1].",
+    "Mariposa transparente": "Alas transparentes (alas de cristal)[cite: 1].",
+    "Abeja angelita": "Pequeña, dorada a marrón claro (sin aguijón)[cite: 1].",
+    "Abeja negra con bandas naranjas": "Robusta, polinizador de orquídeas[cite: 1].",
+
+    // Mamíferos
+    "Zorro perro": "Grisáceo con tonos pardos y negros[cite: 1].",
+    "Zarigüeya común": "Grisáceo con cola prensil. Control de insectos[cite: 1].",
+    "Zarigüeya orejiblanca andina": "Gris oscuro a negruzco[cite: 1].",
+    "Ardilla Colorada": "Tonos rojizos, cola esponjosa. Dispersor de semillas[cite: 1].",
+    "Armadillo de nueve bandas": "Caparazón con 9 bandas móviles[cite: 1].",
+    "Murciélago frugívoro grande": "Marrón oscuro con franja blanca en el rostro[cite: 1].",
+
+    // Reptiles
+    "Iguana verde": "Verde brillante a grisáceo, cresta dorsal[cite: 1].",
+    "Basilisco común": "Verde oliváceo, cresta prominente, corre sobre el agua[cite: 1].",
+    "Anolis de Medellín": "Verde oliváceo a marrón, papada naranja/amarilla[cite: 1].",
+    "Serpiente corredora de Daniel": "Marrón oliváceo con línea clara lateral[cite: 1]."
+};
+
+// ==========================================================
 // CARGAR ANIMALES
 // ==========================================================
 
@@ -75,7 +169,6 @@ function getAllSpecies() {
             result.push({
                 ...specie,
 
-                // Guardamos también la categoría
                 category:
                     specie.category ||
                     specie.categoria ||
@@ -127,7 +220,6 @@ function showSection(sectionId) {
 
 // ==========================================================
 // ESCAPAR HTML
-// Evita problemas si algún dato del JSON contiene HTML.
 // ==========================================================
 
 function escapeHTML(value) {
@@ -267,24 +359,16 @@ function displayAnimals(speciesList) {
 
         div.innerHTML = `
 
-            <!-- IMAGEN CUADRADA -->
-
             <div class="animalImgContainer">
-
                 <img
                     class="animalImg"
                     src="${escapeHTML(image)}"
                     alt="${escapeHTML(name)}"
                     loading="lazy"
                 >
-
             </div>
 
-
-            <!-- INFORMACIÓN -->
-
             <div class="animalInfo">
-
                 <h4>
                     ${escapeHTML(name)}
                 </h4>
@@ -297,11 +381,7 @@ function displayAnimals(speciesList) {
                     ${escapeHTML(category)}
                 </span>
 
-
-                <!-- BOTONES -->
-
                 <div class="animalActions">
-
                     <button
                         type="button"
                         class="favoriteBtn ${
@@ -319,7 +399,6 @@ function displayAnimals(speciesList) {
                         }
                     </button>
 
-
                     <button
                         type="button"
                         class="infoBtn"
@@ -328,15 +407,9 @@ function displayAnimals(speciesList) {
                     >
                         ℹ Más información
                     </button>
-
                 </div>
-
             </div>
         `;
-
-        // ==================================================
-        // BOTÓN FAVORITO
-        // ==================================================
 
         const favoriteBtn =
             div.querySelector(
@@ -346,17 +419,11 @@ function displayAnimals(speciesList) {
         favoriteBtn.addEventListener(
             "click",
             function () {
-
                 toggleFavorite(
                     this.dataset.id
                 );
-
             }
         );
-
-        // ==================================================
-        // BOTÓN INFORMACIÓN
-        // ==================================================
 
         const infoBtn =
             div.querySelector(
@@ -366,7 +433,6 @@ function displayAnimals(speciesList) {
         infoBtn.addEventListener(
             "click",
             function () {
-
                 const selected =
                     getAllSpecies().find(
                         animal =>
@@ -377,7 +443,6 @@ function displayAnimals(speciesList) {
                 if (selected) {
                     openSpeciesModal(selected);
                 }
-
             }
         );
 
@@ -386,7 +451,7 @@ function displayAnimals(speciesList) {
 }
 
 // ==========================================================
-// MODAL DE INFORMACIÓN
+// MODAL DE INFORMACIÓN (INTEGRADO CON LA GUÍA)
 // ==========================================================
 
 function openSpeciesModal(specie) {
@@ -427,16 +492,24 @@ function openSpeciesModal(specie) {
         specie.categoria ||
         "Sin categoría";
 
-
-    // ======================================================
-    // BUSCAR DIFERENTES POSIBLES NOMBRES EN EL JSON
-    // ======================================================
-
-    const description =
+    let description =
         specie.description ||
         specie.descripcion ||
         specie.desc ||
         "";
+
+    // Si el JSON no tiene descripción, la busca en el diccionario de la guía
+    if (!description) {
+        for (const key in speciesDescriptions) {
+            if (
+                name.toLowerCase().includes(key.toLowerCase()) ||
+                key.toLowerCase().includes(name.toLowerCase())
+            ) {
+                description = speciesDescriptions[key];
+                break;
+            }
+        }
+    }
 
     const habitat =
         specie.habitat ||
@@ -468,12 +541,9 @@ function openSpeciesModal(specie) {
         specie.datoCurioso ||
         "";
 
-
     let informationHTML = "";
 
-
     if (description) {
-
         informationHTML += `
             <div class="modalInfoBlock">
                 <strong>Descripción</strong>
@@ -482,12 +552,9 @@ function openSpeciesModal(specie) {
                 </span>
             </div>
         `;
-
     }
 
-
     if (habitat) {
-
         informationHTML += `
             <div class="modalInfoBlock">
                 <strong>Hábitat</strong>
@@ -496,12 +563,9 @@ function openSpeciesModal(specie) {
                 </span>
             </div>
         `;
-
     }
 
-
     if (distribution) {
-
         informationHTML += `
             <div class="modalInfoBlock">
                 <strong>Distribución</strong>
@@ -510,12 +574,9 @@ function openSpeciesModal(specie) {
                 </span>
             </div>
         `;
-
     }
 
-
     if (diet) {
-
         informationHTML += `
             <div class="modalInfoBlock">
                 <strong>Alimentación</strong>
@@ -524,12 +585,9 @@ function openSpeciesModal(specie) {
                 </span>
             </div>
         `;
-
     }
 
-
     if (conservation) {
-
         informationHTML += `
             <div class="modalInfoBlock">
                 <strong>Estado de conservación</strong>
@@ -538,12 +596,9 @@ function openSpeciesModal(specie) {
                 </span>
             </div>
         `;
-
     }
 
-
     if (curiosity) {
-
         informationHTML += `
             <div class="modalInfoBlock">
                 <strong>Dato curioso</strong>
@@ -552,12 +607,9 @@ function openSpeciesModal(specie) {
                 </span>
             </div>
         `;
-
     }
 
-
     if (!informationHTML) {
-
         informationHTML = `
             <div class="modalInfoBlock">
                 <strong>Información</strong>
@@ -567,12 +619,9 @@ function openSpeciesModal(specie) {
                 </span>
             </div>
         `;
-
     }
 
-
     modalBody.innerHTML = `
-
         <img
             class="modalAnimalImage"
             src="${escapeHTML(image)}"
@@ -592,9 +641,7 @@ function openSpeciesModal(specie) {
         </span>
 
         ${informationHTML}
-
     `;
-
 
     modal.classList.remove("hidden");
 }
@@ -645,20 +692,15 @@ function filterAnimals() {
             ? filterSelect.value
             : "catego";
 
-
     const allSpecies =
         getAllSpecies();
 
-
     if (!search) {
-
         displayAnimals(
             allSpecies
         );
-
         return;
     }
-
 
     const filtered =
         allSpecies.filter(
@@ -685,30 +727,23 @@ function filterAnimals() {
                         ""
                     ).toLowerCase();
 
-
                 if (
                     selectedType ===
                     "name"
                 ) {
-
                     return name.includes(
                         search
                     );
-
                 }
-
 
                 if (
                     selectedType ===
                     "sciNa"
                 ) {
-
                     return scientific.includes(
                         search
                     );
-
                 }
-
 
                 return (
                     name.includes(search) ||
@@ -718,7 +753,6 @@ function filterAnimals() {
 
             }
         );
-
 
     displayAnimals(filtered);
 }
@@ -762,16 +796,12 @@ function showCategories() {
             )
         ];
 
-
     if (categories.length === 0) {
-
         displayAnimals(
             allSpecies
         );
-
         return;
     }
-
 
     const container =
         document.getElementById(
@@ -782,9 +812,7 @@ function showCategories() {
         return;
     }
 
-
     container.innerHTML = "";
-
 
     categories.forEach(
         category => {
@@ -795,17 +823,13 @@ function showCategories() {
                 );
 
             button.type = "button";
-
             button.className = "see";
-
             button.textContent =
                 category;
-
 
             button.addEventListener(
                 "click",
                 () => {
-
                     const filtered =
                         allSpecies.filter(
                             animal =>
@@ -816,10 +840,8 @@ function showCategories() {
                     displayAnimals(
                         filtered
                     );
-
                 }
             );
-
 
             container.appendChild(
                 button
@@ -841,12 +863,9 @@ function updateProfileStats() {
         );
 
     if (favoritesElement) {
-
         favoritesElement.textContent =
             favorites.length;
-
     }
-
 
     const reportsElement =
         document.getElementById(
@@ -854,7 +873,6 @@ function updateProfileStats() {
         );
 
     if (reportsElement) {
-
         const reports =
             JSON.parse(
                 localStorage.getItem(
@@ -864,7 +882,6 @@ function updateProfileStats() {
 
         reportsElement.textContent =
             reports.length;
-
     }
 }
 
@@ -884,9 +901,7 @@ function updateProfileView() {
             "userNameDisplay"
         );
 
-
     if (currentUser) {
-
         if (profileBtnText) {
             profileBtnText.textContent =
                 currentUser;
@@ -896,14 +911,11 @@ function updateProfileView() {
             userNameDisplay.textContent =
                 currentUser;
         }
-
     } else {
-
         if (profileBtnText) {
             profileBtnText.textContent =
                 "Perfil";
         }
-
     }
 
     updateProfileStats();
@@ -990,25 +1002,10 @@ document.addEventListener(
     "DOMContentLoaded",
     async () => {
 
-        // ================================================
-        // INICIO
-        // ================================================
-
         showSection("home");
-
         updateProfileView();
 
-
-        // ================================================
-        // CARGAR ESPECIES UNA SOLA VEZ
-        // ================================================
-
         await loadAnimals();
-
-
-        // ================================================
-        // PERFIL
-        // ================================================
 
         const profileBtn =
             document.getElementById(
@@ -1016,34 +1013,21 @@ document.addEventListener(
             );
 
         if (profileBtn) {
-
             profileBtn.addEventListener(
                 "click",
                 () => {
-
                     if (currentUser) {
-
                         showSection(
                             "userProfileSection"
                         );
-
                     } else {
-
                         showSection(
                             "authSection"
                         );
-
                     }
-
                 }
             );
-
         }
-
-
-        // ================================================
-        // EXPLORAR
-        // ================================================
 
         const exploreBtn =
             document.getElementById(
@@ -1051,28 +1035,18 @@ document.addEventListener(
             );
 
         if (exploreBtn) {
-
             exploreBtn.addEventListener(
                 "click",
                 () => {
-
                     showSection(
                         "categories"
                     );
-
                     displayAnimals(
                         getAllSpecies()
                     );
-
                 }
             );
-
         }
-
-
-        // ================================================
-        // REPORTAR
-        // ================================================
 
         const reportBtn =
             document.getElementById(
@@ -1080,24 +1054,15 @@ document.addEventListener(
             );
 
         if (reportBtn) {
-
             reportBtn.addEventListener(
                 "click",
                 () => {
-
                     showSection(
                         "reportSection"
                     );
-
                 }
             );
-
         }
-
-
-        // ================================================
-        // BOTONES VOLVER
-        // ================================================
 
         const backButtons = [
             "authBack",
@@ -1105,37 +1070,25 @@ document.addEventListener(
             "reportBack"
         ];
 
-
         backButtons.forEach(
             buttonId => {
-
                 const button =
                     document.getElementById(
                         buttonId
                     );
 
                 if (button) {
-
                     button.addEventListener(
                         "click",
                         () => {
-
                             showSection(
                                 "home"
                             );
-
                         }
                     );
-
                 }
-
             }
         );
-
-
-        // ================================================
-        // VOLVER DE EXPLORAR
-        // ================================================
 
         const backExplore =
             document.getElementById(
@@ -1143,24 +1096,15 @@ document.addEventListener(
             );
 
         if (backExplore) {
-
             backExplore.addEventListener(
                 "click",
                 () => {
-
                     showSection(
                         "home"
                     );
-
                 }
             );
-
         }
-
-
-        // ================================================
-        // JUEGO (MODIFICADO PARA INICIAR LA TRIVIA)
-        // ================================================
 
         const playBtn =
             document.getElementById(
@@ -1168,26 +1112,16 @@ document.addEventListener(
             );
 
         if (playBtn) {
-
             playBtn.addEventListener(
                 "click",
                 () => {
-
                     showSection(
                         "gameSection"
                     );
-
-                    startTriviaGame(); // <-- Inicia la trivia al presionar Jugar
-
+                    startTriviaGame();
                 }
             );
-
         }
-
-
-        // ================================================
-        // VOLVER DEL JUEGO
-        // ================================================
 
         const gameBackBtn =
             document.getElementById(
@@ -1195,28 +1129,18 @@ document.addEventListener(
             );
 
         if (gameBackBtn) {
-
             gameBackBtn.addEventListener(
                 "click",
                 () => {
-
                     showSection(
                         "categories"
                     );
-
                     displayAnimals(
                         getAllSpecies()
                     );
-
                 }
             );
-
         }
-
-
-        // ================================================
-        // BOTÓN TODO
-        // ================================================
 
         const allBtn =
             document.getElementById(
@@ -1224,18 +1148,11 @@ document.addEventListener(
             );
 
         if (allBtn) {
-
             allBtn.addEventListener(
                 "click",
                 showAllAnimals
             );
-
         }
-
-
-        // ================================================
-        // BOTÓN CATEGORÍAS
-        // ================================================
 
         const categoriesBtn =
             document.getElementById(
@@ -1243,18 +1160,11 @@ document.addEventListener(
             );
 
         if (categoriesBtn) {
-
             categoriesBtn.addEventListener(
                 "click",
                 showCategories
             );
-
         }
-
-
-        // ================================================
-        // BUSCADOR
-        // ================================================
 
         const filterInput =
             document.getElementById(
@@ -1262,18 +1172,11 @@ document.addEventListener(
             );
 
         if (filterInput) {
-
             filterInput.addEventListener(
                 "input",
                 filterAnimals
             );
-
         }
-
-
-        // ================================================
-        // SELECT DE BÚSQUEDA
-        // ================================================
 
         const filterCat =
             document.getElementById(
@@ -1281,18 +1184,11 @@ document.addEventListener(
             );
 
         if (filterCat) {
-
             filterCat.addEventListener(
                 "change",
                 filterAnimals
             );
-
         }
-
-
-        // ================================================
-        // CERRAR MODAL
-        // ================================================
 
         const closeModal =
             document.getElementById(
@@ -1300,18 +1196,11 @@ document.addEventListener(
             );
 
         if (closeModal) {
-
             closeModal.addEventListener(
                 "click",
                 closeSpeciesModal
             );
-
         }
-
-
-        // ================================================
-        // CERRAR MODAL HACIENDO CLICK AFUERA
-        // ================================================
 
         const speciesModal =
             document.getElementById(
@@ -1319,49 +1208,29 @@ document.addEventListener(
             );
 
         if (speciesModal) {
-
             speciesModal.addEventListener(
                 "click",
                 event => {
-
                     if (
                         event.target ===
                         speciesModal
                     ) {
-
                         closeSpeciesModal();
-
                     }
-
                 }
             );
-
         }
-
-
-        // ================================================
-        // TECLA ESC PARA CERRAR MODAL
-        // ================================================
 
         document.addEventListener(
             "keydown",
             event => {
-
                 if (
                     event.key === "Escape"
                 ) {
-
                     closeSpeciesModal();
-
                 }
-
             }
         );
-
-
-        // ================================================
-        // MOSTRAR REGISTRO
-        // ================================================
 
         const showRegister =
             document.getElementById(
@@ -1383,55 +1252,38 @@ document.addEventListener(
                 "registerBox"
             );
 
-
         if (
             showRegister &&
             showLogin &&
             loginBox &&
             registerBox
         ) {
-
             showRegister.addEventListener(
                 "click",
                 event => {
-
                     event.preventDefault();
-
                     loginBox.classList.add(
                         "hidden"
                     );
-
                     registerBox.classList.remove(
                         "hidden"
                     );
-
                 }
             );
-
 
             showLogin.addEventListener(
                 "click",
                 event => {
-
                     event.preventDefault();
-
                     registerBox.classList.add(
                         "hidden"
                     );
-
                     loginBox.classList.remove(
                         "hidden"
                     );
-
                 }
             );
-
         }
-
-
-        // ================================================
-        // REGISTRO
-        // ================================================
 
         const registerForm =
             document.getElementById(
@@ -1439,11 +1291,9 @@ document.addEventListener(
             );
 
         if (registerForm) {
-
             registerForm.addEventListener(
                 "submit",
                 event => {
-
                     event.preventDefault();
 
                     const username =
@@ -1456,11 +1306,9 @@ document.addEventListener(
                             "regPass"
                         ).value;
 
-
                     if (!username || !password) {
                         return;
                     }
-
 
                     localStorage.setItem(
                         "faunoBeloAccount",
@@ -1470,16 +1318,13 @@ document.addEventListener(
                         })
                     );
 
-
                     alert(
                         "Cuenta creada correctamente."
                     );
 
-
                     document.getElementById(
                         "loginUser"
                     ).value = username;
-
 
                     registerBox.classList.add(
                         "hidden"
@@ -1488,16 +1333,9 @@ document.addEventListener(
                     loginBox.classList.remove(
                         "hidden"
                     );
-
                 }
             );
-
         }
-
-
-        // ================================================
-        // LOGIN
-        // ================================================
 
         const loginForm =
             document.getElementById(
@@ -1505,13 +1343,10 @@ document.addEventListener(
             );
 
         if (loginForm) {
-
             loginForm.addEventListener(
                 "submit",
                 event => {
-
                     event.preventDefault();
-
 
                     const username =
                         document.getElementById(
@@ -1523,7 +1358,6 @@ document.addEventListener(
                             "loginPass"
                         ).value;
 
-
                     const account =
                         JSON.parse(
                             localStorage.getItem(
@@ -1531,13 +1365,11 @@ document.addEventListener(
                             ) || "null"
                         );
 
-
                     if (
                         account &&
                         account.username === username &&
                         account.password === password
                     ) {
-
                         currentUser =
                             username;
 
@@ -1546,36 +1378,23 @@ document.addEventListener(
                             currentUser
                         );
 
-
                         updateProfileView();
-
 
                         alert(
                             "Sesión iniciada correctamente."
                         );
 
-
                         showSection(
                             "userProfileSection"
                         );
-
                     } else {
-
                         alert(
                             "Usuario o contraseña incorrectos."
                         );
-
                     }
-
                 }
             );
-
         }
-
-
-        // ================================================
-        // CERRAR SESIÓN
-        // ================================================
 
         const logoutBtn =
             document.getElementById(
@@ -1583,11 +1402,9 @@ document.addEventListener(
             );
 
         if (logoutBtn) {
-
             logoutBtn.addEventListener(
                 "click",
                 () => {
-
                     currentUser = null;
 
                     localStorage.removeItem(
@@ -1599,16 +1416,9 @@ document.addEventListener(
                     showSection(
                         "home"
                     );
-
                 }
             );
-
         }
-
-
-        // ================================================
-        // FORMULARIO DE REPORTES
-        // ================================================
 
         const reportForm =
             document.getElementById(
@@ -1616,16 +1426,12 @@ document.addEventListener(
             );
 
         if (reportForm) {
-
             reportForm.addEventListener(
                 "submit",
                 event => {
-
                     event.preventDefault();
 
-
                     const report = {
-
                         species:
                             document.getElementById(
                                 "reportSpecies"
@@ -1651,9 +1457,7 @@ document.addEventListener(
 
                         createdAt:
                             new Date().toISOString()
-
                     };
-
 
                     const reports =
                         JSON.parse(
@@ -1662,33 +1466,26 @@ document.addEventListener(
                             ) || "[]"
                         );
 
-
                     reports.push(report);
-
 
                     localStorage.setItem(
                         "faunoBeloReports",
                         JSON.stringify(reports)
                     );
 
-
                     updateProfileStats();
-
 
                     alert(
                         "¡Avistamiento registrado correctamente!"
                     );
-
 
                     reportForm.reset();
 
                     showSection(
                         "home"
                     );
-
                 }
             );
-
         }
 
     }
