@@ -1,4 +1,3 @@
-```javascript
 // ==========================================================
 // FAUNO BELO
 // LÓGICA COMPLETA DE NAVEGACIÓN, EXPLORACIÓN Y FAVORITOS
@@ -11,7 +10,6 @@ let currentUser = localStorage.getItem("faunoBeloUser") || null;
 let favorites = JSON.parse(
     localStorage.getItem("faunoBeloFavorites") || "[]"
 );
-
 
 // ==========================================================
 // CARGAR ANIMALES
@@ -51,7 +49,6 @@ async function loadAnimals() {
     }
 }
 
-
 // ==========================================================
 // OBTENER TODAS LAS ESPECIES
 // ==========================================================
@@ -78,6 +75,7 @@ function getAllSpecies() {
             result.push({
                 ...specie,
 
+                // Guardamos también la categoría
                 category:
                     specie.category ||
                     specie.categoria ||
@@ -87,13 +85,11 @@ function getAllSpecies() {
                     category.name ||
                     "Sin categoría"
             });
-
         }
     }
 
     return result;
 }
-
 
 // ==========================================================
 // NAVEGACIÓN ENTRE SECCIONES
@@ -129,7 +125,6 @@ function showSection(sectionId) {
     }
 }
 
-
 // ==========================================================
 // ESCAPAR HTML
 // Evita problemas si algún dato del JSON contiene HTML.
@@ -149,7 +144,6 @@ function escapeHTML(value) {
         .replace(/'/g, "&#039;");
 }
 
-
 // ==========================================================
 // SABER SI UNA ESPECIE ESTÁ EN FAVORITOS
 // ==========================================================
@@ -160,7 +154,6 @@ function isFavorite(specieId) {
         String(specieId)
     );
 }
-
 
 // ==========================================================
 // GUARDAR FAVORITOS
@@ -173,7 +166,6 @@ function saveFavorites() {
         JSON.stringify(favorites)
     );
 }
-
 
 // ==========================================================
 // ALTERNAR FAVORITO
@@ -203,7 +195,6 @@ function toggleFavorite(specieId) {
 
     updateProfileStats();
 }
-
 
 // ==========================================================
 // MOSTRAR ANIMALES
@@ -343,7 +334,6 @@ function displayAnimals(speciesList) {
             </div>
         `;
 
-
         // ==================================================
         // BOTÓN FAVORITO
         // ==================================================
@@ -363,7 +353,6 @@ function displayAnimals(speciesList) {
 
             }
         );
-
 
         // ==================================================
         // BOTÓN INFORMACIÓN
@@ -395,7 +384,6 @@ function displayAnimals(speciesList) {
         container.appendChild(div);
     }
 }
-
 
 // ==========================================================
 // MODAL DE INFORMACIÓN
@@ -611,7 +599,6 @@ function openSpeciesModal(specie) {
     modal.classList.remove("hidden");
 }
 
-
 // ==========================================================
 // CERRAR MODAL
 // ==========================================================
@@ -627,7 +614,6 @@ function closeSpeciesModal() {
         modal.classList.add("hidden");
     }
 }
-
 
 // ==========================================================
 // BÚSQUEDA
@@ -737,7 +723,6 @@ function filterAnimals() {
     displayAnimals(filtered);
 }
 
-
 // ==========================================================
 // MOSTRAR TODAS
 // ==========================================================
@@ -757,7 +742,6 @@ function showAllAnimals() {
         getAllSpecies()
     );
 }
-
 
 // ==========================================================
 // BOTÓN CATEGORÍAS
@@ -845,7 +829,6 @@ function showCategories() {
     );
 }
 
-
 // ==========================================================
 // ESTADÍSTICAS DEL PERFIL
 // ==========================================================
@@ -885,7 +868,6 @@ function updateProfileStats() {
     }
 }
 
-
 // ==========================================================
 // LOGIN / PERFIL
 // ==========================================================
@@ -916,8 +898,7 @@ function updateProfileView() {
         }
 
     } else {
-
-        if (profileBtnText) {
+                if (profileBtnText) {
             profileBtnText.textContent =
                 "Perfil";
         }
@@ -935,54 +916,25 @@ function updateProfileView() {
 let gameScore = 0;
 let currentCorrectAnswer = null;
 
-
-// ==========================================================
-// INICIAR TRIVIA
-// ==========================================================
-
 function startTriviaGame() {
 
-    const allSpecies =
-        getAllSpecies();
+    const allSpecies = getAllSpecies();
 
-    if (
-        !allSpecies ||
-        allSpecies.length === 0
-    ) {
-
-        console.error(
-            "Trivia: no hay especies disponibles."
-        );
-
+    if (!allSpecies || allSpecies.length === 0) {
+        console.error("Trivia: no hay especies disponibles.");
         return;
     }
 
-
     updateGameScoreDisplay();
 
-
-    // Elegir una especie aleatoria
-
     const randomIndex =
-        Math.floor(
-            Math.random() *
-            allSpecies.length
-        );
-
+        Math.floor(Math.random() * allSpecies.length);
 
     currentCorrectAnswer =
         allSpecies[randomIndex];
 
-
-    // ======================================================
-    // IMAGEN DE LA PREGUNTA
-    // ======================================================
-
     const gameImage =
-        document.getElementById(
-            "gameImage"
-        );
-
+        document.getElementById("gameImage");
 
     if (gameImage) {
 
@@ -996,18 +948,9 @@ function startTriviaGame() {
             currentCorrectAnswer.name ||
             currentCorrectAnswer.nombre ||
             "Especie misteriosa";
-
     }
 
-
-    // ======================================================
-    // CREAR OPCIONES
-    // ======================================================
-
-    let options = [
-        currentCorrectAnswer
-    ];
-
+    let options = [currentCorrectAnswer];
 
     while (
         options.length < 4 &&
@@ -1016,147 +959,74 @@ function startTriviaGame() {
 
         const randomOpt =
             allSpecies[
-                Math.floor(
-                    Math.random() *
-                    allSpecies.length
-                )
+                Math.floor(Math.random() * allSpecies.length)
             ];
 
-
         if (!options.includes(randomOpt)) {
-
             options.push(randomOpt);
-
         }
-
     }
-
-
-    // Mezclar las opciones
 
     options.sort(
         () => Math.random() - 0.5
     );
 
-
-    // ======================================================
-    // MOSTRAR OPCIONES
-    // ======================================================
-
     const optionsContainer =
-        document.getElementById(
-            "gameOptions"
-        );
-
+        document.getElementById("gameOptions");
 
     if (!optionsContainer) {
-
-        console.error(
-            "Trivia: no se encontró gameOptions."
-        );
-
         return;
     }
-
 
     optionsContainer.innerHTML = "";
 
+    options.forEach(option => {
 
-    options.forEach(
-        option => {
+        const btn =
+            document.createElement("button");
 
-            const btn =
-                document.createElement(
-                    "button"
-                );
+        btn.type = "button";
+        btn.className = "see";
+        btn.style.margin = "8px";
 
+        btn.textContent =
+            option.name ||
+            option.nombre ||
+            "Especie";
 
-            btn.type = "button";
+        btn.addEventListener(
+            "click",
+            () => checkTriviaAnswer(option)
+        );
 
-            btn.className = "see";
+        optionsContainer.appendChild(btn);
 
-            btn.style.margin = "8px";
-
-
-            btn.textContent =
-                option.name ||
-                option.nombre ||
-                "Especie";
-
-
-            btn.addEventListener(
-                "click",
-                () => {
-
-                    checkTriviaAnswer(
-                        option
-                    );
-
-                }
-            );
-
-
-            optionsContainer.appendChild(
-                btn
-            );
-
-        }
-    );
+    });
 }
 
+function checkTriviaAnswer(selectedOption) {
 
-// ==========================================================
-// COMPROBAR RESPUESTA DE LA TRIVIA
-// ==========================================================
-
-function checkTriviaAnswer(
-    selectedOption
-) {
-
-    if (
-        !currentCorrectAnswer ||
-        !selectedOption
-    ) {
-
+    if (!currentCorrectAnswer || !selectedOption) {
         return;
     }
-
 
     const correctName =
         currentCorrectAnswer.name ||
         currentCorrectAnswer.nombre ||
         "";
 
-
     const selectedName =
         selectedOption.name ||
         selectedOption.nombre ||
         "";
 
-
-    // ======================================================
-    // CORRECTO
-    // ======================================================
-
-    if (
-        selectedName ===
-        correctName
-    ) {
+    if (selectedName === correctName) {
 
         gameScore += 10;
 
-        alert(
-            "¡Correcto! 🎉"
-        );
+        alert("¡Correcto! 🎉");
 
-    }
-
-
-    // ======================================================
-    // INCORRECTO
-    // ======================================================
-
-    else {
+    } else {
 
         alert(
             `Incorrecto. Era: ${correctName}`
@@ -1164,27 +1034,15 @@ function checkTriviaAnswer(
 
     }
 
-
     updateGameScoreDisplay();
-
-
-    // Nueva pregunta
 
     startTriviaGame();
 }
 
-
-// ==========================================================
-// ACTUALIZAR PUNTUACIÓN
-// ==========================================================
-
 function updateGameScoreDisplay() {
 
     const scoreElement =
-        document.getElementById(
-            "currentScore"
-        );
-
+        document.getElementById("currentScore");
 
     if (scoreElement) {
 
@@ -1194,7 +1052,6 @@ function updateGameScoreDisplay() {
     }
 }
 
-
 // ==========================================================
 // DOM READY
 // ==========================================================
@@ -1202,7 +1059,6 @@ function updateGameScoreDisplay() {
 document.addEventListener(
     "DOMContentLoaded",
     async () => {
-
 
         // ================================================
         // INICIO
@@ -1228,7 +1084,6 @@ document.addEventListener(
             document.getElementById(
                 "profile"
             );
-
 
         if (profileBtn) {
 
@@ -1265,7 +1120,6 @@ document.addEventListener(
                 "explore"
             );
 
-
         if (exploreBtn) {
 
             exploreBtn.addEventListener(
@@ -1294,7 +1148,6 @@ document.addEventListener(
             document.getElementById(
                 "report"
             );
-
 
         if (reportBtn) {
 
@@ -1331,7 +1184,6 @@ document.addEventListener(
                         buttonId
                     );
 
-
                 if (button) {
 
                     button.addEventListener(
@@ -1360,7 +1212,6 @@ document.addEventListener(
                 "back"
             );
 
-
         if (backExplore) {
 
             backExplore.addEventListener(
@@ -1378,14 +1229,13 @@ document.addEventListener(
 
 
         // ================================================
-        // JUEGO / TRIVIA
+        // JUEGO
         // ================================================
 
         const playBtn =
             document.getElementById(
                 "play"
             );
-
 
         if (playBtn) {
 
@@ -1396,9 +1246,6 @@ document.addEventListener(
                     showSection(
                         "gameSection"
                     );
-
-
-                    // INICIAR LA TRIVIA
 
                     startTriviaGame();
 
@@ -1417,7 +1264,6 @@ document.addEventListener(
                 "gameBack"
             );
 
-
         if (gameBackBtn) {
 
             gameBackBtn.addEventListener(
@@ -1427,7 +1273,6 @@ document.addEventListener(
                     showSection(
                         "categories"
                     );
-
 
                     displayAnimals(
                         getAllSpecies()
@@ -1448,7 +1293,6 @@ document.addEventListener(
                 "all"
             );
 
-
         if (allBtn) {
 
             allBtn.addEventListener(
@@ -1467,7 +1311,6 @@ document.addEventListener(
             document.getElementById(
                 "categoriesBtn"
             );
-
 
         if (categoriesBtn) {
 
@@ -1488,7 +1331,6 @@ document.addEventListener(
                 "filter"
             );
 
-
         if (filterInput) {
 
             filterInput.addEventListener(
@@ -1507,7 +1349,6 @@ document.addEventListener(
             document.getElementById(
                 "filterCat"
             );
-
 
         if (filterCat) {
 
@@ -1528,7 +1369,6 @@ document.addEventListener(
                 "closeModal"
             );
 
-
         if (closeModal) {
 
             closeModal.addEventListener(
@@ -1547,7 +1387,6 @@ document.addEventListener(
             document.getElementById(
                 "speciesModal"
             );
-
 
         if (speciesModal) {
 
@@ -1599,18 +1438,15 @@ document.addEventListener(
                 "showRegister"
             );
 
-
         const showLogin =
             document.getElementById(
                 "showLogin"
             );
 
-
         const loginBox =
             document.getElementById(
                 "loginBox"
             );
-
 
         const registerBox =
             document.getElementById(
@@ -1672,7 +1508,6 @@ document.addEventListener(
                 "registerForm"
             );
 
-
         if (registerForm) {
 
             registerForm.addEventListener(
@@ -1681,12 +1516,10 @@ document.addEventListener(
 
                     event.preventDefault();
 
-
                     const username =
                         document.getElementById(
                             "regUser"
                         ).value.trim();
-
 
                     const password =
                         document.getElementById(
@@ -1694,13 +1527,8 @@ document.addEventListener(
                         ).value;
 
 
-                    if (
-                        !username ||
-                        !password
-                    ) {
-
+                    if (!username || !password) {
                         return;
-
                     }
 
 
@@ -1727,7 +1555,6 @@ document.addEventListener(
                         "hidden"
                     );
 
-
                     loginBox.classList.remove(
                         "hidden"
                     );
@@ -1736,9 +1563,7 @@ document.addEventListener(
             );
 
         }
-
-
-        // ================================================
+                // ================================================
         // LOGIN
         // ================================================
 
@@ -1746,7 +1571,6 @@ document.addEventListener(
             document.getElementById(
                 "loginForm"
             );
-
 
         if (loginForm) {
 
@@ -1761,7 +1585,6 @@ document.addEventListener(
                         document.getElementById(
                             "loginUser"
                         ).value.trim();
-
 
                     const password =
                         document.getElementById(
@@ -1785,7 +1608,6 @@ document.addEventListener(
 
                         currentUser =
                             username;
-
 
                         localStorage.setItem(
                             "faunoBeloUser",
@@ -1828,7 +1650,6 @@ document.addEventListener(
                 "logoutBtn"
             );
 
-
         if (logoutBtn) {
 
             logoutBtn.addEventListener(
@@ -1837,14 +1658,11 @@ document.addEventListener(
 
                     currentUser = null;
 
-
                     localStorage.removeItem(
                         "faunoBeloUser"
                     );
 
-
                     updateProfileView();
-
 
                     showSection(
                         "home"
@@ -1865,7 +1683,6 @@ document.addEventListener(
                 "reportForm"
             );
 
-
         if (reportForm) {
 
             reportForm.addEventListener(
@@ -1882,29 +1699,23 @@ document.addEventListener(
                                 "reportSpecies"
                             ).value,
 
-
                         location:
                             document.getElementById(
                                 "reportLocation"
                             ).value,
-
 
                         date:
                             document.getElementById(
                                 "reportDate"
                             ).value,
 
-
                         notes:
                             document.getElementById(
                                 "reportNotes"
                             ).value,
 
-
                         user:
-                            currentUser ||
-                            "Visitante",
-
+                            currentUser || "Visitante",
 
                         createdAt:
                             new Date().toISOString()
@@ -1939,7 +1750,6 @@ document.addEventListener(
 
                     reportForm.reset();
 
-
                     showSection(
                         "home"
                     );
@@ -1951,4 +1761,3 @@ document.addEventListener(
 
     }
 );
-```
